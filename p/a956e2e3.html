@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1. 什么是网络重定向 whatHTTP重定向(HTTP redirect)就是将各个网络请求重新定个方向转到其它位置（如：网页重定向、域名的重定向、路由选择的变化也是对数据报文经由路径的一种重定向），也称为URL 重定向、 URL 转发； 常见的HTTP重定向状态码是301（Moved Permanently&#x2F;永久移动）、302（Found&#x2F;已定位），差别在于301表示已为目标资源分配了新的永久">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络重定向">
+<meta property="og:url" content="https://jundongwu.com/p/a956e2e3.html">
+<meta property="og:site_name" content="俊东的Blog">
+<meta property="og:description" content="1. 什么是网络重定向 whatHTTP重定向(HTTP redirect)就是将各个网络请求重新定个方向转到其它位置（如：网页重定向、域名的重定向、路由选择的变化也是对数据报文经由路径的一种重定向），也称为URL 重定向、 URL 转发； 常见的HTTP重定向状态码是301（Moved Permanently&#x2F;永久移动）、302（Found&#x2F;已定位），差别在于301表示已为目标资源分配了新的永久">
+<meta property="og:locale" content="cn">
+<meta property="og:image" content="https://jundongwu.com/images/it_HTTPRedirect.png">
+<meta property="article:published_time" content="2020-09-03T13:07:26.000Z">
+<meta property="article:modified_time" content="2020-09-03T13:17:32.226Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="IT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jundongwu.com/images/it_HTTPRedirect.png">
+
+<link rel="canonical" href="https://jundongwu.com/p/a956e2e3.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'cn'
+  };
+</script>
+
+  <title>网络重定向 | 俊东的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">俊东的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少则得，多则惑</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/a956e2e3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网络重定向
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-09-03 21:07:26 / Modified: 21:17:32" itemprop="dateCreated datePublished" datetime="2020-09-03T21:07:26+08:00">2020-09-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="1-什么是网络重定向-what"><a href="#1-什么是网络重定向-what" class="headerlink" title="1. 什么是网络重定向 what"></a>1. 什么是网络重定向 what</h2><p>HTTP重定向(HTTP redirect)就是将各个网络请求重新定个方向转到其它位置（如：网页重定向、域名的重定向、路由选择的变化也是对数据报文经由路径的一种重定向），也称为URL 重定向、 URL 转发；</p>
+<p>常见的HTTP重定向状态码是301（Moved Permanently/永久移动）、302（Found/已定位），差别在于301表示已为目标资源分配了新的永久URI，以后对该资源的任何引用都应使用新的URI，302表示目标资源临时位于其他URI下。由于重定向有时可能会更改，因此客户端应继续将有效请求URI用于将来的请求。</p>
+<a id="more"></a>
+
+<p>还有其他的重定向相关状态码，如下：</p>
+<ul>
+<li>304 Not Modified（未修改）客户的缓存资源是最新的， 要客户端使用缓存</li>
+<li>305 Use Proxy（使用代理）必须通过代理访问资源， 代理的地址在Response 的Location中</li>
+<li>306 unuse(未使用)  这个状态码当前没使用</li>
+<li>307 Temporary Redirect（临时重定向）状态代码指示目标资源临时位于其他URI下，并且如果用户代理执行到该URI的自动重定向，则它不得更改请求方法。由于重定向会随时间变化，因此客户端应继续将原始的有效请求URI用于将来的请求。（不允许将请求方法从POST更改为GET）</li>
+<li>308 Permanent Redirect（永久重定向）状态码表示已为目标资源分配了新的永久URI，并且对该资源的任何将来引用都应使用随附的URI中的一个。（不允许将请求方法从POST更改为GET）</li>
+</ul>
+<p>我们可以看到307和301，308和302的定义类似，区别在于发生 HTTP 重定向的时候，主要是 httpMethod和httpBody的请求地址发送改变，请求方式（Get、Post）和请求参数（Body）会一起转移，即：发送HTTP重定向时，请求方式和请求体会一并重定向到新地址,而301和302状态可以从Post请求更改为Get请求；</p>
+<h2 id="为什么需要网络重定向-why"><a href="#为什么需要网络重定向-why" class="headerlink" title="为什么需要网络重定向 why"></a>为什么需要网络重定向 why</h2><p>有两种情况：</p>
+<p>一种情况是当实际资源，如单个页面、表单或者整个 Web 应用被迁移到新的 URL 下的时候，保持（原有）链接可用的技术。HTTP 协议提供了一种特殊形式的响应—— HTTP 重定向（HTTP redirects）来执行此类操作，该操作可以应用于多种多样的目标：网站维护期间的临时跳转，网站架构改变后为了保持外部链接继续可用的永久重定向，上传文件时的表示进度的页面，等等。</p>
+<p>避免搜索引擎的信息失效，重新抓取；</p>
+<p>另一种情况是给同一个资源多个地址；</p>
+<h2 id="网络重定向的实现原理"><a href="#网络重定向的实现原理" class="headerlink" title="网络重定向的实现原理"></a>网络重定向的实现原理</h2><p><img src="/images/it_HTTPRedirect.png" alt=""></p>
+<p>meta javaScript 的重定向</p>
+<h2 id="iOS如何实现网络重定向"><a href="#iOS如何实现网络重定向" class="headerlink" title="iOS如何实现网络重定向"></a>iOS如何实现网络重定向</h2><h3 id="OC"><a href="#OC" class="headerlink" title="OC"></a>OC</h3><p>待续。。。</p>
+<h3 id="Swift"><a href="#Swift" class="headerlink" title="Swift"></a>Swift</h3><p>待续。。。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/613ea8f758a8" target="_blank" rel="noopener">iOS中实现url重定向</a></p>
+<p><a href="http://yuqiangcoder.com/2018/09/07/Alamofire-%E9%87%8D%E5%AE%9A%E5%90%91-HTTPS.html" target="_blank" rel="noopener">Alamofire 重定向</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/60669395" target="_blank" rel="noopener">状态码 301.302.303.307.308</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/" target="_blank" rel="noopener">Redirections</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IT/" rel="tag"># IT</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/db9441c0.html" rel="prev" title="iOS-获取UIImage上某一点的颜色">
+      <i class="fa fa-chevron-left"></i> iOS-获取UIImage上某一点的颜色
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是网络重定向-what"><span class="nav-number">1.</span> <span class="nav-text">1. 什么是网络重定向 what</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要网络重定向-why"><span class="nav-number">2.</span> <span class="nav-text">为什么需要网络重定向 why</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络重定向的实现原理"><span class="nav-number">3.</span> <span class="nav-text">网络重定向的实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS如何实现网络重定向"><span class="nav-number">4.</span> <span class="nav-text">iOS如何实现网络重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OC"><span class="nav-number">4.1.</span> <span class="nav-text">OC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swift"><span class="nav-number">4.2.</span> <span class="nav-text">Swift</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">记录思考的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

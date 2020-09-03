@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在软件工程中，设计模式（design pattern）是對软件设计中普遍存在（反覆出現）的各种问题，所提出的解決方案。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件设计模式">
+<meta property="og:url" content="https://jundongwu.com/p/c6374498.html">
+<meta property="og:site_name" content="俊东的Blog">
+<meta property="og:description" content="在软件工程中，设计模式（design pattern）是對软件设计中普遍存在（反覆出現）的各种问题，所提出的解決方案。">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2018-12-19T04:11:22.000Z">
+<meta property="article:modified_time" content="2020-09-03T13:06:58.159Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="IT">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jundongwu.com/p/c6374498.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'cn'
+  };
+</script>
+
+  <title>软件设计模式 | 俊东的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">俊东的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少则得，多则惑</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/c6374498.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件设计模式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-19 12:11:22" itemprop="dateCreated datePublished" datetime="2018-12-19T12:11:22+08:00">2018-12-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在软件工程中，设计模式（design pattern）是對软件设计中普遍存在（反覆出現）的各种问题，所提出的解決方案。</p>
+<a id="more"></a>
+
+<h2 id="创建型模式"><a href="#创建型模式" class="headerlink" title="创建型模式"></a>创建型模式</h2><h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>what：定义创建对象的接口，让子类来决定实例化哪个类</p>
+<p>why：分离产品的创建和使用</p>
+<h3 id="抽象工程模式"><a href="#抽象工程模式" class="headerlink" title="抽象工程模式"></a>抽象工程模式</h3><p>what：封装一组具有同一主题的单独工厂</p>
+<p>why：使产品接口与产品主题分离</p>
+<h3 id="生成器模式"><a href="#生成器模式" class="headerlink" title="生成器模式"></a>生成器模式</h3><p>what：通过接口抽象、装配、对象实现分离复杂的创建配置过程</p>
+<p>why：解决复杂对象的创建过程的封装问题</p>
+<h3 id="对象池-object-pool-pattern"><a href="#对象池-object-pool-pattern" class="headerlink" title="对象池:object pool pattern"></a>对象池:object pool pattern</h3><p>what:在对象池中管理对象的创建、销毁</p>
+<p>why：优化初始化、实例化代价高、需求频繁的对象的管理和访问效率</p>
+<h3 id="惰性初始模式"><a href="#惰性初始模式" class="headerlink" title="惰性初始模式"></a>惰性初始模式</h3><p>what：懒加载、延迟物件创建</p>
+<p>why：节省资源和调高速率</p>
+<h3 id="原始模式："><a href="#原始模式：" class="headerlink" title="原始模式："></a>原始模式：</h3><p>what：复制一个存在的实例而不是新建实例</p>
+<p>why：比起创建复杂或耗时的资源，复制资源效率更好</p>
+<h3 id="单例模式："><a href="#单例模式：" class="headerlink" title="单例模式："></a>单例模式：</h3><p>what：只拥有一个全局对象</p>
+<p>why：便于协调整体行为</p>
+<h2 id="结构型模式"><a href="#结构型模式" class="headerlink" title="结构型模式"></a>结构型模式</h2><h3 id="适配器模式：adapter-pattern"><a href="#适配器模式：adapter-pattern" class="headerlink" title="适配器模式：adapter pattern"></a>适配器模式：adapter pattern</h3><p>what：类自己的接口包裹在一个已经存在的类里面</p>
+<p>why：隐藏具体实现、便于后期修改、兼容判断跳转</p>
+<h3 id="桥接模式："><a href="#桥接模式：" class="headerlink" title="桥接模式："></a>桥接模式：</h3><p>what：分离事物对象和具体行为、具体特征</p>
+<p>why：分离各自的独立变化</p>
+<h3 id="组合模式："><a href="#组合模式：" class="headerlink" title="组合模式："></a>组合模式：</h3><p>what：把多个对象组成树状结构来表示局部与整体</p>
+<p>why：可以对待单个对象和对象的组合</p>
+<h3 id="装饰模式："><a href="#装饰模式：" class="headerlink" title="装饰模式："></a>装饰模式：</h3><p>what：向某个对象动态地添加更多的功能</p>
+<p>why：修饰模式是除类继承外另一种扩展功能的方法</p>
+<h3 id="外观模式：facade-pattern"><a href="#外观模式：facade-pattern" class="headerlink" title="外观模式：facade pattern"></a>外观模式：facade pattern</h3><p>what：定义高层接口</p>
+<p>why：优化复杂的子系统的使用</p>
+<h3 id="享元：flyweight-pattern"><a href="#享元：flyweight-pattern" class="headerlink" title="享元：flyweight pattern"></a>享元：flyweight pattern</h3><p>what：共享物件</p>
+<p>why：减少重复读取某物件产生的内存消耗<br>（单例？）</p>
+<h3 id="代理："><a href="#代理：" class="headerlink" title="代理："></a>代理：</h3><p>what：为其它对象提供一个代理以控制这个对象的访问</p>
+<p>why：事件传递优化</p>
+<h2 id="行为型模式"><a href="#行为型模式" class="headerlink" title="行为型模式"></a>行为型模式</h2><h3 id="责任链模式："><a href="#责任链模式：" class="headerlink" title="责任链模式："></a>责任链模式：</h3><p>what：流处理模式</p>
+<p>why：命令、对象的链式处理</p>
+<h3 id="命令模式：Command-pattern"><a href="#命令模式：Command-pattern" class="headerlink" title="命令模式：Command pattern"></a>命令模式：Command pattern</h3><p>what：行为参数统一封装，命令封装成对象</p>
+<p>why：可重复、取消</p>
+<h3 id="解释器："><a href="#解释器：" class="headerlink" title="解释器："></a>解释器：</h3><p>what：给定一个语言, 定义它的文法的一种表示，并定义一个解释器, 该解释器使用该表示来解释语言中的句子。</p>
+<p>why：复杂、多参、解释型、定义型功能实现封装</p>
+<h3 id="迭代器模式："><a href="#迭代器模式：" class="headerlink" title="迭代器模式："></a>迭代器模式：</h3><p>what：提供一种方法访问一个容器对象中各个元素，而又不暴露该对象的内部细节</p>
+<p>why：简化遍历、多样遍历</p>
+<h3 id="中介者模式："><a href="#中介者模式：" class="headerlink" title="中介者模式："></a>中介者模式：</h3><p>what：定义中介对象，封装系统中对象间的交互方式</p>
+<p>why：避免交互对象出现精密耦合；独立改变一组对象之间的交互方式而不影响其他对象。</p>
+<h3 id="备忘录模式："><a href="#备忘录模式：" class="headerlink" title="备忘录模式："></a>备忘录模式：</h3><p>what：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样就可以将该对象恢复到原先保存的状态</p>
+<p>why：保留中间状态便于还原</p>
+<h3 id="观察者模式："><a href="#观察者模式：" class="headerlink" title="观察者模式："></a>观察者模式：</h3><p>what：定义对象间一种一对多的依赖关系，当对象改变状态，所有依赖于它的对象都会得到通知并自动更新。</p>
+<p>why：解决一对多的重度关联和耦合</p>
+<h3 id="状态模式：state-pattern"><a href="#状态模式：state-pattern" class="headerlink" title="状态模式：state pattern"></a>状态模式：state pattern</h3><p>what：允许一个对象在其内部状态改变时改变它的行为</p>
+<p>why：封装转换规则，简化条件判断<br>where：对象的行为依赖于它的状态（属性）并且可以根据它的状态改变而改变它的相关行为</p>
+<h3 id="策略模式：strategy-pattern"><a href="#策略模式：strategy-pattern" class="headerlink" title="策略模式：strategy pattern"></a>策略模式：strategy pattern</h3><p>what：定义一系列算法，封装每一个算法让它们可以相互替换。</p>
+<p>why：多个算法的互相替换和管理</p>
+<h3 id="模板模式："><a href="#模板模式：" class="headerlink" title="模板模式："></a>模板模式：</h3><p>what：定义模板结构，将具体内容延迟到子类中实现</p>
+<p>why：提高代码复用性和扩展性、实现反向控制</p>
+<h3 id="访问者模式："><a href="#访问者模式：" class="headerlink" title="访问者模式："></a>访问者模式：</h3><p>what：封装某些作用于某种数据结构中各元素的操作，它可以在不改变数据结构的前提下定义作用于这些元素的新的操作。</p>
+<p>why：对象中存在着一些与本对象不相干（或者关系较弱）的操作，为了避免这些操作污染这个对象，则可以使用访问者模式来把这些操作封装到访问者中去；假如一组对象中，存在着相似的操作，为了避免出现大量重复的代码，也可以将这些重复的操作封装到访问者中去。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IT/" rel="tag"># IT</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/ab68ed45.html" rel="prev" title="iOS--审核 2.3.1+3.1.1 元数据审核被拒">
+      <i class="fa fa-chevron-left"></i> iOS--审核 2.3.1+3.1.1 元数据审核被拒
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/58214e59.html" rel="next" title="算法：只出现一次的数字">
+      算法：只出现一次的数字 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建型模式"><span class="nav-number">1.</span> <span class="nav-text">创建型模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂模式"><span class="nav-number">1.1.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象工程模式"><span class="nav-number">1.2.</span> <span class="nav-text">抽象工程模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器模式"><span class="nav-number">1.3.</span> <span class="nav-text">生成器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象池-object-pool-pattern"><span class="nav-number">1.4.</span> <span class="nav-text">对象池:object pool pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#惰性初始模式"><span class="nav-number">1.5.</span> <span class="nav-text">惰性初始模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原始模式："><span class="nav-number">1.6.</span> <span class="nav-text">原始模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式："><span class="nav-number">1.7.</span> <span class="nav-text">单例模式：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构型模式"><span class="nav-number">2.</span> <span class="nav-text">结构型模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#适配器模式：adapter-pattern"><span class="nav-number">2.1.</span> <span class="nav-text">适配器模式：adapter pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#桥接模式："><span class="nav-number">2.2.</span> <span class="nav-text">桥接模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合模式："><span class="nav-number">2.3.</span> <span class="nav-text">组合模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰模式："><span class="nav-number">2.4.</span> <span class="nav-text">装饰模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外观模式：facade-pattern"><span class="nav-number">2.5.</span> <span class="nav-text">外观模式：facade pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#享元：flyweight-pattern"><span class="nav-number">2.6.</span> <span class="nav-text">享元：flyweight pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理："><span class="nav-number">2.7.</span> <span class="nav-text">代理：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行为型模式"><span class="nav-number">3.</span> <span class="nav-text">行为型模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#责任链模式："><span class="nav-number">3.1.</span> <span class="nav-text">责任链模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令模式：Command-pattern"><span class="nav-number">3.2.</span> <span class="nav-text">命令模式：Command pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解释器："><span class="nav-number">3.3.</span> <span class="nav-text">解释器：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代器模式："><span class="nav-number">3.4.</span> <span class="nav-text">迭代器模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中介者模式："><span class="nav-number">3.5.</span> <span class="nav-text">中介者模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#备忘录模式："><span class="nav-number">3.6.</span> <span class="nav-text">备忘录模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#观察者模式："><span class="nav-number">3.7.</span> <span class="nav-text">观察者模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态模式：state-pattern"><span class="nav-number">3.8.</span> <span class="nav-text">状态模式：state pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#策略模式：strategy-pattern"><span class="nav-number">3.9.</span> <span class="nav-text">策略模式：strategy pattern</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板模式："><span class="nav-number">3.10.</span> <span class="nav-text">模板模式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问者模式："><span class="nav-number">3.11.</span> <span class="nav-text">访问者模式：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">记录思考的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

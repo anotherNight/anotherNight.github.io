@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="导语本文的目的，一是简要分析下对服务器身份验证的完整握手过程，二是证书链的验证，三是探索下iOS中原生库NSURLConnection或NSURLSession如何支持实现https。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS中的HTTPS证书校验">
+<meta property="og:url" content="https://jundongwu.com/p/e0dc9eb4.html">
+<meta property="og:site_name" content="俊东的Blog">
+<meta property="og:description" content="导语本文的目的，一是简要分析下对服务器身份验证的完整握手过程，二是证书链的验证，三是探索下iOS中原生库NSURLConnection或NSURLSession如何支持实现https。">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2017-02-05T04:29:39.000Z">
+<meta property="article:modified_time" content="2020-09-03T13:06:58.106Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jundongwu.com/p/e0dc9eb4.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'cn'
+  };
+</script>
+
+  <title>iOS中的HTTPS证书校验 | 俊东的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">俊东的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少则得，多则惑</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/e0dc9eb4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS中的HTTPS证书校验
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-02-05 12:29:39" itemprop="dateCreated datePublished" datetime="2017-02-05T12:29:39+08:00">2017-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>本文的目的，一是简要分析下对服务器身份验证的完整握手过程，二是证书链的验证，三是探索下iOS中原生库NSURLConnection或NSURLSession如何支持实现https。</p>
+<a id="more"></a>
+
+<h2 id="一、HTTPS"><a href="#一、HTTPS" class="headerlink" title="一、HTTPS"></a>一、HTTPS</h2><p>HTTPS是承载在TLS/SSL之上的HTTP，相较于HTTP明文数据传输方面所暴露出的缺点，HTTPS具有防止信息被窃听、篡改、劫持，提供信息加密，完整性校验及身份验证等优势。TLS/SSL是安全传输层协议，介于TCP和HTTP之间。TLS1.0是建立在SSL3.0规范之上的，可以理解为SSL3.0的升级版本。目前推荐使用的版本是TLS1.2。</p>
+<p>TLS/SSL协议通常分为两层：TLS记录协议(TLS Record Protocol)和TLS握手协议(TLS Handshake Protocol)。 TLS记录协议建立在可靠的传输协议（如TCP）之上，为高层协议提供数据封装、压缩、加密等基本功能的支持。TLS握手协议建立在记录协议之上，用于在实际的数据传输开始前，通讯双方进行身份认证、协商加密算法、交换加密密钥等。除了这俩协议以外，还存在其它三种辅助协议： Changecipher spec 协议用来通知对端从handshake切换到record协议(有点冗余，在TLS1.3里面已经被删掉了)。alert协议，用来通知各种返回码。application data协议，就是把http，smtp等的数据流传入record层做处理并传输。</p>
+<p>想象一种场景：通常我们会访问 <a href="http://xxx" target="_blank" rel="noopener">http://xxx</a> 的网站，当你在浏览器地址栏输入支持HTTPS协议的URL地址后，服务器返回的数据会显示在页面上。对于不了解HTTPS协议工作原理的小伙伴可能觉得这个过程很简单：发送请求－服务器响应请求－结果返回并显示。但对于HTTPS而言，在整个发送请求返回数据过程中还涉及到通讯双方证书验证、数据加密、数据完整性校验等。</p>
+<p>下面以登录qq邮箱为例，通过Wireshark抓包可以看到如下图：</p>
+<p>在浏览器与服务器进行Application Data传输之前，还经历了Client Hello－Server Hello－Client Key Exchange－Change Cipher Spec等过程。而这些过程正是TLS/SSL提供的服务所决定的：</p>
+<ul>
+<li>认证服务器身份，确保数据发送到正确的服务器；</li>
+<li>加密数据以防止数据中途被窃取；</li>
+<li>维护数据的完整性，确保数据在传输过程中不被改变。</li>
+</ul>
+<p>上述单向验证的完整握手过程，总结如下：</p>
+<h3 id="第一阶段：ClientHello"><a href="#第一阶段：ClientHello" class="headerlink" title="第一阶段：ClientHello"></a>第一阶段：ClientHello</h3><p>客户端发起请求，以明文传输请求信息，包含版本信息，加密套件候选列表，压缩算法候选列表，随机数random_C，扩展字段等信息。</p>
+<h3 id="第二阶段：ServerHello－ServerHelloDone"><a href="#第二阶段：ServerHello－ServerHelloDone" class="headerlink" title="第二阶段：ServerHello－ServerHelloDone"></a>第二阶段：ServerHello－ServerHelloDone</h3><p>如上图可以看出这个阶段包含4个过程( 有的服务器是单条发送，有的是合并一起发送)。服务端返回协商的信息结果，包括选择使用的协议版本，选择的加密套件，选择的压缩算法、随机数random_S等，其中随机数用于后续的密钥协商。服务器也会配置并返回对应的证书链Certificate，用于身份验证与密钥交换。然后会发送ServerHelloDone信息用于通知服务器信息发送结束。</p>
+<h3 id="第三阶段：证书校验"><a href="#第三阶段：证书校验" class="headerlink" title="第三阶段：证书校验"></a>第三阶段：证书校验</h3><p>在上图中的5-6之间，客户端这边还需要对服务器返回的证书进行校验。只有证书验证通过后，才能进行后续的通信。(具体分析可参看后续的证书验证过程)</p>
+<h3 id="第四阶段：ClientKeyExchange－Finished"><a href="#第四阶段：ClientKeyExchange－Finished" class="headerlink" title="第四阶段：ClientKeyExchange－Finished"></a>第四阶段：ClientKeyExchange－Finished</h3><p>服务器返回的证书验证合法后， 客户端计算产生随机数字Pre-master，并用server证书中公钥加密，发送给服务器。同时客户端会根据已有的三个随机数根据相应的生成协商密钥。客户端会通知服务器后续的通信都采用协商的通信密钥和加密算法进行加密通信。然后客户端发送Finished消息用于通知客户端信息发送结束。</p>
+<h3 id="第五阶段：服务器端生成协商密钥"><a href="#第五阶段：服务器端生成协商密钥" class="headerlink" title="第五阶段：服务器端生成协商密钥"></a>第五阶段：服务器端生成协商密钥</h3><p>服务器也会根据已有的三个随机数使用相应的算法生成协商密钥，会通知客户端后续的通信都采用协商的通信密钥和加密算法进行加密通信。然后发送Finished消息用于通知服务器信息发送结束。</p>
+<h3 id="第六阶段：握手结束"><a href="#第六阶段：握手结束" class="headerlink" title="第六阶段：握手结束"></a>第六阶段：握手结束</h3><p>在握手阶段结束后，客户端和服务器数据传输开始使用协商密钥进行加密通信。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>简单来说，HTTPS请求整个过程主要分为两部分。一是握手过程：用于客户端和服务器验证双方身份，协商后续数据传输时使用到的密钥等。二是数据传输过程：身份验证通过并协商好密钥后，通信双方使用协商好的密钥加密数据并进行通信。在握手过程协商密钥时，使用的是非对称密钥交换算法， 密钥交换算法本身非常复杂，密钥交换过程涉及到随机数生成，模指数运算，空白补齐，加密，签名等操作。在数据传输过程中，客户端和服务器端使用协商好的密钥进行对称加密解密。</p>
+<h2 id="二、证书"><a href="#二、证书" class="headerlink" title="二、证书"></a>二、证书</h2><p>PKI (Public Key Infrastructure)，公开密钥基础设施。它是一个标准,在这个标准之下发展出的为了实现安全基础服务目的的技术统称为PKI。 权威的第三方机构CA(认证中心)是PKI的核心， CA负责核实公钥的拥有者的信息，并颁发认证”证书”，同时能够为使用者提供证书验证服务。 x.509是PKI中最重要的标准，它定义了公钥证书的基本结构。</p>
+<h3 id="证书申请过程"><a href="#证书申请过程" class="headerlink" title="证书申请过程"></a>证书申请过程</h3><ul>
+<li>证书申请者向颁发证书的可信第三方CA提交申请证书相关信息，包括：申请者域名、申请者生成的公钥(私钥自己保存)及证书请求文件.cer等</li>
+</ul>
+<ul>
+<li>CA通过线上、线下等多种手段验证证书申请者提供的信息合法和真实性。</li>
+</ul>
+<ul>
+<li>当证书申请者提供的信息审核通过后，CA向证书申请者颁发证书，证书内容包括明文信息和签名信息。其中明文信息包括证书颁发机构、证书有效期、域名、申请者相关信息及申请者公钥等，签名信息是使用CA私钥进行加密的明文信息。当证书申请者获取到证书后，可以通过安装的CA证书中的公钥对签名信息进行解密并与明文信息进行对比来验证签名的完整性。</li>
+</ul>
+<h3 id="证书验证过程"><a href="#证书验证过程" class="headerlink" title="证书验证过程"></a>证书验证过程</h3><ul>
+<li>验证证书本身的合法性（验证签名完整性，验证证书有效期等）</li>
+<li>验证证书颁发者的合法性（查找颁发者的证书并检查其合法性，这个过程是递归的）</li>
+<li>证书验证的递归过程最终会成功终止，而成功终止的条件是：证书验证过程中遇到了锚点证书，锚点证书通常指：嵌入到操作系统中的根证书(权威证书颁发机构颁发的自签名证书)。</li>
+</ul>
+<h3 id="证书验证失败的原因"><a href="#证书验证失败的原因" class="headerlink" title="证书验证失败的原因"></a>证书验证失败的原因</h3><ul>
+<li>无法找到证书的颁发者</li>
+<li>证书过期</li>
+<li>验证过程中遇到了自签名证书，但该证书不是锚点证书。</li>
+<li>无法找到锚点证书(即在证书链的顶端没有找到合法的根证书)</li>
+<li>访问的server的dns地址和证书中的地址不同</li>
+</ul>
+<h2 id="三、iOS实现支持HTTPS"><a href="#三、iOS实现支持HTTPS" class="headerlink" title="三、iOS实现支持HTTPS"></a>三、iOS实现支持HTTPS</h2><p>在OC中当使用NSURLConnection或NSURLSession建立URL并向服务器发送https请求获取资源时，服务器会使用HTTP状态码401进行响应(即访问拒绝)。此时NSURLConnection或NSURLSession会接收到服务器需要授权的响应，当客户端授权通过后，才能继续从服务器获取数据。如下图所示：</p>
+<h3 id="非自签名证书验证实现"><a href="#非自签名证书验证实现" class="headerlink" title="非自签名证书验证实现"></a>非自签名证书验证实现</h3><p>在接收到服务器返回的状态码为401的响应后，对于NSURLSession而言，需要代理对象实现URLSession:task:didReceiveChallenge:completionHandler:方法。对于NSURLConnection而言，需要代理对象实现connection:willSendRequestForAuthenticationChallenge: 方法(OS X v10.7和iOS5及以上)，对于早期的版本代理对象需要实现代理对象要实现connection:canAuthenticateAgainstProtectionSpace:和connection:didReceiveAuthenticationChallenge:方法。代码如下(参考文档)：</p>
+<p>当客户端发送https请求后，服务器会返回需要授权的相关信息，然后connection:willSendRequestForAuthenticationChallenge:方法被调用。客户端根据返回的challenge信息，首先获取需要验证的信任对象trust,然后调用SecTrustEvaluate方法是用系统默认的验证方式对信任对象进行验证，当验证通过时，使用该信任对象trust生成证书凭证，然后self.connection使用该凭证继续连接。如下详解：</p>
+<p>NSURLAuthenticationChallenge包含如下信息：</p>
+<ul>
+<li><p>error ：最后一次授权失败的错误信息</p>
+</li>
+<li><p>failureResponse ：最后一次授权失败的错误信息</p>
+</li>
+<li><p>previousFailureCount ：授权失败的次数</p>
+</li>
+<li><p>proposedCredential ：建议使用的证书</p>
+</li>
+<li><p>protectionSpace ：NSURLProtectionSpace对象，代表了服务器上的一块需要授权信息的区域。包括了服务器地址、端口等信息。在此指的是challenge.protectionSpace。其中Auth-scheme指protectionSpace所支持的验证方法，+ NSURLAuthenticationMethodServerTrust指对protectionSpace执行证书验证。</p>
+</li>
+<li><p>sender:发送者，在此指的是self.connection</p>
+</li>
+<li><p>SecTrustRef</p>
+</li>
+</ul>
+<p>表示需要验证的信任对象(Trust Object)，在此指的是challenge.protectionSpace.serverTrust。包含待验证的证书和支持的验证方法等。</p>
+<ul>
+<li>SecTrustResultType</li>
+</ul>
+<p>表示验证结果。其中 kSecTrustResultProceed表示serverTrust验证成功，且该验证得到了用户认可(例如在弹出的是否信任的alert框中选择always trust)。 kSecTrustResultUnspecified表示 serverTrust验证成功，此证书也被暗中信任了，但是用户并没有显示地决定信任该证书。 两者取其一就可以认为对serverTrust验证成功。</p>
+<ul>
+<li>SecTrustEvaluate</li>
+</ul>
+<p>函数内部递归地从叶节点证书到根证书验证。使用系统默认的验证方式验证Trust Object，根据上述证书链的验证可知，系统会根据Trust Object的验证策略，一级一级往上，验证证书链上每一级证书有效性。</p>
+<ul>
+<li>NSURLCredential</li>
+</ul>
+<p>表示身份验证证书。URL Lodaing支持3种类型证书：password-based user credentials, certificate-based user credentials, 和certificate-based server credentials(需要验证服务器身份时使用)。因此NSURLCredential可以表示由用户名/密码组合、客户端证书及服务器信任创建的认证信息，适合大部分的认证请求。对于NSURLCredential也存在三种持久化机制：</p>
+<ul>
+<li>NSURLCredentialPersistenceNone ：要求 URL 载入系统 “在用完相应的认证信息后立刻丢弃”。</li>
+<li>NSURLCredentialPersistenceForSession ：要求 URL 载入系统 “在应用终止时，丢弃相应的 credential ”。</li>
+<li>NSURLCredentialPersistencePermanent ：要求 URL 载入系统 “将相应的认证信息存入钥匙串（keychain），以便其他应用也能使用。</li>
+</ul>
+<p>对于已经验证通过的信任对象，客户端也可以不提供证书凭证。</p>
+<p>对于NSURLSession，传递如下之一的值给completion handler回调：</p>
+<p>NSURLSessionAuthChallengePerformDefaultHandling处理请求，就好像代理没有提供一个代理方法来处理认证请求</p>
+<p>NSURLSessionAuthChallengeRejectProtectionSpace拒接认证请求。基于服务器响应的认证类型，URL加载类可能会多次调用代理方法。</p>
+<p>对于 NSURLConnection 和 NSURLDownload，在[challenge sender] 上调用continueWithoutCredentialsForAuthenticationChallenge:方法。不提供证书的话，可能会导致连接失败，调用connectionDidFailWithError:方法 ，或者会返回一个不需要验证身份的替代的URL。 如下代码：</p>
+<p>对于非自签名的证书，即使服务器返回的证书是信任的CA颁发的，而为了确定返回的证书正是客户端需要的证书，这需要本地导入证书，并将证书设置成需要参与验证的锚点证书，再调用SecTrustEvaluate通过本地导入的证书来验证服务器证书是否是可信的。如果服务器证书是这个锚点证书对应CA或者子CA颁发的，或服务器证书本身就是这个锚点证书，则证书信任通过。如下代码(参考文档)：</p>
+<h3 id="自签名证书验证实现"><a href="#自签名证书验证实现" class="headerlink" title="自签名证书验证实现"></a>自签名证书验证实现</h3><p>对于自签名证书，这样Trust Object中的服务器证书是不可信任的CA颁发的，直接使用SecTrustEvaluate验证是不会成功的。可以采取下述简单代码绕过HTTPS的验证：</p>
+<p>上述代码一般用于当服务器使用自签名证书时，为了方便测试，客户端可以通过该方法信任所有自签名证书。</p>
+<p>综上对非自建和自建证书验证过程的分析，可以总结如下：</p>
+<p>获取需要验证的信任对象(Trust Object)。对于NSURLConnection来说，<br>是从delegate方法-connection: willSendRequestForAuthenticationChallenge:回调回来的参数challenge中获取(challenge.protectionSpace.serverTrust) 。</p>
+<p>使用系统默认验证方式验证Trust Object。SecTrustEvaluate会根据Trust Object的验证策略，一级一级往上，验证证书链上每一级数字签名的有效性，从而评估证书的有效性。</p>
+<p>如第二步验证通过了，一般的安全要求下，就可以直接验证通过，进入到下一步：使用Trust Object生成一份凭证([NSURLCredential credentialForTrust:serverTrust])，传入challenge的sender中([challenge.sender useCredential:cred forAuthenticationChallenge:challenge])处理，建立连接。</p>
+<p>假如有更强的安全要求，可以继续对Trust Object进行更严格的验证。常用的方式是在本地导入证书，验证Trust Object与导入的证书是否匹配。</p>
+<p>假如验证失败，取消此次Challenge-Response Authentication验证流程，拒绝连接请求。</p>
+<p>假如是自建证书的，则不使用第二步系统默认的验证方式，因为自建证书的根CA的数字签名未在操作系统的信任列表中。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/3c50d03d.html" rel="prev" title="Markdown语法">
+      <i class="fa fa-chevron-left"></i> Markdown语法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/d9904f0c.html" rel="next" title="CA证书">
+      CA证书 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导语"><span class="nav-number">1.</span> <span class="nav-text">导语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、HTTPS"><span class="nav-number">2.</span> <span class="nav-text">一、HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一阶段：ClientHello"><span class="nav-number">2.1.</span> <span class="nav-text">第一阶段：ClientHello</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二阶段：ServerHello－ServerHelloDone"><span class="nav-number">2.2.</span> <span class="nav-text">第二阶段：ServerHello－ServerHelloDone</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三阶段：证书校验"><span class="nav-number">2.3.</span> <span class="nav-text">第三阶段：证书校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四阶段：ClientKeyExchange－Finished"><span class="nav-number">2.4.</span> <span class="nav-text">第四阶段：ClientKeyExchange－Finished</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五阶段：服务器端生成协商密钥"><span class="nav-number">2.5.</span> <span class="nav-text">第五阶段：服务器端生成协商密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六阶段：握手结束"><span class="nav-number">2.6.</span> <span class="nav-text">第六阶段：握手结束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、证书"><span class="nav-number">4.</span> <span class="nav-text">二、证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#证书申请过程"><span class="nav-number">4.1.</span> <span class="nav-text">证书申请过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证书验证过程"><span class="nav-number">4.2.</span> <span class="nav-text">证书验证过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证书验证失败的原因"><span class="nav-number">4.3.</span> <span class="nav-text">证书验证失败的原因</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、iOS实现支持HTTPS"><span class="nav-number">5.</span> <span class="nav-text">三、iOS实现支持HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非自签名证书验证实现"><span class="nav-number">5.1.</span> <span class="nav-text">非自签名证书验证实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自签名证书验证实现"><span class="nav-number">5.2.</span> <span class="nav-text">自签名证书验证实现</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">记录思考的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一. HTTPS其实HTTPS从最终的数据解析的角度，与HTTP没有任何的区别，HTTPS就是将HTTP协议数据包放到SSL&#x2F;TSL层加密后，在TCP&#x2F;IP层组成IP数据报去传输，以此保证传输数据的安全；而对于接收端，在SSL&#x2F;TSL将接收的数据包解密之后，将数据传给HTTP协议层，就是普通的HTTP数据。HTTP和SSL&#x2F;TSL都处于OSI模型的应用层。从HTTP切换到HTTPS是一个非常简单的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS10适配ATS">
+<meta property="og:url" content="https://jundongwu.com/p/738bfe3e.html">
+<meta property="og:site_name" content="俊东的Blog">
+<meta property="og:description" content="一. HTTPS其实HTTPS从最终的数据解析的角度，与HTTP没有任何的区别，HTTPS就是将HTTP协议数据包放到SSL&#x2F;TSL层加密后，在TCP&#x2F;IP层组成IP数据报去传输，以此保证传输数据的安全；而对于接收端，在SSL&#x2F;TSL将接收的数据包解密之后，将数据传给HTTP协议层，就是普通的HTTP数据。HTTP和SSL&#x2F;TSL都处于OSI模型的应用层。从HTTP切换到HTTPS是一个非常简单的">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2017-02-05T10:49:36.000Z">
+<meta property="article:modified_time" content="2020-09-03T13:06:58.101Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jundongwu.com/p/738bfe3e.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'cn'
+  };
+</script>
+
+  <title>iOS10适配ATS | 俊东的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">俊东的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少则得，多则惑</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/738bfe3e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS10适配ATS
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-02-05 18:49:36" itemprop="dateCreated datePublished" datetime="2017-02-05T18:49:36+08:00">2017-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一-HTTPS"><a href="#一-HTTPS" class="headerlink" title="一. HTTPS"></a>一. HTTPS</h2><p>其实HTTPS从最终的数据解析的角度，与HTTP没有任何的区别，HTTPS就是将HTTP协议数据包放到SSL/TSL层加密后，在TCP/IP层组成IP数据报去传输，以此保证传输数据的安全；而对于接收端，在SSL/TSL将接收的数据包解密之后，将数据传给HTTP协议层，就是普通的HTTP数据。HTTP和SSL/TSL都处于OSI模型的应用层。从HTTP切换到HTTPS是一个非常简单的过程，在做具体的切换操作之前，我们需要了解几个概念：</p>
+<h3 id="SSL-TLS"><a href="#SSL-TLS" class="headerlink" title="SSL/TLS:"></a>SSL/TLS:</h3><p>为了保证这些隐私数据能加密传输，于是网景公司设计了SSL（Secure Sockets Layer）协议用于对HTTP协议传输的数据进行加密，从而就诞生了HTTPS。SSL目前的版本是3.0，被IETF（Internet Engineering Task Force）定义在RFC 6101中，之后IETF对SSL 3.0进行了升级，于是出现了TLS（Transport Layer Security） 1.0，定义在RFC 2246。实际上我们现在的HTTPS都是用的TLS协议，但是由于SSL出现的时间比较早，并且依旧被现在浏览器所支持，因此SSL依然是HTTPS的代名词，但无论是TLS还是SSL都是上个世纪的事情，SSL最后一个版本是3.0，今后TLS将会继承SSL优良血统继续为我们进行加密服务</p>
+<h3 id="SSL-TLS协议运行机制的概述"><a href="#SSL-TLS协议运行机制的概述" class="headerlink" title="SSL/TLS协议运行机制的概述"></a>SSL/TLS协议运行机制的概述</h3><p>简单的来说，SSL/TSL通过四次握手。SSL协议的工作流程：</p>
+<ul>
+<li>服务器认证阶段：</li>
+<li>客户端向服务器发送一个开始信息“Hello”以便开始一个新的会话连接；</li>
+<li>服务器根据客户的信息确定是否需要生成新的主密钥，如需要则服务器在响应客户的“Hello”信息时将包含生成主密钥所需的信息；</li>
+<li>客户根据收到的服务器响应信息，产生一个主密钥，并用服务器的公开密钥加密后传给服务器；</li>
+<li>服务器恢复该主密钥，并返回给客户一个用主密钥认证的信息，以此让客户认证服务器。</li>
+<li>用户认证阶段：</li>
+</ul>
+<p>在此之前，服务器已经通过了客户认证，这一阶段主要完成对客户的认证。</p>
+<p>经认证的服务器发送一个提问给客户，客户则返回（数字）签名后的提问和其公开密钥，从而向服务器提供认证</p>
+<h2 id="二-App-Transport-Security"><a href="#二-App-Transport-Security" class="headerlink" title="二. App Transport Security"></a>二. App Transport Security</h2><p>iOS9中新增App Transport Security（简称ATS）特性, 主要使到原来请求的时候用到的HTTP，都转向TLS1.2协议进行传输。这也意味着所有的HTTP协议都强制使用了HTTPS协议进行传输。在 iOS 9 和 OS X 10.11 中，默认情况下非 HTTPS 的网络访问是被禁止的。当然，因为这样的推进影响面非常广，作为缓冲，我们可以在 Info.plist 中添加 NSAppTransportSecurity<br>字典并且将 NSAllowsArbitraryLoads设置为 YES来禁用 ATS。</p>
+<p><del>不过，WWDC 16 中，Apple 表示将继续在 iOS 10 和 macOS 10.12 里收紧对普通 HTTP 的访问限制。从 2017 年 1 月 1 日起，所有的新提交 app 默认是不允许使用 NSAllowsArbitraryLoads 来绕过 ATS 限制的，也就是说，我们最好保证 app 的所有网络请求都是 HTTPS 加密的，否则可能会在应用审核时遇到麻烦</del></p>
+<h2 id="三-iOS10-NSAppTransportSecurity"><a href="#三-iOS10-NSAppTransportSecurity" class="headerlink" title="三. iOS10 NSAppTransportSecurity"></a>三. iOS10 NSAppTransportSecurity</h2><p>通过在info.plist中配置这个键，开发者可以自定义网络安全策略。例如：</p>
+<ul>
+<li>允许针对个别服务器的不安全访问。</li>
+<li>允许不安全的 web 或媒体内容访问，但不影响整个app的ATS策略。</li>
+<li>启用新的安全特性，例如Certificate Transparency。</li>
+<li>对NSAppTransportSecurity的支持自 iOS9.0，OS X v10.11 开始，适用于 app 和 app extension。</li>
+</ul>
+<p>自 iOS10.0，macOS 10.12 开始，增加了对下列子键的支持：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSAllowsArbitraryLoadsInMedia</span><br><span class="line">NSAllowsArbitraryLoadsInWebContent</span><br><span class="line">NSRequiresCertificateTransparency</span><br><span class="line">NSAllowsLocalNetworking</span><br></pre></td></tr></table></figure>
+
+<h3 id="ATS-Configuration-Basics-ATS-配置基础知识"><a href="#ATS-Configuration-Basics-ATS-配置基础知识" class="headerlink" title="ATS Configuration Basics / ATS 配置基础知识"></a>ATS Configuration Basics / ATS 配置基础知识</h3><p>对于使用 iOS9.0， OS X v10.11 SDK 及以上的 app 来说，ATS（App Transport Security）默认开启，NSAllowsArbitraryLoads是字典NSAppTransportSecurity的根键，默认值NO。</p>
+<p>在启用 ATS 的情况下，所有的 HTTP 请求必须为 HTTPS（RFC 2818） 连接。任何不安全的 HTTP 请求都将失败。ATS 使用 TLS（Transport Layer Security）v1.2（RFC 5246）。</p>
+<p>下面是字典NSAppTransportSecurity的总体结构，所有键都是非必填:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">NSAppTransportSecurity : Dictionary &#123;</span><br><span class="line">    NSAllowsArbitraryLoads : Boolean</span><br><span class="line">    NSAllowsArbitraryLoadsInMedia : Boolean</span><br><span class="line">    NSAllowsArbitraryLoadsInWebContent : Boolean</span><br><span class="line">    NSAllowsLocalNetworking : Boolean</span><br><span class="line">    NSExceptionDomains : Dictionary &#123;</span><br><span class="line">         : Dictionary &#123;</span><br><span class="line">            NSIncludesSubdomains : Boolean</span><br><span class="line">            NSExceptionAllowsInsecureHTTPLoads : Boolean</span><br><span class="line">            NSExceptionMinimumTLSVersion : String</span><br><span class="line">            NSExceptionRequiresForwardSecrecy : Boolean   &#x2F;&#x2F; Default value is YES</span><br><span class="line">            NSRequiresCertificateTransparency : Boolean</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，所有键可以分为两类：主键，这些键用来定义 app 的总体 ATS 策略；子键，即NSExceptionDomains下面的键，使用这些键针对某个域名单独配置.</p>
+<p>主键包括：</p>
+<h4 id="NSAllowsArbitraryLoads"><a href="#NSAllowsArbitraryLoads" class="headerlink" title="NSAllowsArbitraryLoads"></a>NSAllowsArbitraryLoads</h4><p>设置为 YES，解除整个 app 的 ATS 限制；但是，通过-NSExceptionDomains进 行的配置依然有效。默认值为 NO。</p>
+<p>注意：设置为 YES，会引发 App Stroe 的审查，开发者必须说明原因。</p>
+<h4 id="NSAllowsArbitraryLoadsInMedia"><a href="#NSAllowsArbitraryLoadsInMedia" class="headerlink" title="NSAllowsArbitraryLoadsInMedia"></a>NSAllowsArbitraryLoadsInMedia</h4><p>设置为 YES，解除通过 AV Foundation 框架访问媒体内容时的 ATS 限制；启用这个 键，务必确保载入的媒体内容已经被加密，例如受FairPlay保护的文件，或者是安全的 HLS流媒，其中不包含敏感的个人信息。默认为 NO。</p>
+<h4 id="NSAllowsArbitraryLoadsInWebContent"><a href="#NSAllowsArbitraryLoadsInWebContent" class="headerlink" title="NSAllowsArbitraryLoadsInWebContent"></a>NSAllowsArbitraryLoadsInWebContent</h4><p>设置为 YES，解除通过 web view 发出的网络请求的 ATS 限制。启用这个键，可以使 app 访问任意网页内容，但不影响 app 的总体 ATS 策略。此键值默认为 NO。</p>
+<h4 id="NSAllowsLocalNetworking"><a href="#NSAllowsLocalNetworking" class="headerlink" title="NSAllowsLocalNetworking"></a>NSAllowsLocalNetworking</h4><p>设置为 YES，使得 app 可以载入任意本地资源，但不影响 app 的总体 ATS 策略。默 认为 NO。</p>
+<h4 id="NSExceptionDomains"><a href="#NSExceptionDomains" class="headerlink" title="NSExceptionDomains"></a>NSExceptionDomains</h4><p>为一个或多个域名单独配置 ATS。</p>
+<p>被单独配置的域名，默认受到完全的 ATS 限制，不管NSAllowsArbitraryLoads的值 如何；需要通过子键，进一步配置<br>所有的子键都属于NSExceptionDomain。向Info.plist中添加这一主键：创建字典，针对一个或多个域名，以便进行 ATS 配置。</p>
+<p>这意味着之前使用主键所做的设置，对于这个域名来说，已经无效。</p>
+<p>例如，及时之前设置NSAllowsArbitraryLoadsInMedia为 YES，然而NSExceptionDomain所代表的域名依然不能访问不安全的媒体内容。<br>基于这样的设定，可以针对域名进行 ATS 配置，增加或减少安全措施。例如：将NSExceptionAllowsInsecureHTTPLoads设置为 YES，就 ；这样做会引发 App Store 的审查，详情见App Store Review for ATS。通过配置NSExceptionRequiresForwardSecrecy为 NO，取消正向保密。</p>
+<p>通过配置NSExceptionMinimumTLSVersion，更改 TLS 最低版本</p>
+<h4 id="NSExceptionDomains字典构成："><a href="#NSExceptionDomains字典构成：" class="headerlink" title="NSExceptionDomains字典构成："></a>NSExceptionDomains字典构成：</h4><p>&lt;域名字符串&gt;代表想要配置的特定域名。可以添加多个域名（即添加多个这样的键），为它们统一配置 ATS 策略。这个键对应一个字典，包含以下子键：</p>
+<ul>
+<li>NSIncludesSubdomains 设置为 YES，当前域名的 ATS 策略适用于其所有子域名。默认为 NO。</li>
+<li>NSExceptionAllowsInsecureHTTPLoads 设置为 YES，可以同时通过 HTTP 和 HTTPS 访问当前域名。默认为 NO。注意，配置这个键值，将引发 App Store 的审查，开发者必须说明原因。</li>
+<li>NSExceptionMinimumTLSVersion* 指定 TLS 的最低版本，因此可以使用版本较低，有安全漏洞的 TLS 协议。注意，配置这个键值，将引发 App Store 的审查，开发者必须说明原因。</li>
+<li>NSExceptionRequiresForwardSecrecy* 设置为 NO，允许针对当前域名使用不支持正向保密的 TLS 加密算法。默认为 YES。</li>
+<li>NSRequiresCertificateTransparency* 设置为 YES，将验证域名服务器证书的Certificate Transparency时间戳 。默认为 NO。</li>
+</ul>
+<p>Requirements for Connecting Using ATS ／ 使用 ATS 的前提条件</p>
+<p>在 ATS 完全开启的情况下，系统要求 app 的 HTTPS 连接必须满足以下要求：</p>
+<p>X.509 数字证书必须满足下列标准中的一项：</p>
+<p>由操作系统内嵌的根证书颁发机构签发<br>由通过操作系统管理员或用户主动安装的根证书颁发机构签发TLS 版本必须为1.2，任何不使用或使用较低版本 TLS / SSL 的连接，都将失败。</p>
+<p>连接必须使用 AES-128 或 AES-256 对称加密算法。 TLS 算法套装必须以 ECDSA 密钥交换的形式支持正向保密，加密算法必须为下面之一：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384</span><br><span class="line">TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</span><br><span class="line">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384</span><br><span class="line">TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA</span><br><span class="line">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256</span><br><span class="line">TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA</span><br><span class="line">TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</span><br><span class="line">TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</span><br><span class="line">TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384</span><br><span class="line">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256</span><br><span class="line">TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</span><br></pre></td></tr></table></figure>
+
+<p>服务端的叶证书签名密钥必须为下面之一：</p>
+<p>至少2048位的 RSA 密钥</p>
+<p>至少256位的 ECC 密钥</p>
+<p>此外，服务器证书的哈希算法必须为 SHA-2，其摘要长度至少位256位（即 SHA-256 及以上）。上面的标准，未来可能会发生变化。但不会影响到 app 二进制包的兼容性。</p>
+<h3 id="App-Store-Review-for-ATS-App-Store-对于-ATS-相关项的审核"><a href="#App-Store-Review-for-ATS-App-Store-对于-ATS-相关项的审核" class="headerlink" title="App Store Review for ATS / App Store 对于 ATS 相关项的审核"></a>App Store Review for ATS / App Store 对于 ATS 相关项的审核</h3><p>某些对 ATS 的配置会引发 App Store 的审核，开发者必须说明原因。这些键有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSAllowsArbitraryLoads</span><br><span class="line">NSExceptionAllowsInsecureHTTPLoads</span><br><span class="line">NSExceptionMinimumTLSVersion</span><br></pre></td></tr></table></figure>
+
+<p>以下是一些原因说明例子，供参考：</p>
+<ul>
+<li>必须连接由其他机构控制的服务器，其还不支持安全连接。</li>
+<li>必须支持那些还未升级至可使用安全连接，不得不通过公共域名访问网络的设备。</li>
+<li>必须通过 web 展示来源不一的各种网络内容，但又不能完全使用NSAllowsArbitraryLoadsInWebContent所管理的类。</li>
+<li>向 App Store 提交审核时，开发者应主动提供足够的信息，以便解释 app 无法使用安全连接的原因</li>
+</ul>
+<h2 id="四-实现支持安全ATS策略"><a href="#四-实现支持安全ATS策略" class="headerlink" title="四. 实现支持安全ATS策略"></a>四. 实现支持安全ATS策略</h2><p>ATS相关设置对iOS8及以下系统无效</p>
+<p>需要解决的问题（iOS 9、iOS10及以上）</p>
+<p>1、app内服务器网络请求访问支持https（即一般的请求）</p>
+<p>2、webview内支持任意http访问</p>
+<p>3、第三方sdk接入与支持http访问</p>
+<p>主要是围绕info.pilst配置文件作相关的安全ATS策略</p>
+<p>Info.plist文件是向操作系统描述应用程序的XML属性列表,是iPhone应用程序文件夹包含所有重要的Info.plist文件<br>你可能注意到一些关键字像是使用了一些其他关键字中的词但是在前面加上了”ThirdParty”字样，在功能上，这些关键字与不含有”ThirdParty”的关键字有同样的效果。而且实际运行中所调用的代码将会完全忽略是否使用”ThirdParty”关键字。</p>
+<p>简单粗暴的方案：</p>
+<hr>
+<p>NSExceptionDomains 的设置方法如下, 比如我们要将 weibo.com 这个域名排除在 ATS 验证之外，就可以这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">key&gt;NSAppTransportSecurity&lt;&#x2F;key&gt;  </span><br><span class="line">&lt;dict&gt;  </span><br><span class="line">    &lt;key&gt;NSExceptionDomains&lt;&#x2F;key&gt;  </span><br><span class="line">    &lt;dict&gt;  </span><br><span class="line">        &lt;key&gt;weibo.com&lt;&#x2F;key&gt;  </span><br><span class="line">        &lt;dict&gt;  </span><br><span class="line">            &lt;key&gt; NSIncludesSubdomains &lt;&#x2F;key&gt;  </span><br><span class="line">            &lt;true&#x2F;&gt;  </span><br><span class="line">            &lt;key&gt; NSExceptionRequiresForwardSecrecy &lt;&#x2F;key&gt;  </span><br><span class="line">            &lt;false&#x2F;&gt;  </span><br><span class="line">            &lt;key&gt;NSExceptionAllowsInsecureHTTPLoads&lt;&#x2F;key&gt;  </span><br><span class="line">            &lt;true&#x2F;&gt;  </span><br><span class="line">        &lt;&#x2F;dict&gt;  </span><br><span class="line">    &lt;&#x2F;dict&gt;  </span><br><span class="line">    &lt;key&gt;NSAllowsArbitraryLoads&lt;&#x2F;key&gt;  </span><br><span class="line">    &lt;true&#x2F;&gt;  </span><br><span class="line">&lt;&#x2F;dict&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意：每个需添加的域都需要设置此三个属性。如果请求的网络图片是HTTP，也是需要设置的图片的域。</p>
+<p>注意⚠️这个方案风险较大，有可能被拒绝。“需要访问的域名是第三方服务器，他们没有进行 HTTPS 对应”会是审核时的一个可选理由，但是这应该只需要针对特定域名，而非全面开放。如果访问的是自己的服务器的话，可能这个理由会无法通过.</p>
+<h3 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h3><p>1、app内服务器网络请求访问支持https</p>
+<p>解决方案：</p>
+<p>搭建https服务器</p>
+<p>搭建https服务器需要ssl证书</p>
+<ul>
+<li>ssl自制证书：称自签名ssl证书，容易被假冒伪造，浏览器不信任。（审核不通过）</li>
+<li>免费CA证书：部分CA机构提供免费的SSL证书，如wosign，starts等（App Store pass掉不通过）</li>
+<li>付费CA证书：多指企业级及以上的数字证书。</li>
+</ul>
+<p>HTTPS服务器满足ATS默认的条件，而且SSL证书是通过权威的CA机构认证过的，那么我们在使用Xcode开发的时候，对网络的适配什么都不用做，我们也能正常与服务器通信。但是，当我们对安全性有更高的要求时或者我们自建证书时，我们需要本地导入证书来进行验证。</p>
+<h3 id="使用AFNetworking来支持https"><a href="#使用AFNetworking来支持https" class="headerlink" title="使用AFNetworking来支持https"></a>使用AFNetworking来支持https</h3><p>AFNetworking是iOS/OSX开发最流行的第三方开源库之一,现在iOS oc 代码90%以上都是用这个框架网络请求。AFNetworking已经将上面的逻辑代码封装好，甚至更完善，在AFSecurityPolicy文件中，有兴趣可以阅读这个模块的代码；以下就是在AFNetworking 2.6.0以前版本和3.0.0版本基于支持https的验证方式</p>
+<p>步骤：</p>
+<ul>
+<li>新建一个manager</li>
+<li>在mainBundle中寻找我们刚才拖进项目中的https.cer, 并且将相关的数据读取出来</li>
+<li>新建一个AFSecurityPolicy，并进行相应的配置</li>
+<li>将这个AFSecurityPolicy 实例赋值给manager</li>
+</ul>
+<h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">NSURL  url &#x3D; [NSURL URLWithString:@”https:&#x2F;&#x2F;www.google.com&quot;];</span><br><span class="line">AFHTTPRequestOperationManager  requestOperationManager &#x3D; [[AFHTTPRequestOperationManager alloc] initWithBaseURL:url];</span><br><span class="line">dispatch_queue_t requestQueue &#x3D; dispatch_create_serial_queue_for_name(“kRequestCompletionQueue”);</span><br><span class="line">requestOperationManager.completionQueue &#x3D; requestQueue;</span><br><span class="line">AFSecurityPolicy * securityPolicy &#x3D; [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;allowInvalidCertificates 是否允许无效证书（也就是自建的证书），默认为NO</span><br><span class="line">&#x2F;&#x2F;如果是需要验证自建证书，需要设置为YES</span><br><span class="line">securityPolicy.allowInvalidCertificates &#x3D; YES;</span><br><span class="line">&#x2F;&#x2F;validatesDomainName 是否需要验证域名，默认为YES；</span><br><span class="line">&#x2F;&#x2F;假如证书的域名与你请求的域名不一致，需把该项设置为NO；如设成NO的话，即服务器使用其他可信任机构颁发的证书，也可以建立连接，这个非常危险，建议打开。</span><br><span class="line">&#x2F;&#x2F;置为NO，主要用于这种情况：客户端请求的是子域名，而证书上的是另外一个域名。因为SSL证书上的域名是独立的，假如证书上注册的域名是www.google.com，那么mail.google.com是无法验证通过的；当然，有钱可以注册通配符的域名*.google.com，但这个还是比较贵的。</span><br><span class="line">&#x2F;&#x2F;如置为NO，建议自己添加对应域名的校验逻辑。</span><br><span class="line">securityPolicy.validatesDomainName &#x3D; YES;</span><br><span class="line">&#x2F;&#x2F;validatesCertificateChain 是否验证整个证书链，默认为YES</span><br><span class="line">&#x2F;&#x2F;设置为YES，会将服务器返回的Trust Object上的证书链与本地导入的证书进行对比，这就意味着，假如你的证书链是这样的：</span><br><span class="line">&#x2F;&#x2F;GeoTrust Global CA</span><br><span class="line">&#x2F;&#x2F; Google Internet Authority G2</span><br><span class="line">&#x2F;&#x2F; .google.com</span><br><span class="line">&#x2F;&#x2F;那么，除了导入.google.com之外，还需要导入证书链上所有的CA证书（GeoTrust Global CA, Google Internet Authority G2）；</span><br><span class="line">&#x2F;&#x2F;如是自建证书的时候，可以设置为YES，增强安全性；假如是信任的CA所签发的证书，则建议关闭该验证，因为整个证书链一一比对是完全没有必要（请查看源代码）；</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">securityPolicy.validatesCertificateChain &#x3D; NO;</span><br><span class="line">requestOperationManager.securityPolicy &#x3D; securityPolicy;</span><br><span class="line"></span><br><span class="line">另afnetworking 3.0.0以上版本用的是AFHTTPSessionManager</span><br><span class="line"></span><br><span class="line"> AFHTTPSessionManager  manager &#x3D; [AFHTTPSessionManager manager];</span><br><span class="line">    NSString  cerPath &#x3D; [[NSBundle mainBundle] pathForResource:@”server” ofType:@”cer”];</span><br><span class="line">    NSData  cerData &#x3D; [NSData dataWithContentsOfFile:cerPath];</span><br><span class="line">    NSLog(@”%@”, cerData);</span><br><span class="line">    manager.securityPolicy &#x3D; [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate withPinnedCertificates:[[NSArray alloc] initWithObjects:cerData, nil nil]];</span><br><span class="line">    manager.securityPolicy.allowInvalidCertificates &#x3D; YES;</span><br><span class="line">    [manager.securityPolicy setValidatesDomainName:NO];</span><br><span class="line">    manager.requestSerializer &#x3D; [AFJSONRequestSerializer serializer];</span><br><span class="line">    manager.responseSerializer &#x3D; [AFJSONResponseSerializer serializer];</span><br><span class="line">    NSDictionary  parameter &#x3D; @&#123;@”username”:self.username, @”password”:self.password&#125;;</span><br><span class="line">    [manager POST:@”https:&#x2F;&#x2F;192.168.1.4:9777&quot; parameters:parameter success:^(NSURLSessionDataTask  task, id responseObject) &#123;</span><br><span class="line">        NSLog(@”success %@”, responseObject);</span><br><span class="line">        &#125;</span><br><span class="line">        failure:^(NSURLSessionDataTask  task, NSError * error) &#123;</span><br><span class="line">            NSLog(@”failure %@”, error);</span><br><span class="line">        &#125;]</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="NSAppTransportSecurity"><a href="#NSAppTransportSecurity" class="headerlink" title="NSAppTransportSecurity"></a>NSAppTransportSecurity</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NSAllowsArbitraryLoads &#x2F;&#x2F;设置为 YES，解除整个app的ATS限制；但是通过NSExceptionDomains进行的配置依然有效</span><br><span class="line"></span><br><span class="line">NSAllowsArbitraryLoadsInMedia &#x2F;&#x2F;设置为 YES，解除通过AVFoundation框架访问媒体内容时的 ATS 限制</span><br><span class="line"></span><br><span class="line">NSAllowsArbitraryLoadsInWebContent &#x2F;&#x2F;设置为 YES，解除通过webview发出的网络请求的ATS限制</span><br><span class="line"></span><br><span class="line">NSAllowsLocalNetworking &#x2F;&#x2F;设置为 YES，使得app可以载入任意本地资源，但不影响app的总体 ATS 策略</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2、webview内支持任意http访问"><a href="#2、webview内支持任意http访问" class="headerlink" title="2、webview内支持任意http访问"></a>2、webview内支持任意http访问</h3><p>对于网页浏览和视频播放的行为，iOS 10 中新加入了 NSAllowsArbitraryLoadsInWebContent 键。通过将它设置为 YES，可以让 app 中的 WKWebView 和使用 AVFoundation 播放的在线视频不受 ATS 的限制。这也应该是绝大多数使用了相关特性的 app 的选择。但是坏消息是这个键在 iOS 9 中并不会起作用。</p>
+<p>如果app只支持 iOS 10，并且有用户可以自由输入网址进行浏览的功能，或者是在线视频音频播放功能的话，简单地加入 NSAllowsArbitraryLoadsInWebContent，并且将组件换成 WKWebKit 或者 AVFoundation 就可以了。如果你还需要支持 iOS 9，并且需要访问网页和视频的话，可能只能去开启 NSAllowsArbitraryLoads 然后提交时进行说明，并且看 Apple 审核员决定让不让通过了。</p>
+<p>另外，当 NSAllowsArbitraryLoads 和NSAllowsArbitraryLoadsInWebContent 同时存在时，根据系统不同，表现的行为也会不一样。简单说，iOS 9 只看NSAllowsArbitraryLoads，而 iOS 10 会先看NSAllowsArbitraryLoadsInWebContent。在 iOS 10 中，要是NSAllowsArbitraryLoadsInWebContent 存在的话，就忽略掉NSAllowsArbitraryLoads，如果它不存在，则遵循NSAllowsArbitraryLoads 的设定UIWebView 在 NSAllowsArbitraryLoadsInWebContent 为 YES 时访问 HTTP，无效。WKWebView 在 NSAllowsArbitraryLoadsInWebContent 为 YES 时在iOS 10 中访问 HTTP，有效，iOS 9无效。如果用WkWebView替换UIWebView，iOS 7 将无法使用WkWebView，可做适配加载，没有特殊的什么需求的话，尽早将 UIWebView 全部换为 WkWebView 会比较好。所以为了能让WebView在所有版本都能访问非https内容，只能把NSAllowsArbitraryLoads设置为YES。</p>
+<h4 id="解决方案一："><a href="#解决方案一：" class="headerlink" title="解决方案一："></a>解决方案一：</h4><p>开启 NSAllowsArbitraryLoads 为 YES，然后提交时进行说明</p>
+<h4 id="解决方案二："><a href="#解决方案二：" class="headerlink" title="解决方案二："></a>解决方案二：</h4><p>设置 NSExceptionDomains 属性来访问指定域名，然后提交时进行说明</p>
+<h3 id="3、第三方sdk接入与支持http访问"><a href="#3、第三方sdk接入与支持http访问" class="headerlink" title="3、第三方sdk接入与支持http访问"></a>3、第三方sdk接入与支持http访问</h3><p>但是按照国内的现状，关闭这个限制也许是更实际的做法。至于原因就太多了，第三方SDK（几乎都是访问http），合作伙伴接入（不能要求它们一定要支持https）第三方sdk，同样需要遵守ATS规则，即第三方sdk也有被ATS过滤的风险，微信，qq，分享，登陆功能都能正常，微博登陆不能正常通过。另在网上找到了一些可能存在有问题的sdk，目前已知的有：</p>
+<ul>
+<li>友盟 （已经有最新的v1.4.0版本sdk，支持https，待验证）</li>
+<li>百度地图</li>
+</ul>
+<h4 id="解决方案一：-1"><a href="#解决方案一：-1" class="headerlink" title="解决方案一："></a>解决方案一：</h4><p>更新最新sdk，接入并测试</p>
+<h4 id="解决方案二：-1"><a href="#解决方案二：-1" class="headerlink" title="解决方案二："></a>解决方案二：</h4><p>可以设置 NSExceptionDomains属性来将需要排除强制验证的域名写进来：</p>
+<h2 id="五-总结"><a href="#五-总结" class="headerlink" title="五. 总结"></a>五. 总结</h2><p>开启 NSAllowsArbitraryLoads 为 YES</p>
+<p>对第三方访问的服务器设置NSExceptionDomains方式添加白名单</p>
+<p>提交审核说明：</p>
+<p>必须连接由其他机构控制的服务器，其还不支持安全连接。必须通过 web 展示来源不一的各种网络内容，但又不能完全使用NSAllowsArbitraryLoadsInWebContent所管理的类。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/450b42bd.html" rel="prev" title="AFNetworking HTTPS配置">
+      <i class="fa fa-chevron-left"></i> AFNetworking HTTPS配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/9daec043.html" rel="next" title="Nginx https 免费SSL证书配置指南">
+      Nginx https 免费SSL证书配置指南 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-HTTPS"><span class="nav-number">1.</span> <span class="nav-text">一. HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL-TLS"><span class="nav-number">1.1.</span> <span class="nav-text">SSL&#x2F;TLS:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL-TLS协议运行机制的概述"><span class="nav-number">1.2.</span> <span class="nav-text">SSL&#x2F;TLS协议运行机制的概述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-App-Transport-Security"><span class="nav-number">2.</span> <span class="nav-text">二. App Transport Security</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-iOS10-NSAppTransportSecurity"><span class="nav-number">3.</span> <span class="nav-text">三. iOS10 NSAppTransportSecurity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ATS-Configuration-Basics-ATS-配置基础知识"><span class="nav-number">3.1.</span> <span class="nav-text">ATS Configuration Basics &#x2F; ATS 配置基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NSAllowsArbitraryLoads"><span class="nav-number">3.1.1.</span> <span class="nav-text">NSAllowsArbitraryLoads</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSAllowsArbitraryLoadsInMedia"><span class="nav-number">3.1.2.</span> <span class="nav-text">NSAllowsArbitraryLoadsInMedia</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSAllowsArbitraryLoadsInWebContent"><span class="nav-number">3.1.3.</span> <span class="nav-text">NSAllowsArbitraryLoadsInWebContent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSAllowsLocalNetworking"><span class="nav-number">3.1.4.</span> <span class="nav-text">NSAllowsLocalNetworking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSExceptionDomains"><span class="nav-number">3.1.5.</span> <span class="nav-text">NSExceptionDomains</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NSExceptionDomains字典构成："><span class="nav-number">3.1.6.</span> <span class="nav-text">NSExceptionDomains字典构成：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#App-Store-Review-for-ATS-App-Store-对于-ATS-相关项的审核"><span class="nav-number">3.2.</span> <span class="nav-text">App Store Review for ATS &#x2F; App Store 对于 ATS 相关项的审核</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-实现支持安全ATS策略"><span class="nav-number">4.</span> <span class="nav-text">四. 实现支持安全ATS策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现方案"><span class="nav-number">4.1.</span> <span class="nav-text">实现方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用AFNetworking来支持https"><span class="nav-number">4.2.</span> <span class="nav-text">使用AFNetworking来支持https</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现："><span class="nav-number">4.3.</span> <span class="nav-text">代码实现：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSAppTransportSecurity"><span class="nav-number">4.4.</span> <span class="nav-text">NSAppTransportSecurity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、webview内支持任意http访问"><span class="nav-number">4.5.</span> <span class="nav-text">2、webview内支持任意http访问</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案一："><span class="nav-number">4.5.1.</span> <span class="nav-text">解决方案一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案二："><span class="nav-number">4.5.2.</span> <span class="nav-text">解决方案二：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、第三方sdk接入与支持http访问"><span class="nav-number">4.6.</span> <span class="nav-text">3、第三方sdk接入与支持http访问</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案一：-1"><span class="nav-number">4.6.1.</span> <span class="nav-text">解决方案一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案二：-1"><span class="nav-number">4.6.2.</span> <span class="nav-text">解决方案二：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五-总结"><span class="nav-number">5.</span> <span class="nav-text">五. 总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">记录思考的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

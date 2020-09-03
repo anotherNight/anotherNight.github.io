@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="SSL证书相关介绍SSLSSL - Secure Sockets Layer,现在应该叫”TLS”,但由于习惯问题,我们还是叫”SSL”比较多.HTTP协议默认情况下是不加密内容的,这样就很可能在内容传播的时候被别人监听到,对于安全性要求较高的场合,必须要加密,HTTPS就是带加密的HTTP协议,而HTTPS的加密是基于SSL的,它执行的是一个比较下层的加密,也就是说,在加密前,你的服务器程序在干">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSL证书相关介绍">
+<meta property="og:url" content="https://jundongwu.com/p/d6b5f353.html">
+<meta property="og:site_name" content="俊东的Blog">
+<meta property="og:description" content="SSL证书相关介绍SSLSSL - Secure Sockets Layer,现在应该叫”TLS”,但由于习惯问题,我们还是叫”SSL”比较多.HTTP协议默认情况下是不加密内容的,这样就很可能在内容传播的时候被别人监听到,对于安全性要求较高的场合,必须要加密,HTTPS就是带加密的HTTP协议,而HTTPS的加密是基于SSL的,它执行的是一个比较下层的加密,也就是说,在加密前,你的服务器程序在干">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2017-02-05T06:12:36.000Z">
+<meta property="article:modified_time" content="2020-09-03T13:06:58.085Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="IT">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jundongwu.com/p/d6b5f353.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'cn'
+  };
+</script>
+
+  <title>SSL证书相关介绍 | 俊东的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">俊东的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少则得，多则惑</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/d6b5f353.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SSL证书相关介绍
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-02-05 14:12:36" itemprop="dateCreated datePublished" datetime="2017-02-05T14:12:36+08:00">2017-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="SSL证书相关介绍"><a href="#SSL证书相关介绍" class="headerlink" title="SSL证书相关介绍"></a>SSL证书相关介绍</h1><h2 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h2><p>SSL - Secure Sockets Layer,现在应该叫”TLS”,但由于习惯问题,我们还是叫”SSL”比较多.HTTP协议默认情况下是不加密内容的,这样就很可能在内容传播的时候被别人监听到,对于安全性要求较高的场合,必须要加密,HTTPS就是带加密的HTTP协议,而HTTPS的加密是基于SSL的,它执行的是一个比较下层的加密,也就是说,在加密前,你的服务器程序在干嘛,加密后也一样在干嘛,不用动,这个加密对用户和开发者来说都是透明的.More:[Transport_Layer_Security]:<a href="http://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Transport_Layer_Security</a></p>
+<p>OpenSSL - 简单地说,OpenSSL是SSL的一个实现,SSL只是一种规范.理论上来说,SSL这种规范是安全的,目前的技术水平很难破解,但SSL的实现就可能有些漏洞,如著名的”心脏出血”.OpenSSL还提供了一大堆强大的工具软件,强大到90%我们都用不到.</p>
+<a id="more"></a>
+<h2 id="证书标准"><a href="#证书标准" class="headerlink" title="证书标准"></a>证书标准</h2><p>X.509 - 这是一种证书标准,主要定义了证书中应该包含哪些内容.其详情可以参考RFC5280,SSL使用的就是这种证书标准.</p>
+<h2 id="编码格式"><a href="#编码格式" class="headerlink" title="编码格式"></a>编码格式</h2><p>同样的X.509证书,可能有不同的编码格式,目前有以下两种编码格式.</p>
+<p>PEM - Privacy Enhanced Mail,打开看文本格式,以”—–BEGIN…”开头, “—–END…”结尾,内容是BASE64编码.<br>查看PEM格式证书的信息:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x509 -in certificate.pem -text -noout</span><br></pre></td></tr></table></figure>
+
+<p>Apache和*NIX服务器偏向于使用这种编码格式.</p>
+<p><strong>DER - Distinguished Encoding Rules</strong>,打开看是二进制格式,不可读.  </p>
+<p>查看DER格式证书的信息:</p>
+<figure class="highlight plain"><figcaption><span>x509 -in certificate.der -inform der -text -noout```  </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Java和Windows服务器偏向于使用这种编码格式.</span><br><span class="line"></span><br><span class="line">## 相关的文件扩展名</span><br><span class="line"></span><br><span class="line">这是比较误导人的地方,虽然我们已经知道有PEM和DER这两种编码格式,但文件扩展名并不一定就叫&quot;PEM&quot;或者&quot;DER&quot;,常见的扩展名除了PEM和DER还有以下这些,它们除了编码格式可能不同之外,内容也有差别,但大多数都能相互转换编码格式.</span><br><span class="line"></span><br><span class="line">**CRT** - CRT应该是certificate的三个字母,其实还是证书的意思,常见于*NIX系统,有可能是PEM编码,也有可能是DER编码,大多数应该是PEM编码,相信你已经知道怎么辨别.</span><br><span class="line"></span><br><span class="line">**CER** - 还是certificate,还是证书,常见于Windows系统,同样的,可能是PEM编码,也可能是DER编码,大多数应该是DER编码.</span><br><span class="line"></span><br><span class="line">**KEY** - 通常用来存放一个公钥或者私钥,并非X.509证书,编码同样的,可能是PEM,也可能是DER.  </span><br><span class="line"></span><br><span class="line">查看KEY的办法: </span><br><span class="line"></span><br><span class="line">&#96;openssl rsa -in mykey.key -text -noout&#96;</span><br><span class="line"></span><br><span class="line">如果是DER格式的话,同理应该这样了:</span><br><span class="line"></span><br><span class="line">&#96;openssl rsa -in mykey.key -text -noout -inform der&#96;</span><br><span class="line"></span><br><span class="line">CSR - Certificate Signing Request,即证书签名请求,这个并不是证书,而是向权威证书颁发机构获得签名证书的申请,其核心内容是一个公钥(当然还附带了一些别的信息),在生成这个申请的时候,同时也会生成一个私钥,私钥要自己保管好.做过iOS APP的朋友都应该知道是怎么向苹果申请开发者证书的吧.</span><br><span class="line">查看的办法:</span><br><span class="line"></span><br><span class="line">&#96;req -noout -text -in my.csr&#96; (如果是DER格式的话照旧加上-inform der,这里不写了)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">**PFX&#x2F;P12** </span><br><span class="line"></span><br><span class="line">- predecessor of PKCS#12,对*nix服务器来说,一般CRT和KEY是分开存放在不同文件中的,但Windows的IIS则将它们存在一个PFX文件中,(因此这个文件包含了证书及私钥)这样会不会不安全？应该不会,PFX通常会有一个&quot;提取密码&quot;,你想把里面的东西读取出来的话,它就要求你提供提取密码,PFX使用的时DER编码,如何把PFX转换为PEM编码？  </span><br><span class="line"></span><br><span class="line">&#96;openssl pkcs12 -in for-iis.pfx -out for-iis.pem -nodes&#96;</span><br><span class="line"></span><br><span class="line">这个时候会提示你输入提取代码. for-iis.pem就是可读的文本.</span><br><span class="line">生成pfx的命令类似这样:</span><br><span class="line"></span><br><span class="line">&#96;pkcs12 -export -in certificate.crt -inkey privateKey.key -out certificate.pfx -certfile CACert.crt&#96;</span><br><span class="line"></span><br><span class="line">其中CACert.crt是CA(权威证书颁发机构)的根证书,有的话也通过-certfile参数一起带进去.这么看来,PFX其实是个证书密钥库.</span><br><span class="line"></span><br><span class="line">**JKS** - 即Java Key Storage,这是Java的专利,跟OpenSSL关系不大,利用Java的一个叫&quot;keytool&quot;的工具,可以将PFX转为JKS,当然了,keytool也能直接生成JKS,不过在此就不多表了.</span><br><span class="line"></span><br><span class="line">## 获得证书</span><br><span class="line"></span><br><span class="line">### 向权威证书颁发机构申请证书</span><br><span class="line"></span><br><span class="line">用这命令生成一个csr: &#96;&#96;&#96;openssl req -newkey rsa:2048 -new -nodes -keyout my.key -out my.csr&#96;&#96;&#96;  </span><br><span class="line">把csr交给权威证书颁发机构,权威证书颁发机构对此进行签名,完成.保留好csr,当权威证书颁发机构颁发的证书过期的时候,你还可以用同样的csr来申请新的证书,key保持不变.</span><br><span class="line"></span><br><span class="line">### 或者生成自签名的证书</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem&#96;&#96;&#96;  </span><br><span class="line"></span><br><span class="line">在生成证书的过程中会要你填一堆的东西,其实真正要填的只有Common Name,通常填写你服务器的域名,如&quot;yourcompany.com&quot;,或者你服务器的IP地址,其它都可以留空的.</span><br><span class="line">  </span><br><span class="line">生产环境中还是不要使用自签的证书,否则浏览器会不认,或者如果你是企业应用的话能够强制让用户的浏览器接受你的自签证书也行.向权威机构要证书通常是要钱的,但现在也有免费的,仅仅需要一个简单的域名验证即可.国内BAT都有相关免费业务。  </span><br><span class="line"></span><br><span class="line">## 证书转换</span><br><span class="line"></span><br><span class="line">**PKCS** 全称是 Public-Key Cryptography Standards ，是由 RSA 实验室与其它安全系统开发商为促进公钥密码的发展而制订的一系列标准，PKCS 目前共发布过 15 个标准。   </span><br><span class="line">常用的有：  </span><br><span class="line">**PKCS#7** Cryptographic Message Syntax Standard  </span><br><span class="line">**PKCS#10** Certification Request Standard  </span><br><span class="line">**PKCS#12** Personal Information Exchange Syntax Standard  </span><br><span class="line">***X.509是常见通用的证书格式。所有的证书都符合为Public Key   Infrastructure (PKI) 制定的 ITU-T X509 国际标准。***  </span><br><span class="line">**PKCS#7** 常用的后缀是： .P7B .P7C .SPC  </span><br><span class="line">**PKCS#12** 常用的后缀有： .P12 .PFX  </span><br><span class="line">**X.509** DER 编码(ASCII)的后缀是： .DER .CER .CRT  </span><br><span class="line">**X.509** PAM 编码(Base64)的后缀是： .PEM .CER .CRT  </span><br><span class="line">**.cer&#x2F;.crt**是用于存放证书，它是2进制形式存放的，不含私钥。  </span><br><span class="line">**.pem**跟crt&#x2F;cer的区别是它以Ascii来表示。  </span><br><span class="line">**pfx&#x2F;p12**用于存放个人证书&#x2F;私钥，他通常包含保护密码，2进制方式  </span><br><span class="line">**p10**是证书请求  </span><br><span class="line">**p7r**是CA对证书请求的回复，只用于导入  </span><br><span class="line">**p7b**以树状展示证书链(certificate chain)，同时也支持单个证书，不含私钥。  </span><br><span class="line"></span><br><span class="line">## CA证书</span><br><span class="line"></span><br><span class="line">用openssl创建CA证书的RSA密钥(PEM格式)：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;openssl genrsa -des3 -out ca.key 1024</span><br></pre></td></tr></table></figure>
+
+<p>创建CA证书有效期为一年</p>
+<p>用openssl创建CA证书(PEM格式,假如有效期为一年)：</p>
+<figure class="highlight plain"><figcaption><span>-new -x509 -days 365 -key ca.key -out ca.crt -config openssl.cnf```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">			</span><br><span class="line">openssl是可以生成DER格式的CA证书的，最好用IE将PEM格式的CA证书转换成DER格式的CA证书。</span><br><span class="line"></span><br><span class="line">## x509转换为pfx</span><br><span class="line"></span><br><span class="line">&#96;openssl pkcs12 -export -out server.pfx -inkey server.key -in server.crt&#96;</span><br><span class="line">PEM格式的ca.key转换为Microsoft可以识别的pvk格式</span><br><span class="line"></span><br><span class="line">&#96;-in ca.key -out ca.pvk -nocrypt -topvk&#96;</span><br><span class="line">			</span><br><span class="line">## PKCS#12 到 PEM 的转换</span><br><span class="line"></span><br><span class="line">&#96;openssl pkcs12 -nocerts -nodes -in cert.p12 -out private.pem&#96;</span><br><span class="line"></span><br><span class="line">验证</span><br><span class="line"></span><br><span class="line">&#96;pkcs12 -clcerts -nokeys -in cert.p12 -out cert.pem&#96;</span><br><span class="line"></span><br><span class="line">			</span><br><span class="line">## 从 PFX 格式文件中提取私钥格式文件 (.key)</span><br><span class="line"></span><br><span class="line">&#96;openssl pkcs12 -in mycert.pfx -nocerts -nodes -out mycert.key&#96;</span><br><span class="line"></span><br><span class="line">转换 pem 到到 spc</span><br><span class="line"></span><br><span class="line">&#96;crl2pkcs7 -nocrl -certfile venus.pem -outform DER -out venus.spc&#96;</span><br><span class="line">			</span><br><span class="line">用 -outform -inform 指定 DER 还是 PAM 格式。例如：</span><br><span class="line"></span><br><span class="line">&#96;openssl x509 -in Cert.pem -inform PEM -out cert.der -outform DER&#96;</span><br><span class="line"></span><br><span class="line">PEM 到 PKCS#12 的转换</span><br><span class="line"></span><br><span class="line">&#96;pkcs12 -export -in Cert.pem -out Cert.p12 -inkey key.pem&#96;</span><br><span class="line">			</span><br><span class="line">## IIS 证书</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;</span><br><span class="line">cd c:\openssl </span><br><span class="line">set OPENSSL_CONF&#x3D;openssl.cnf</span><br><span class="line">openssl pkcs12 -export -out server.pfx -inkey server.key -in server.crt</span><br><span class="line">&lt;&#x2F;pre&gt;</span><br><span class="line">			</span><br><span class="line">server.key和server.crt文件是Apache的证书文件，生成的server.pfx用于导入IIS</span><br><span class="line"></span><br><span class="line">## 转换PFX 到 PEM</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line">openssl pkcs12 -in test.pfx -out client.pem</span><br><span class="line">Enter Import Password:</span><br><span class="line">MAC verified OK</span><br><span class="line">Enter PEM pass phrase:</span><br><span class="line">Verifying - Enter PEM pass phrase:</span><br><span class="line"></span><br><span class="line">DER文件（.crt .cer .der）转为PEM格式文件</span><br><span class="line"></span><br><span class="line">转换DER文件(一般后缀名是.crt .cer .der的文件)到PEM文件</span><br><span class="line"></span><br><span class="line">x509 -inform der -in certificate.cer -out certificate.pem</span><br></pre></td></tr></table></figure>
+
+<p>转换PEM文件到DER文件</p>
+<p><code>openssl x509 -outform der -in certificate.pem -out certificate.der</code></p>
+<p>命令集</p>
+<p>Convert a DER file (.crt .cer .der) to PEM</p>
+<p><code>x509 -inform der -in certificate.cer -out certificate.pem</code></p>
+<p>Convert a PEM file to DER</p>
+<p><code>openssl x509 -outform der -in certificate.pem -out certificate.der</code></p>
+<p>Convert a PKCS#12 file (.pfx .p12) containing a private key and certificates to PEM</p>
+<p><code>pkcs12 -in keyStore.pfx -out keyStore.pem -nodes</code></p>
+<p>You can add -nocerts to only output the private key or add -nokeys to only output the certificates.</p>
+<p>Convert a PEM certificate file and a private key to PKCS#12 (.pfx .p12)</p>
+<p><code>openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt</code></p>
+<p>Convert PEM to CRT (.CRT file)</p>
+<p><code>x509 -outform der -in certificate.pem -out certificate.crt</code></p>
+<h3 id="OpenSSL-Convert-PEM"><a href="#OpenSSL-Convert-PEM" class="headerlink" title="OpenSSL Convert PEM"></a>OpenSSL Convert PEM</h3><p>Convert PEM to DER</p>
+<p><code>openssl x509 -outform der -in certificate.pem -out certificate.der</code></p>
+<p>Convert PEM to P7B</p>
+<p><code>crl2pkcs7 -nocrl -certfile certificate.cer -out certificate.p7b -certfile CACert.cer</code></p>
+<p>Convert PEM to PFX</p>
+<p><code>openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt</code></p>
+<h3 id="OpenSSL-Convert-DER"><a href="#OpenSSL-Convert-DER" class="headerlink" title="OpenSSL Convert DER"></a>OpenSSL Convert DER</h3><p>Convert DER to PEM</p>
+<p><code>x509 -inform der -in certificate.cer -out certificate.pem</code></p>
+<h3 id="OpenSSL-Convert-P7B"><a href="#OpenSSL-Convert-P7B" class="headerlink" title="OpenSSL Convert P7B"></a>OpenSSL Convert P7B</h3><p>Convert P7B to PEM<br><code>openssl pkcs7 -print_certs -in certificate.p7b -out certificate.cer</code></p>
+<p>Convert P7B to PFX</p>
+<p><code>pkcs7 -print_certs -in certificate.p7b -out certificate.cer</code></p>
+<p><code>openssl pkcs12 -export -in certificate.cer -inkey privateKey.key -out certificate.pfx -certfile CACert.cer</code></p>
+<h3 id="OpenSSL-Convert-PFX"><a href="#OpenSSL-Convert-PFX" class="headerlink" title="OpenSSL Convert PFX"></a>OpenSSL Convert PFX</h3><p>Convert PFX to PEM</p>
+<p><code>openssl pkcs12 -in certificate.pfx -out certificate.cer -nodes</code></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IT/" rel="tag"># IT</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/d9904f0c.html" rel="prev" title="CA证书">
+      <i class="fa fa-chevron-left"></i> CA证书
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/450b42bd.html" rel="next" title="AFNetworking HTTPS配置">
+      AFNetworking HTTPS配置 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL证书相关介绍"><span class="nav-number">1.</span> <span class="nav-text">SSL证书相关介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL"><span class="nav-number">1.1.</span> <span class="nav-text">SSL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#证书标准"><span class="nav-number">1.2.</span> <span class="nav-text">证书标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码格式"><span class="nav-number">1.3.</span> <span class="nav-text">编码格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenSSL-Convert-PEM"><span class="nav-number">1.3.1.</span> <span class="nav-text">OpenSSL Convert PEM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenSSL-Convert-DER"><span class="nav-number">1.3.2.</span> <span class="nav-text">OpenSSL Convert DER</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenSSL-Convert-P7B"><span class="nav-number">1.3.3.</span> <span class="nav-text">OpenSSL Convert P7B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenSSL-Convert-PFX"><span class="nav-number">1.3.4.</span> <span class="nav-text">OpenSSL Convert PFX</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">记录思考的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

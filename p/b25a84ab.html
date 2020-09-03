@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="SQL是什么SQL是一种结构化查询语言（或者说一种访问和操作数据库的语言） SQL的作用使用SQL对关系型数据库中的数据进行定义和操作的语言 SQL 面向数据库执行查询 在数据库中插入新的记录 更新数据库中的数据 从数据库删除记录 SQL 可创建新数据库 在数据库中创建新表 在数据库中创建视图 SQL 可以设置表、存储过程和视图的权限">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用SQL语句">
+<meta property="og:url" content="https://jundongwu.com/p/b25a84ab.html">
+<meta property="og:site_name" content="俊东的Blog">
+<meta property="og:description" content="SQL是什么SQL是一种结构化查询语言（或者说一种访问和操作数据库的语言） SQL的作用使用SQL对关系型数据库中的数据进行定义和操作的语言 SQL 面向数据库执行查询 在数据库中插入新的记录 更新数据库中的数据 从数据库删除记录 SQL 可创建新数据库 在数据库中创建新表 在数据库中创建视图 SQL 可以设置表、存储过程和视图的权限">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2020-09-01T03:54:10.000Z">
+<meta property="article:modified_time" content="2020-09-03T13:06:58.138Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="IT">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jundongwu.com/p/b25a84ab.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'cn'
+  };
+</script>
+
+  <title>常用SQL语句 | 俊东的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">俊东的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少则得，多则惑</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/b25a84ab.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          常用SQL语句
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-09-01 11:54:10" itemprop="dateCreated datePublished" datetime="2020-09-01T11:54:10+08:00">2020-09-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="SQL是什么"><a href="#SQL是什么" class="headerlink" title="SQL是什么"></a>SQL是什么</h2><p>SQL是一种结构化查询语言（或者说一种访问和操作数据库的语言）</p>
+<h2 id="SQL的作用"><a href="#SQL的作用" class="headerlink" title="SQL的作用"></a>SQL的作用</h2><p>使用SQL对关系型数据库中的数据进行定义和操作的语言</p>
+<p>SQL 面向数据库执行查询 在数据库中插入新的记录 更新数据库中的数据 从数据库删除记录</p>
+<p>SQL 可创建新数据库 在数据库中创建新表 在数据库中创建视图</p>
+<p>SQL 可以设置表、存储过程和视图的权限</p>
+<a id="more"></a>
+<h2 id="SQL的特点"><a href="#SQL的特点" class="headerlink" title="SQL的特点"></a>SQL的特点</h2><p>SQL语言简洁，语法简单，好学好用 SQL是一种结构化查询语言</p>
+<p>SQLite 存储数据类型</p>
+<p>每个存储在 SQLite 数据库中的值都具有以下存储类之一：</p>
+<h2 id="数据类型-描述"><a href="#数据类型-描述" class="headerlink" title="数据类型 描述"></a>数据类型 描述</h2><p>NULL ( null )值是一个 NULL 值。</p>
+<p>INTEGER ( integer ) 值是一个带符号的整数，根据值的大小存储在 1、2、3、4、6 或 8 字节中。</p>
+<p>REAL ( real )值是一个浮点值，存储为 8 字节的 IEEE 浮点数字。</p>
+<p>TEXT (text)值是一个文本字符串，使用数据库编码（UTF-8、UTF-16BE 或 UTF-16LE）存储。</p>
+<p>BLOB( blob ) 值是一个 blob 数据，完全根据它的输入存储。</p>
+<p>SQLite 的存储类稍微比数据类型更普遍。INTEGER 存储类，例如，包含 6 种不同的不同长度的整数数据类型。</p>
+<h2 id="SQL语句的种类"><a href="#SQL语句的种类" class="headerlink" title="SQL语句的种类"></a>SQL语句的种类</h2><p>SQL语句主要分两部分，DDL DML DQL</p>
+<h3 id="DDL-Data-Definition-Langunumber、数据定义语句"><a href="#DDL-Data-Definition-Langunumber、数据定义语句" class="headerlink" title="DDL(Data Definition Langunumber、数据定义语句)"></a>DDL(Data Definition Langunumber、数据定义语句)</h3><p>DDL是我们创建和删除数据库</p>
+<p>DDL 创建，删除和修改数据库中的表 （create table或 drop table）</p>
+<p>DDL用来创建 和删除索引（搜索键 ）</p>
+<h3 id="DML-Data-Manipulation-Langunumber、数据操作语句"><a href="#DML-Data-Manipulation-Langunumber、数据操作语句" class="headerlink" title="DML(Data Manipulation Langunumber、数据操作语句)"></a>DML(Data Manipulation Langunumber、数据操作语句)</h3><p>DML是我们对数据库进行SELECT-获取数据，INSERT INTO-插入数据，</p>
+<p>UPDATE-更新数据， DELETE-删除数据的执行语句</p>
+<h3 id="DQL（Data-Query-Langunumber、数据查询语句）"><a href="#DQL（Data-Query-Langunumber、数据查询语句）" class="headerlink" title="DQL（Data Query Langunumber、数据查询语句）"></a>DQL（Data Query Langunumber、数据查询语句）</h3><p>可以用于查询获得表中的数据</p>
+<p>关键字select是DQL（也是所有SQL）用得最多的操作</p>
+<p>其他DQL常用的关键字有where，order by，group by和having</p>
+<h4 id="DDL语句的基本使用"><a href="#DDL语句的基本使用" class="headerlink" title="DDL语句的基本使用"></a>DDL语句的基本使用</h4><h5 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h5><p>DROP TABLE IF EXISTS ‘表名’;</p>
+<h5 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h5><p><code>CREATE TABLE IF NOT EXISTS ‘表名’ ( ‘字段名’ 类型(INTEGER, REAL, TEXT, BLOB)
+NOT NULL 不允许为空 PRIMARY KEY 主键 AUTOINCREMENT 自增长,
+‘字段名2’ 类型, … )</code></p>
+<p>具体使用：</p>
+<p><code>CREATE TABLE IF NOT EXISTS ‘t_people’
+( “id” INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+“name” TEXT, “number” INTEGER, “height” REAL
+)</code></p>
+<p>语句说明</p>
+<ul>
+<li>CREATE TABLE:创建一张表</li>
+<li>IF NOT EXISTS:不存在则创建</li>
+<li>‘t_people’:表的名称</li>
+<li>NOT NULL:不允许为空</li>
+<li>PRIMARY KEY:主键</li>
+<li>AUTOINCREMENT:自动增加</li>
+<li>‘id’ INTEGER:有一个ID字段,类型是INTEGER</li>
+</ul>
+<h4 id="DML语句的基本使用"><a href="#DML语句的基本使用" class="headerlink" title="DML语句的基本使用"></a>DML语句的基本使用</h4><p>插入数据</p>
+<p><code>INSERT INTO ‘t_people’ (name, number, height) VALUES (‘why’, 18, 1.88);</code></p>
+<p>语句说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO: 插入数据</span><br><span class="line">‘t_people’: 在哪一个表中插入数据</span><br><span class="line">(数据的字段): 给哪些字段插入数据</span><br><span class="line">VALUES (‘why’, 18, 1.88): 插入的具体值</span><br><span class="line">更新数据</span><br><span class="line">UPDATE ‘t_people’ SET 字段 &#x3D; ‘值’ WHERE 条件判断;</span><br><span class="line">语句说明</span><br><span class="line">UPDATE: 跟新数据</span><br><span class="line">‘t_people’: 在哪一个表中更新数据</span><br><span class="line">SET 字段 &#x3D; ‘值’: 更新怎样的数据</span><br><span class="line">WHERE 条件判断: 更新哪些数据</span><br></pre></td></tr></table></figure>
+
+<p>具体使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UPDATE t_people SET name &#x3D; ‘a’ WHERE number &#x3D; 14;</span><br><span class="line">UPDATE t_people SET name &#x3D; ‘b’ WHERE number is 20;</span><br><span class="line">UPDATE t_people SET name &#x3D; ‘c’ WHERE number &lt; 20;</span><br><span class="line">UPDATE t_people SET name &#x3D; ‘d’ WHERE number &lt; 100 and score &gt; 60;</span><br><span class="line">UPDATE t_people SET name &#x3D; ‘ly’;</span><br></pre></td></tr></table></figure>
+
+<p>删除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM t_people;</span><br><span class="line">DELETE FROM t_people WHERE number &lt; 30;</span><br></pre></td></tr></table></figure>
+
+<p>语法说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM: 从表中删除数据</span><br><span class="line">t_people : 表名</span><br><span class="line">可以跟条件也可以不跟:不跟表示删除所有的数据</span><br></pre></td></tr></table></figure>
+
+<h4 id="DQL语句的基本使用"><a href="#DQL语句的基本使用" class="headerlink" title="DQL语句的基本使用"></a>DQL语句的基本使用</h4><h5 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h5><p>基本查询(查询整个表格)</p>
+<p><code>SELECT * FROM t_people;</code></p>
+<p>查询某些字段（查询name和number两个字段）</p>
+<p><code>SELECT name, number FROM t_people;</code></p>
+<p>通过条件判断来查询对应的数据(年龄大于等于18)</p>
+<p><code>SELECT * FROM t_people WHERE number &gt;= 18;</code></p>
+<p>通过条件判断来查询对应的数据(名字以i开头),使用like关键字(模糊查询)</p>
+<p><code>SELECT * FROM t_people WHERE name like ‘%i%’;</code></p>
+<h5 id="计算个数"><a href="#计算个数" class="headerlink" title="计算个数"></a>计算个数</h5><p>计算一共多少列</p>
+<p><code>SELECT count(*) FROM t_people;</code></p>
+<p>计算某一个列个数</p>
+<p><code>SELECT count(number) FROM t_people;</code></p>
+<h5 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h5><p>升序 ASC (默认是升序)</p>
+<p><code>SELECT * FROM t_people ORDER BY number;</code></p>
+<p>降序 DESC</p>
+<p><code>SELECT * FROM t_people ORDER BY number DESC;</code></p>
+<p>按照年龄升序排序,如果年龄相同,按照名字的降序排列</p>
+<p><code>SELECT * FROM t_people ORDER BY number,name DESC;</code></p>
+<h5 id="起别名"><a href="#起别名" class="headerlink" title="起别名"></a>起别名</h5><p>给列起别名(as可以省略)</p>
+<p><code>SELECT name AS myName, number AS mynumber FROM t_people;</code></p>
+<p>给表起别名</p>
+<p><code>SELECT s.name, s.number FROM t_people as s;</code></p>
+<h5 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h5><p><code>SELECT * FROM t_people LIMIT 数字1,数字2;</code></p>
+<p>跳过前9条数据，再查询3条数据</p>
+<p><code>SELECT * FROM t_people LIMIT 9, 3;</code></p>
+<p>跳过0条数据,取5条数据</p>
+<p><code>SELECT * FROM t_people LIMIT 5;</code></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IT/" rel="tag"># IT</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/992e470f.html" rel="prev" title="外国电影里的幽默-王小波">
+      <i class="fa fa-chevron-left"></i> 外国电影里的幽默-王小波
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/ce037494.html" rel="next" title="python: 批量修改图片 md5">
+      python: 批量修改图片 md5 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL是什么"><span class="nav-number">1.</span> <span class="nav-text">SQL是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL的作用"><span class="nav-number">2.</span> <span class="nav-text">SQL的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL的特点"><span class="nav-number">3.</span> <span class="nav-text">SQL的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型-描述"><span class="nav-number">4.</span> <span class="nav-text">数据类型 描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL语句的种类"><span class="nav-number">5.</span> <span class="nav-text">SQL语句的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DDL-Data-Definition-Langunumber、数据定义语句"><span class="nav-number">5.1.</span> <span class="nav-text">DDL(Data Definition Langunumber、数据定义语句)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DML-Data-Manipulation-Langunumber、数据操作语句"><span class="nav-number">5.2.</span> <span class="nav-text">DML(Data Manipulation Langunumber、数据操作语句)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DQL（Data-Query-Langunumber、数据查询语句）"><span class="nav-number">5.3.</span> <span class="nav-text">DQL（Data Query Langunumber、数据查询语句）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DDL语句的基本使用"><span class="nav-number">5.3.1.</span> <span class="nav-text">DDL语句的基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#删除表"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">删除表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建表"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">创建表</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DML语句的基本使用"><span class="nav-number">5.3.2.</span> <span class="nav-text">DML语句的基本使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DQL语句的基本使用"><span class="nav-number">5.3.3.</span> <span class="nav-text">DQL语句的基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#查询语句"><span class="nav-number">5.3.3.1.</span> <span class="nav-text">查询语句</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#计算个数"><span class="nav-number">5.3.3.2.</span> <span class="nav-text">计算个数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#排序"><span class="nav-number">5.3.3.3.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#起别名"><span class="nav-number">5.3.3.4.</span> <span class="nav-text">起别名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#limit"><span class="nav-number">5.3.3.5.</span> <span class="nav-text">limit</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">记录思考的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

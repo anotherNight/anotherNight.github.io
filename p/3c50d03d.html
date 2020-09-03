@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="基本技巧标题12345678910# 一级标题## 二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题标题1&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;标题2------  粗斜体123*斜体文本*    _斜体文本_**粗体文本**    __粗体文本__***粗斜体文本***    ___粗斜体文本___  链接12文字链接[链接名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown语法">
+<meta property="og:url" content="https://jundongwu.com/p/3c50d03d.html">
+<meta property="og:site_name" content="俊东的Blog">
+<meta property="og:description" content="基本技巧标题12345678910# 一级标题## 二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题标题1&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;标题2------  粗斜体123*斜体文本*    _斜体文本_**粗体文本**    __粗体文本__***粗斜体文本***    ___粗斜体文本___  链接12文字链接[链接名">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2017-01-04T08:12:45.000Z">
+<meta property="article:modified_time" content="2020-09-03T13:06:58.074Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="tool">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jundongwu.com/p/3c50d03d.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'cn'
+  };
+</script>
+
+  <title>Markdown语法 | 俊东的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">俊东的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少则得，多则惑</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/3c50d03d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Markdown语法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-01-04 16:12:45" itemprop="dateCreated datePublished" datetime="2017-01-04T16:12:45+08:00">2017-01-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="基本技巧"><a href="#基本技巧" class="headerlink" title="基本技巧"></a>基本技巧</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br><span class="line">标题1</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">标题2</span><br><span class="line">------</span><br></pre></td></tr></table></figure>
+
+<h2 id="粗斜体"><a href="#粗斜体" class="headerlink" title="粗斜体"></a>粗斜体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*斜体文本*    _斜体文本_</span><br><span class="line">**粗体文本**    __粗体文本__</span><br><span class="line">***粗斜体文本***    ___粗斜体文本___</span><br></pre></td></tr></table></figure>
+
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">文字链接[链接名称](http:&#x2F;&#x2F;链接网址)</span><br><span class="line">网址链接</span><br></pre></td></tr></table></figure>
+
+<h2 id="高级链接技巧"><a href="#高级链接技巧" class="headerlink" title="高级链接技巧"></a>高级链接技巧</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">链接 1 作为网址变量 [Google][1].</span><br><span class="line">链接 yahoo 作为网址变量 [Yahoo!][yahoo].</span><br><span class="line">然后在文档的结尾为变量赋值（网址）</span><br><span class="line"></span><br><span class="line">[1]\: http:&#x2F;&#x2F;www.google.com&#x2F;</span><br><span class="line">[yahoo]\: http:&#x2F;&#x2F;www.yahoo.com&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="列表-普通-无序-列表"><a href="#列表-普通-无序-列表" class="headerlink" title="列表 - 普通 - 无序 - 列表"></a>列表 - 普通 - 无序 - 列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\- 列表文本前使用 [减号+空格]</span><br><span class="line">\+ 列表文本前使用 [加号+空格]</span><br><span class="line">\* 列表文本前使用 [星号+空格]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>普通</li>
+</ul>
+<ul>
+<li>有序</li>
+</ul>
+<ul>
+<li>列表</li>
+</ul>
+<ol>
+<li>列表前使用 [数字+空格]</li>
+<li>我们会自动帮你添加数字</li>
+<li>不用担心数字不对，显示的时候我们会自动把这行的 7 纠正为 3</li>
+</ol>
+<h2 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1. 列出所有元素：</span><br><span class="line">    - 无序列表元素 A</span><br><span class="line">        1. 元素 A 的有序子列表</span><br><span class="line">    - 前面加四个空格</span><br><span class="line">2. 列表里的多段换行：</span><br><span class="line">    前面必须加四个空格，</span><br><span class="line">    这样换行，整体的格式不会乱</span><br><span class="line">3. 列表里引用：</span><br><span class="line"></span><br><span class="line">    &gt; 前面空一行</span><br><span class="line">    &gt; 仍然需要在 &gt;  前面加四个空格</span><br><span class="line"></span><br><span class="line">4. 列表里代码段：</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">1</span><br><span class="line">前面四个空格，之后按代码语法 &#96;&#96;&#96; 书写</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        或者直接空八个，引入代码块</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用-gt-普通引用"><a href="#引用-gt-普通引用" class="headerlink" title="引用 &gt; 普通引用"></a>引用 &gt; 普通引用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用文本前使用 [大于号+空格]</span><br><span class="line">&gt; 折行可以不加，新起一行都要加上哦</span><br><span class="line">&gt; 引用里 &gt; &gt; 嵌套引用</span><br><span class="line">&gt; 最外层引用</span><br><span class="line">&gt; &gt; 多一个 &gt; 嵌套一层引用</span><br><span class="line">&gt; &gt; &gt; 可以嵌套很多层</span><br><span class="line">&gt; - 引用里嵌套列表</span><br><span class="line">&gt; - 这是引用里嵌套的一个列表</span><br><span class="line">&gt; - 还可以有子列表</span><br><span class="line">&gt;     * 子列表需要从 - 之后延后四个空格开始</span><br></pre></td></tr></table></figure>
+
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>跟链接的方法区别在于前面加了个感叹号 !，这样是不是觉得好记多了呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片名称](http:&#x2F;&#x2F;图片网址)</span><br></pre></td></tr></table></figure>
+
+<p>当然，你也可以像网址那样对图片网址使用变量</p>
+<p>链接 1 作为网址变量 <code>[Google][1].</code> 然后在文档的结尾位变量赋值（网址）</p>
+<p>也可以使用 HTML 的图片语法来自定义图片的宽高大小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;code&gt;</span><br><span class="line">&#96;&lt;image src&#x3D;&quot;http:&#x2F;&#x2F;7xt737.com1.z0.clouddn.com&#x2F;blog_image14384920.jpg&quot; width&#x3D;&quot;100&quot;&gt;&#96;</span><br><span class="line">&lt;&#x2F;code&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>如果另起一行，只需在当前行结尾加 2 个空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在当前行的结尾加 2 个空格  </span><br><span class="line">这行就会新起一行</span><br><span class="line">如果是要起一个新段落，只需要空出一行即可。</span><br></pre></td></tr></table></figure>
+
+<h2 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h2><p>如果你有写分割线的习惯，可以新起一行输入三个减号-。当前后都有段落时，请空出一行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;pre&gt;</span><br><span class="line">前面的段落</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">后面的段落</span><br><span class="line">&lt;&#x2F;pre&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h2><h3 id="行内-HTML-元素"><a href="#行内-HTML-元素" class="headerlink" title="行内 HTML 元素"></a>行内 HTML 元素</h3><p>目前只支持部分段内 HTML 元素效果，包括<br><code>&lt;kdb&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt;</code></p>
+<h2 id="键位显示"><a href="#键位显示" class="headerlink" title="键位显示"></a>键位显示</h2><p>使用 </p>
+<p><code>&lt;kbd&gt;Ctrl&lt;kbd&gt;+&lt;kbd&gt;Alt&lt;kbd&gt;+&lt;kbd&gt;Del&lt;kbd&gt;</code> shi重启电脑</p>
+<p>代码块</p>
+<pre>
+使用 (`<pre></pre>`) 元素同样可以形成代码块
+<p></pre></p>
+<h2 id="粗斜体-1"><a href="#粗斜体-1" class="headerlink" title="粗斜体"></a>粗斜体</h2><p><code>&lt;b&gt;</code> Markdown 在此处同样适用，如 <code>&lt;b&gt;</code>加粗<code>&lt;b&gt;</code> == <b>加粗</b> </p>
+<h2 id="符号转义"><a href="#符号转义" class="headerlink" title="符号转义"></a>符号转义</h2><p>如果你的描述中需要用到 markdown 的符号，比如 <code>_ # *</code> 等，但又不想它被转义，这时候可以在这些符号前加反斜杠，如 <code>\_ \# \*</code> 进行避免。</p>
+<p><code>_不想这里的文本变斜体_</code></p>
+<p><code>**不想这里的文本被加粗**</code></p>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>支持 jsfiddle、gist、runjs、优酷视频，直接填写 url，在其之后会自动添加预览点击会展开相关内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;&#123;url_of_the_fiddle&#125;&#x2F;embedded&#x2F;[&#123;tabs&#125;&#x2F;[&#123;style&#125;]]&#x2F;</span><br><span class="line">https:&#x2F;&#x2F;gist.github.com&#x2F;&#123;gist_id&#125;</span><br><span class="line">http:&#x2F;&#x2F;runjs.cn&#x2F;detail&#x2F;&#123;id&#125;</span><br><span class="line">http:&#x2F;&#x2F;v.youku.com&#x2F;v_show&#x2F;id_&#123;video_id&#125;.html</span><br></pre></td></tr></table></figure>
+
+<h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><p>当你需要在编辑器中插入数学公式时，可以使用两个美元符 <code>$$</code> 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：</p>
+<p>``<br>$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a}. $$</p>
+<p>$$ x \href{why-equal.html}{=} y^2 + 1 $$<br>``</p>
+<p>同时也支持 HTML 属性，如：</p>
+<p>``<br>$$ (x+1)^2 = \class{hidden}{(x+1)(x+1)} $$</p>
+<p>$$ `(x+1)^2 = \cssId{step1}{\style{visibility:hidden}{(x+1)(x+1)}} $$<br>``</p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 一个普通标题 | 一个普通标题 | 一个普通标题 |</span><br><span class="line">| ------| ------ | ------ |</span><br><span class="line">| 短文本 | 中等文本 | 稍微长一点的文本 |</span><br><span class="line">| 稍微长一点的文本 | 短文本 | 中等文本 |</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>一个普通标题</th>
+<th>一个普通标题</th>
+<th>一个普通标题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>短文本</td>
+<td>中等文本</td>
+<td>稍微长一点的文本</td>
+</tr>
+<tr>
+<td>稍微长一点的文本</td>
+<td>短文本</td>
+<td>中等文本</td>
+</tr>
+</tbody></table>
+<p>update 2017.1.9</p>
+<p>update 2017.7.24 markdowm 格式优化</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tool/" rel="tag"># tool</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/68b3f2eb.html" rel="prev" title="iOS:UITableView滚动优化">
+      <i class="fa fa-chevron-left"></i> iOS:UITableView滚动优化
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/e0dc9eb4.html" rel="next" title="iOS中的HTTPS证书校验">
+      iOS中的HTTPS证书校验 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本技巧"><span class="nav-number">1.</span> <span class="nav-text">基本技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">1.1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粗斜体"><span class="nav-number">1.2.</span> <span class="nav-text">粗斜体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">1.3.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级链接技巧"><span class="nav-number">1.4.</span> <span class="nav-text">高级链接技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表-普通-无序-列表"><span class="nav-number">1.5.</span> <span class="nav-text">列表 - 普通 - 无序 - 列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表嵌套"><span class="nav-number">1.6.</span> <span class="nav-text">列表嵌套</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用-gt-普通引用"><span class="nav-number">1.7.</span> <span class="nav-text">引用 &gt; 普通引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">1.8.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#换行"><span class="nav-number">1.9.</span> <span class="nav-text">换行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分隔符"><span class="nav-number">1.10.</span> <span class="nav-text">分隔符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级技巧"><span class="nav-number">1.11.</span> <span class="nav-text">高级技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#行内-HTML-元素"><span class="nav-number">1.11.1.</span> <span class="nav-text">行内 HTML 元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键位显示"><span class="nav-number">1.12.</span> <span class="nav-text">键位显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#粗斜体-1"><span class="nav-number">1.13.</span> <span class="nav-text">粗斜体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号转义"><span class="nav-number">1.14.</span> <span class="nav-text">符号转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展"><span class="nav-number">1.15.</span> <span class="nav-text">扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公式"><span class="nav-number">1.16.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">1.17.</span> <span class="nav-text">表格</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">记录思考的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

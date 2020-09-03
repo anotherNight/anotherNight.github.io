@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、HTTPS 二、App Transport Security 三、iOS 中用HTTPS 注意的问题 四、使用 AFNetworking HTTPS 遇到的问题 五、问题的解决方法 六、注意服务器端 两种证书的区别（以及如何验证HTTPS服务器是否符合ATS特性中的要求）  一、HTTPSHTTPS就是将HTTP协议数据包放到SSL&#x2F;TSL层加密后，在TCP&#x2F;IP层组成IP数据报去传输，以此">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AFNetworking HTTPS配置">
+<meta property="og:url" content="https://jundongwu.com/p/450b42bd.html">
+<meta property="og:site_name" content="俊东的Blog">
+<meta property="og:description" content="一、HTTPS 二、App Transport Security 三、iOS 中用HTTPS 注意的问题 四、使用 AFNetworking HTTPS 遇到的问题 五、问题的解决方法 六、注意服务器端 两种证书的区别（以及如何验证HTTPS服务器是否符合ATS特性中的要求）  一、HTTPSHTTPS就是将HTTP协议数据包放到SSL&#x2F;TSL层加密后，在TCP&#x2F;IP层组成IP数据报去传输，以此">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2017-02-05T10:36:26.000Z">
+<meta property="article:modified_time" content="2020-09-03T13:06:58.060Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jundongwu.com/p/450b42bd.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'cn'
+  };
+</script>
+
+  <title>AFNetworking HTTPS配置 | 俊东的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">俊东的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少则得，多则惑</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/450b42bd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AFNetworking HTTPS配置
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-02-05 18:36:26" itemprop="dateCreated datePublished" datetime="2017-02-05T18:36:26+08:00">2017-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li>一、HTTPS</li>
+<li>二、App Transport Security</li>
+<li>三、iOS 中用HTTPS 注意的问题</li>
+<li>四、使用 AFNetworking HTTPS 遇到的问题</li>
+<li>五、问题的解决方法</li>
+<li>六、注意服务器端 两种证书的区别（以及如何验证HTTPS服务器是否符合ATS特性中的要求）</li>
+</ul>
+<h2 id="一、HTTPS"><a href="#一、HTTPS" class="headerlink" title="一、HTTPS"></a>一、HTTPS</h2><p>HTTPS就是将HTTP协议数据包放到SSL/TSL层加密后，在TCP/IP层组成IP数据报去传输，以此保证传输数据的安全；而对于接收端，在SSL/TSL将接收的数据包解密之后，将数据传给HTTP协议层，就是普通的HTTP数据。HTTP和SSL/TSL都处于OSI模型的应用层。</p>
+<h2 id="二、App-Transport-Security"><a href="#二、App-Transport-Security" class="headerlink" title="二、App Transport Security"></a>二、App Transport Security</h2><p>iOS9中新增App Transport Security（简称ATS）特性, 主要使到原来请求的时候用到的HTTP，都转向TLS1.2协议进行传输。这也意味着所有的HTTP协议都强制使用了HTTPS协议进行传输。</p>
+<p>一般我们如果还是使用的http,不更新的话，可通过在 Info.plist 中声明，倒退回不安全的网络请求。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;key&gt;NSAppTransportSecurity&lt;&#x2F;key&gt;</span><br><span class="line">  &lt;dict&gt;</span><br><span class="line">        &lt;key&gt;NSAllowsArbitraryLoads&lt;&#x2F;key&gt;</span><br><span class="line">        &lt;true&#x2F;&gt;</span><br><span class="line"> &lt;&#x2F;dict&gt;</span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">## 三、iOS 中用HTTPS 注意的问题</span><br><span class="line"></span><br><span class="line">先看文档中的描述：</span><br><span class="line"></span><br><span class="line">These are the App Transport Security requirements:</span><br><span class="line"></span><br><span class="line">* The protocol Transport Security Layer (TLS) must be at least version 1.2.</span><br><span class="line">* Connection ciphers are limited to those that provide forward secrecy (see the list of ciphers below.)</span><br><span class="line">* Certificates must use at least an SHA256 fingerprint with either a 2048 bit or greater RSA key, or a 256 bit or greater Elliptic-Curve (ECC) key. </span><br><span class="line"> </span><br><span class="line">根据原文描述，首先必须要基于TLS 1.2版本协议。再来就是连接的加密方式要提供Forward Secrecy，文档中罗列出支持的加密算法（如下表）。  最后就是证书至少要使用一个SHA256的指纹与任一个2048位或者更高位的RSA密钥，或者是256位或者更高位的ECC密钥。如果不符合其中一项，请求将被中断并返回nil。</span><br><span class="line"></span><br><span class="line">* 第一条就是TLS版本所需要支持的协议</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第一条满足</span><br><span class="line"></span><br><span class="line">第一条就是连接的加密方式需要提供“Foward Secrecy”这个东东,下面是支持Forward Secrecy的加密方式</span><br></pre></td></tr></table></figure>
+<p>  TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>  TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>  <code>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256</code><br>  TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384<br>  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256<br>  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这是一个满足条件的证书信息中的情况</span><br><span class="line"></span><br><span class="line">满足上面中的条件</span><br><span class="line"></span><br><span class="line">但是也要注意证书的合法性,注意是否有效，iOS要求连接的HTTPS站点必须为CA签名过的合法证书。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">证书不被信任</span><br><span class="line"></span><br><span class="line">证书未经过验证</span><br><span class="line"></span><br><span class="line">### 有效</span><br><span class="line">注意以上不同的情况决定了AFSecurityPolicy--setAllowInvalidCertificates:是否要验证证书的有效性。</span><br><span class="line"></span><br><span class="line">## 四、使用AFNetworking HTTPS 遇到的问题（3.0.0之前）</span><br></pre></td></tr></table></figure>
+<p>AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];<br>AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];<br>//allowInvalidCertificates 是否允许无效证书（也就是自建的证书），默认为NO//如果是需要验证自建证书，需要设置为YES<br>securityPolicy.allowInvalidCertificates = YES;<br>//validatesDomainName 是否需要验证域名，默认为YES；<br>securityPolicy.validatesDomainName = YES;<br>manager.securityPolicy  = securityPolicy;<br>manager.responseSerializer = [AFHTTPResponseSerializer serializer];<br>[manager POST:urlString parameters:dic success:finishedBlock failure:failedBlock];</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 五、Code&#x3D;-1012 错误解决方法</span><br><span class="line"></span><br><span class="line">### 步骤1：获取到站点的证书</span><br><span class="line"></span><br><span class="line">我们可以使用以下openssl命令来获取到服务器的公开二进制证书（以google为例）</span><br></pre></td></tr></table></figure>
+<p>openssl s_client -connect <a href="http://www.google.com:443" target="_blank" rel="noopener">www.google.com:443</a> &lt;/dev/null 2&gt;/dev/null | openssl x509 -outform DER &gt; https.cer</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">冒号中的为命令主要部分。该条命令将会在当前路径下，形成google.com站点的公开二进制证书，命名为https.cer。您可以将www.google.com 替换成您自己的站点以此来获取您自己站点的https.cer。</span><br><span class="line"></span><br><span class="line">### 步骤2：导入到Xcode中</span><br><span class="line"></span><br><span class="line">直接将https.cer放到资源目录中就好了，让我们可以通过pathForResource:获取到证书，就OK了。</span><br><span class="line"></span><br><span class="line">https</span><br><span class="line"></span><br><span class="line">### 步骤3：代码导入</span><br></pre></td></tr></table></figure>
+<p>NSString *urlString = @”<a href="https://www.example.com/app/publicRequest&quot;" target="_blank" rel="noopener">https://www.example.com/app/publicRequest&quot;</a>;<br>NSString *cerPath = [[NSBundle mainBundle] pathForResource:@”https” ofType:@”cer”];<br>NSData * certData =[NSData dataWithContentsOfFile:cerPath];<br>NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];<br>AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];<br>// 是否允许,NO– 不允许无效的证书<br>[securityPolicy setAllowInvalidCertificates:YES];<br>// 设置证书<br>[securityPolicy setPinnedCertificates:certSet];<br>AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];<br>manager.securityPolicy = securityPolicy;<br>manager.responseSerializer = [AFHTTPResponseSerializer serializer];<br>// request<br>[manager GET:urlString parameters:nil progress:^(NSProgress * progress){<br>} success:^(NSURLSessionDataTask *task, id responseObject) {<br>    NSArray * array = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];<br>    NSLog(@”OK === %@”,array);<br>} failure:^(NSURLSessionDataTask *task, NSError *error) {<br>    NSLog(@”error ==%@”,error.description);<br>}];</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后，就OK了。</span><br><span class="line"></span><br><span class="line">## 六、注意下服务器端两种证书的区别</span><br><span class="line"></span><br><span class="line">* 第一种是创建证书请求，然后到权威机构认证，随之配置到服务器；</span><br><span class="line">* 第二种是自建证书，需要自己配置给服务器。  </span><br><span class="line"></span><br><span class="line">使用第一种还是好一点的，至少在我们 app 端不需要为ATS做过多的适配。但是如何才能知道一个HTTPS服务器是否符合ATS特性中的要求的呢？使用nscurl命令：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;nscurl --ats-diagnostics --verbose https:&#x2F;&#x2F;example.com</span><br></pre></td></tr></table></figure>
+
+<p>下面是测百度时，返回的某一段，结论是OK的，里面有很多测试的情况，我们可以逐一观察是否正确。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">TLSv1.0 with PFS disabled and insecure HTTP allowed</span><br><span class="line">ATS Dictionary:</span><br><span class="line">&#123;</span><br><span class="line">    NSExceptionDomains &#x3D;     &#123;</span><br><span class="line">        &quot;www.baidu.com&quot; &#x3D;         &#123;</span><br><span class="line">            NSExceptionAllowsInsecureHTTPLoads &#x3D; true;</span><br><span class="line">            NSExceptionMinimumTLSVersion &#x3D; &quot;TLSv1.0&quot;;</span><br><span class="line">            NSExceptionRequiresForwardSecrecy &#x3D; false;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line">Result : PASS</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/d6b5f353.html" rel="prev" title="SSL证书相关介绍">
+      <i class="fa fa-chevron-left"></i> SSL证书相关介绍
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/738bfe3e.html" rel="next" title="iOS10适配ATS">
+      iOS10适配ATS <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、HTTPS"><span class="nav-number">1.</span> <span class="nav-text">一、HTTPS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、App-Transport-Security"><span class="nav-number">2.</span> <span class="nav-text">二、App Transport Security</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">记录思考的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="导致卡顿的操作CPU 消耗型任务布局计算布局计算是 iOS 中最为常见的消耗 CPU 资源的地方，如果视图层级关系比较复杂，计算出所有图层的布局信息就会消耗一部分时间。因此我们应该尽量提前计算好布局信息，然后在合适的时机调整对应的属性。还要避免不必要的更新，只在真正发生了布局改变时再更新。对象创建 对象创建过程伴随着内存分配、属性设置、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS:UITableView滚动优化">
+<meta property="og:url" content="https://jundongwu.com/p/68b3f2eb.html">
+<meta property="og:site_name" content="俊东的Blog">
+<meta property="og:description" content="导致卡顿的操作CPU 消耗型任务布局计算布局计算是 iOS 中最为常见的消耗 CPU 资源的地方，如果视图层级关系比较复杂，计算出所有图层的布局信息就会消耗一部分时间。因此我们应该尽量提前计算好布局信息，然后在合适的时机调整对应的属性。还要避免不必要的更新，只在真正发生了布局改变时再更新。对象创建 对象创建过程伴随着内存分配、属性设置、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对">
+<meta property="og:locale" content="cn">
+<meta property="article:published_time" content="2016-08-13T14:42:32.000Z">
+<meta property="article:modified_time" content="2020-09-03T13:06:58.094Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jundongwu.com/p/68b3f2eb.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'cn'
+  };
+</script>
+
+  <title>iOS:UITableView滚动优化 | 俊东的Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">俊东的Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">少则得，多则惑</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/68b3f2eb.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS:UITableView滚动优化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-08-13 22:42:32" itemprop="dateCreated datePublished" datetime="2016-08-13T22:42:32+08:00">2016-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="导致卡顿的操作"><a href="#导致卡顿的操作" class="headerlink" title="导致卡顿的操作"></a>导致卡顿的操作</h1><h2 id="CPU-消耗型任务"><a href="#CPU-消耗型任务" class="headerlink" title="CPU 消耗型任务"></a>CPU 消耗型任务</h2><h3 id="布局计算"><a href="#布局计算" class="headerlink" title="布局计算"></a>布局计算</h3><p>布局计算是 iOS 中最为常见的消耗 CPU 资源的地方，如果视图层级关系比较复杂，计算出所有图层的布局信息就会消耗一部分时间。因此我们应该尽量提前计算好布局信息，然后在合适的时机调整对应的属性。还要避免不必要的更新，只在真正发生了布局改变时再更新。<br>对象创建</p>
+<p>对象创建过程伴随着内存分配、属性设置、甚至还有读取文件等操作，比较消耗 CPU 资源。尽量用轻量的对象代替重量的对象，可以对性能有所优化。比如 CALayer 比 UIView 要轻量许多，如果视图元素不需要响应触摸事件，用 CALayer 会更加合适。</p>
+<p>通过 Storyboard 创建视图对象还会涉及到文件反序列化操作，其资源消耗会比直接通过代码创建对象要大非常多，在性能敏感的界面里，Storyboard 并不是一个好的技术选择。</p>
+<p>对于列表类型的页面，还可以参考 UITableView 的复用机制。每次要初始化 View 对象时先根据 identifier 从缓存池里取，能取到就复用这个 View 对象，取不到再真正执行初始化过程。滑动屏幕时，会将滑出屏幕外的 View 对象根据 identifier 放入缓存池，新进入屏幕可见范围内的 View 又根据前面的规则来决定是否要真正初始化。</p>
+<h3 id="Autolayout"><a href="#Autolayout" class="headerlink" title="Autolayout"></a>Autolayout</h3><p>Autolayout 是苹果在 iOS6 之后新引入的布局技术，在大多数情况下这一技术都能大大提升开发速度，特别是在需要处理多语言时。比如阿拉伯语下布局是从右往左，通过 Autolayout 设置 leading 和 trailing 即可。<br>但是 Autolayout 对于复杂视图来说常常会产生严重的性能问题，对于性能敏感的页面建议还是使用手动布局的方式，并控制好刷新频率，做到真正需要调整布局时再重新布局。</p>
+<h3 id="文本计算"><a href="#文本计算" class="headerlink" title="文本计算"></a>文本计算</h3><p>如果一个界面中包含大量文本（比如微博、微信朋友圈等），文本的宽高计算会占用很大一部分资源，并且不可避免。<br>一个比较常见的场景是在 UITableView 中，heightForRowAtIndexPath这个方法会被频繁调用，即使不是耗时的计算在调用次数多了之后也会带来性能损耗。这里的优化就是尽量避免每次都重新进行文本的行高计算，可以在获取到 Model 数据后就根据文本内容计算好布局信息，然后将这份布局信息作为一个属性保存到对应的 Model 中，这样在 UITableView 的回调中就可以直接使用 Model 中的属性，减少了文本的计算。</p>
+<h3 id="文本渲染"><a href="#文本渲染" class="headerlink" title="文本渲染"></a>文本渲染</h3><p>屏幕上能看到的所有文本内容控件，包括 UIWebView，在底层都是通过 CoreText 排版、绘制为 Bitmap 显示的。常见的文本控件 （UILabel、UITextView 等），其排版和绘制都是在主线程进行的，当显示大量文本时，CPU 的压力会非常大。<br>这一部分的性能优化就需要我们放弃使用系统提供的上层控件转而直接使用 CoreText 进行排版控制。<br>Wherever possible, try to avoid making changes to the frame of a view that contains text, because it will cause the text to be redrawn. For example, if you need to display a static block of text in the corner of a layer that frequently changes size, put the text in a sublayer instead.<br>上面这段话引用自 iOS Core Animation: Advanced Techniques，翻译过来的意思就是说包含文本的视图在改变布局时会触发文本的重新渲染，对于静态文本我们应该尽量减少它所在视图的布局修改。</p>
+<h3 id="图像的绘制"><a href="#图像的绘制" class="headerlink" title="图像的绘制"></a>图像的绘制</h3><p>图像的绘制通常是指用那些以 CG 开头的方法把图像绘制到画布中，然后从画布创建图片并显示的过程。调用 CG 开头的方法消耗的是 CPU 资源。我们可以将绘制过程放到后台线程，然后在主线程里将结果设置到 layer 的 contents 中。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (void)display &#123;</span><br><span class="line">dispatch_async(backgroundQueue, ^&#123;</span><br><span class="line">CGContextRef ctx &#x3D; CGBitmapContextCreate(...);</span><br><span class="line">&#x2F;&#x2F; draw in context...</span><br><span class="line">CGImageRef img &#x3D; CGBitmapContextCreateImage(ctx);</span><br><span class="line">CFRelease(ctx);</span><br><span class="line">dispatch_async(mainQueue, ^&#123;</span><br><span class="line">    layer.contents &#x3D; img;</span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="图片的解码"><a href="#图片的解码" class="headerlink" title="图片的解码"></a>图片的解码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Once an image file has been loaded, it must then be decompressed. This decompression can be a computationally complex task and take considerable time. The decompressed image will also use substantially more memory than the original.</span><br></pre></td></tr></table></figure>
+
+<p>图片被加载后需要解码，图片的解码是一个复杂耗时的过程，并且需要占用比原始图片还多的内存资源。</p>
+<p>为了节省内存，iOS 系统会延迟解码过程， 在图片被设置到 layer 的 contents 属性或者设置成 UIImageView 的 image 属性后才会执行解码过程，但是这两个操作都是在主线程进行，还是会带来性能问题。</p>
+<p>如果想要提前解码，可以使用 ImageIO 或者提前将图片绘制到 CGContext 中，这部分实践可以参考 <code>iOS Core Animation: Advanced Techniques</code></p>
+<p>这里多提一点，常用的 UIImage 加载方法有 <code>imageNamed</code> 和 <code>imageWithContentsOfFile</code>。其中 imageNamed 加载图片后会马上解码，并且系统会将解码后的图片缓存起来，但是这个缓存策略是不公开的，我们无法知道图片什么时候会被释放。因此在一些性能敏感的页面，我们还可以用 static 变量 hold 住 imageNamed 加载到的图片避免被释放掉，以空间换时间的方式来提高性能。</p>
+<h3 id="GPU消耗型任务"><a href="#GPU消耗型任务" class="headerlink" title="GPU消耗型任务"></a>GPU消耗型任务</h3><p>相对于 CPU 来说，GPU 能干的事情比较单一：接收提交的纹理（Texture）和顶点描述（三角形），应用变换（transform）、混合并渲染，然后输出到屏幕上。宽泛的说，大多数 CALayer 的属性都是用 GPU 来绘制。<br>以下一些操作会降低 GPU 绘制的性能，</p>
+<h3 id="大量几何结构"><a href="#大量几何结构" class="headerlink" title="大量几何结构"></a>大量几何结构</h3><p>所有的 Bitmap，包括图片、文本、栅格化的内容，最终都要由内存提交到显存，绑定为 GPU Texture。不论是提交到显存的过程，还是 GPU 调整和渲染 Texture 的过程，都要消耗不少 GPU 资源。当在较短时间显示大量图片时（比如 TableView 存在非常多的图片并且快速滑动时），CPU 占用率很低，GPU 占用非常高，界面仍然会掉帧。避免这种情况的方法只能是尽量减少在短时间内大量图片的显示，尽可能将多张图片合成为一张进行显示。</p>
+<p>另外当图片过大，超过 GPU 的最大纹理尺寸时，图片需要先由 CPU 进行预处理，这对 CPU 和 GPU 都会带来额外的资源消耗。<br>视图的混合</p>
+<p>当多个视图（或者说 CALayer）重叠在一起显示时，GPU 会首先把他们混合到一起。如果视图结构过于复杂，混合的过程也会消耗很多 GPU 资源。为了减轻这种情况的 GPU 消耗，应用应当尽量减少视图数量和层次，并且减少不必要的透明视图。</p>
+<h3 id="离屏渲染"><a href="#离屏渲染" class="headerlink" title="离屏渲染"></a>离屏渲染</h3><p>离屏渲染是指图层在被显示之前是在当前屏幕缓冲区以外开辟的一个缓冲区进行渲染操作。</p>
+<p>离屏渲染需要多次切换上下文环境：先是从当前屏幕（On-Screen）切换到离屏（Off-Screen）；等到离屏渲染结束以后，将离屏缓冲区的渲染结果显示到屏幕上又需要将上下文环境从离屏切换到当前屏幕，而上下文环境的切换是一项高开销的动作。</p>
+<p>会造成 offscreen rendering 的原因有：</p>
+<ul>
+<li>阴影（UIView.layer.shadowOffset/shadowRadius/…）</li>
+<li>圆角（当 UIView.layer.cornerRadius 和 UIView.layer.maskToBounds 一起使用时）</li>
+<li>图层蒙板</li>
+<li>开启光栅化（shouldRasterize = true）</li>
+</ul>
+<p>使用阴影时同时设置 shadowPath 就能避免离屏渲染大大提升性能。</p>
+<p>CALayer 有一个 shouldRasterize 属性，将这个属性设置成 true 后就开启了光栅化。开启光栅化后会将图层绘制到一个屏幕外的图像，然后这个图像将会被缓存起来并绘制到实际图层的 contents 和子图层，对于有很多的子图层或者有复杂的效果应用，这样做就会比重绘所有事务的所有帧来更加高效。但是光栅化原始图像需要时间，而且会消耗额外的内存。</p>
+<p>光栅化也会带来一定的性能损耗，是否要开启就要根据实际的使用场景了，图层内容频繁变化时不建议使用。最好还是用 Instruments 比对开启前后的 FPS 来看是否起到了优化效果。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/p/55abe18d.html" rel="prev" title="iOS-自适应高度的TableViewCell">
+      <i class="fa fa-chevron-left"></i> iOS-自适应高度的TableViewCell
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/p/3c50d03d.html" rel="next" title="Markdown语法">
+      Markdown语法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导致卡顿的操作"><span class="nav-number">1.</span> <span class="nav-text">导致卡顿的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU-消耗型任务"><span class="nav-number">1.1.</span> <span class="nav-text">CPU 消耗型任务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#布局计算"><span class="nav-number">1.1.1.</span> <span class="nav-text">布局计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Autolayout"><span class="nav-number">1.1.2.</span> <span class="nav-text">Autolayout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本计算"><span class="nav-number">1.1.3.</span> <span class="nav-text">文本计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本渲染"><span class="nav-number">1.1.4.</span> <span class="nav-text">文本渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像的绘制"><span class="nav-number">1.1.5.</span> <span class="nav-text">图像的绘制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片的解码"><span class="nav-number">1.1.6.</span> <span class="nav-text">图片的解码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GPU消耗型任务"><span class="nav-number">1.1.7.</span> <span class="nav-text">GPU消耗型任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大量几何结构"><span class="nav-number">1.1.8.</span> <span class="nav-text">大量几何结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离屏渲染"><span class="nav-number">1.1.9.</span> <span class="nav-text">离屏渲染</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">记录思考的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
