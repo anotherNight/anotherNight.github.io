@@ -163,6 +163,167 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/c3a525c9.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/c3a525c9.html" class="post-title-link" itemprop="url">iOS高度自适应的TextView</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-08-13 12:25:13" itemprop="dateCreated datePublished" datetime="2016-08-13T12:25:13+08:00">2016-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="如何实现UITextView文本框高度随文字行数自动增减呢？"><a href="#如何实现UITextView文本框高度随文字行数自动增减呢？" class="headerlink" title="如何实现UITextView文本框高度随文字行数自动增减呢？"></a>如何实现UITextView文本框高度随文字行数自动增减呢？</h1><h2 id="思路1、UITextView的Delegate方法"><a href="#思路1、UITextView的Delegate方法" class="headerlink" title="思路1、UITextView的Delegate方法"></a>思路1、UITextView的Delegate方法</h2><p><code>-textViewDidChange:</code></p>
+<p>在Text变化时计算文字高度，刷新TextView高度</p>
+<p>问题：Text变化与实际有出入，此时的问题变化还没有存储到TextView的Text中，现在进行计算会得到上一个状态下的文字高度，导致TextView高度刷新延迟，换行第二个文字才增加高度，如果采用这个方法，就要进行文字拼接，再计算文字高度。</p>
+<h2 id="思路2、TextView本质是一个ScrollView"><a href="#思路2、TextView本质是一个ScrollView" class="headerlink" title="思路2、TextView本质是一个ScrollView"></a>思路2、TextView本质是一个ScrollView</h2><p>文字高度超出TextView高度会自动增加contentSize属性的height，而且增加的高度刚好就是TextView需要改变的高度</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/c3a525c9.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/8e41d96f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/8e41d96f.html" class="post-title-link" itemprop="url">博客的意义</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-07-06 16:59:32" itemprop="dateCreated datePublished" datetime="2016-07-06T16:59:32+08:00">2016-07-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>事到用时方恨少，想来还是记录下来靠谱；</p>
+<p>开始写博客大概是2013年，那时候是在CSDN上写写博客，不过那时候还在上大学，更新文章基本看心情，而且大多文章也不过是转载看到的一些技术博客，原创记录基本很少；现在回头看来那时就是浮躁，肚子里没点墨水却硬要去写，矫情啦！</p>
+<p>现在，大学毕业，会想过去四年的确发生了很多事情，有些事情很有趣、有些事情很悲伤，但还有很多事情已经没什么印象；</p>
+<p>现在建立个人博客，想记录下生活感想，想分享下技术心得，一点点的记录，用时间和文字来见证自己吧。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/ac32e52b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -311,7 +472,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">163</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

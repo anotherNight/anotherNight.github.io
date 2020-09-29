@@ -163,6 +163,186 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/bfca531b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/bfca531b.html" class="post-title-link" itemprop="url">AVFoundation 音视频混合</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-25 11:17:41" itemprop="dateCreated datePublished" datetime="2018-03-25T11:17:41+08:00">2018-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>如何将一段音频插入到视频中？可以使用AVFoundation的AVMutableComposition来实现：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/bfca531b.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/23982a59.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/23982a59.html" class="post-title-link" itemprop="url">iOS:TCP-UDP-基于CocoaAsyncSocket的运用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-15 16:01:12" itemprop="dateCreated datePublished" datetime="2018-03-15T16:01:12+08:00">2018-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在iOS开发中使用socket，一般都是用第三方库GCDAsyncSocket（虽然也有原生CFSocket）。</p>
+<p>GCDAsyncSocket 下载地址: GCDAsyncSocket</p>
+<p>使用之前需要先在项目引入ASyncSocket库：</p>
+<p>把ASyncSocket库源码加入项目：只需要增加RunLoop目录中的AsyncSocket.h、AsyncSocket.m、AsyncUdpSocket.h和AsyncUdpSocket.m四个文件。<br>在项目增加CFNetwork框架：<br>在Framework目录右健,选择Add–&gt;Existing Files…<br>选择 CFNetwork.framework<br>下面开始介绍一下如何使用ASyncSocket：</p>
+<p>一般来说，一个用户只需要建立一个socket长连接，所以可以用单例类方便使用。</p>
+<p>单例方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建单例</span><br><span class="line">+ (Singleton *) sharedInstance</span><br><span class="line">&#123;</span><br><span class="line">    static Singleton *sharedInstace &#x3D; nil;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        sharedInstace &#x3D; [[self alloc] initPrivate];</span><br><span class="line">    &#125;);</span><br><span class="line">    return sharedInstace;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 私有创建方法，不公开</span><br><span class="line">- (instancetype)initPrivate &#123;</span><br><span class="line">    if (self &#x3D; [super init]) &#123;</span><br><span class="line">        _lockStr &#x3D; @&quot;1234&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 废除init创建方法</span><br><span class="line">- (instancetype)init &#123;</span><br><span class="line">    @throw [NSException exceptionWithName:@&quot;初始化异常&quot; reason:@&quot;不允许通过init方法创建对象&quot; userInfo:nil];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>建立socket长连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#define TIME_OUT 20</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 建立socket连接</span><br><span class="line">-(void)socketConnectHost&#123;</span><br><span class="line">    _socket &#x3D; [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];</span><br><span class="line">    NSLog(@&quot;连接服务器&quot;);</span><br><span class="line">    NSError *error &#x3D; nil;</span><br><span class="line">    [_socket connectToHost:_socketHost onPort:_socketPort withTimeout:TIME_OUT error:&amp;error];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; socket成功连接回调</span><br><span class="line">-(void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port &#123;</span><br><span class="line">    NSLog(@&quot;成功连接到%@:%d&quot;,host,port);</span><br><span class="line">    _bufferData &#x3D; [[NSMutableData alloc] init]; &#x2F;&#x2F; 存储接收数据的缓存区</span><br><span class="line">    [_socket readDataWithTimeout:-1 tag:99];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>心跳</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, retain) NSTimer *heartTimer;   &#x2F;&#x2F; 心跳计时器</span><br><span class="line">在连接成功的回调方法里，启动定时器，每隔2秒向服务器发送固定的消息来检测长连接。</span><br><span class="line">&#x2F;&#x2F; 心跳连接</span><br><span class="line">-(void)longConnectToSocket&#123;</span><br><span class="line">    根据服务器要求发送固定格式的数据，假设为指令@&quot;longConnect&quot;，但是一般不会是这么简单的指令</span><br><span class="line">    NSString *longConnect &#x3D; @&quot;longConnect&quot;;</span><br><span class="line">    NSData   *dataStream  &#x3D; [longConnect dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    [_socket writeData:dataStream withTimeout:1 tag:1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>断开连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">* 主动断开</span><br><span class="line">- (void)cutOffSocket &#123;</span><br><span class="line">    [_socket disconnect];</span><br><span class="line">    _socket.userData &#x3D;  @(SocketOfflineByUser);</span><br><span class="line">    NSLog(@&quot;断开连接&quot;);</span><br><span class="line">&#125;</span><br><span class="line">* 被动断开</span><br><span class="line">-(void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err &#123;</span><br><span class="line">    if (err.code &#x3D;&#x3D; 57) &#123;</span><br><span class="line">        _socket.userData &#x3D; @(SocketOfflineByWifiCut); &#x2F;&#x2F; wifi断开</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        _socket.userData &#x3D;  @(SocketOfflineByServer);  &#x2F;&#x2F; 服务器掉线</span><br><span class="line">    &#125;</span><br><span class="line">    NSLog(@&quot;断开连接，错误：%@&quot;,err);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发送消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 发消息</span><br><span class="line">- (void)sendMessage:(NSData *)data &#123;</span><br><span class="line">    [_socket writeData:data withTimeout:TIME_OUT tag:10];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; wirte成功</span><br><span class="line">-(void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 持续接收数据</span><br><span class="line">    &#x2F;&#x2F; 超时设置为附属，表示不会使用超时</span><br><span class="line">    [_socket readDataWithTimeout:-1 tag:tag];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接收消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-(void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag &#123;</span><br><span class="line">    &#x2F;&#x2F; 在这里处理消息</span><br><span class="line">    [self disposeBufferData:data];</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;持续接收服务端的数据</span><br><span class="line">    [sock readDataWithTimeout:-1 tag:tag];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/c39637d5.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -833,301 +1013,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/ccdf824a.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/ccdf824a.html" class="post-title-link" itemprop="url">Objective-C-Coding-Guidelines-In-Chinese</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2017-07-10 14:22:48" itemprop="dateCreated datePublished" datetime="2017-07-10T14:22:48+08:00">2017-07-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>很不错的Objective-C编码规范中文版，转载于<a href="https://github.com/QianKaiLu/Objective-C-Coding-Guidelines-In-Chinese" target="_blank" rel="noopener">https://github.com/QianKaiLu/Objective-C-Coding-Guidelines-In-Chinese</a>，感谢QianKaiLu的分享</p>
-<h2 id="Objective-C-Coding-Guidelines-In-Chinese"><a href="#Objective-C-Coding-Guidelines-In-Chinese" class="headerlink" title="Objective-C-Coding-Guidelines-In-Chinese"></a>Objective-C-Coding-Guidelines-In-Chinese</h2><p>Objective-C编码规范，内容来自苹果、谷歌的文档翻译，自己的编码经验和对其它资料的总结。</p>
-<p>转载请注明出处。</p>
-<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Objective-C是一门面向对象的动态编程语言，主要用于编写iOS和Mac应用程序。关于Objective-C的编码规范，苹果和谷歌都已经有很好的</p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>Apple Coding Guidelines for Cocoa</p>
-<p>Google Objective-C Style Guide</p>
-<p>本文主要整合了对上述文档的翻译、作者自己的编程经验和其他的相关资料，为公司总结出一份通用的编码规范。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/ccdf824a.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/9daec043.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/9daec043.html" class="post-title-link" itemprop="url">Nginx https 免费SSL证书配置指南</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2017-02-05 22:43:24" itemprop="dateCreated datePublished" datetime="2017-02-05T22:43:24+08:00">2017-02-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>HTTPS（全称：Hypertext Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容 请看SSL。</p>
-<p>它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。https:URL表明它使用了HTTP，但HTTPS存在不同 于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。这个系统的最初研发由网景公司进行，提供了身份验证与加密通讯方法，现在它被广 泛用于万维网上安全敏感的通讯，例如交易支付方面。</p>
-<p>Nginx 配置 HTTPS 并不复杂，主要有两个步骤：签署第三方可信任的 SSL 证书 和 配置 HTTPS</p>
-<h2 id="签署第三方可信任的-SSL-证书"><a href="#签署第三方可信任的-SSL-证书" class="headerlink" title="签署第三方可信任的 SSL 证书"></a>签署第三方可信任的 SSL 证书</h2><h3 id="关于-SSL-证书"><a href="#关于-SSL-证书" class="headerlink" title="关于 SSL 证书"></a>关于 SSL 证书</h3><p>有关 SSL 的介绍可以参阅维基百科的传输层安全协议和阮一峰先生的 《SSL/TLS协议运行机制的概述》。<br>SSL 证书主要有两个功能：加密和身份证明，通常需要购买，也有免费的，通过第三方 SSL 证书机构颁发，常见可靠的第三方 SSL 证书颁发机构有下面几个：</p>
-<p>StartCom 机构上的 SSL 证书有以下几种：</p>
-<p>企业级别：EV(Extended Validation)、OV(Organization Validation)</p>
-<p>个人级别：IV(Identity Validation)、DV（Domain Validation）</p>
-<p>其中 EV、OV、IV 需要付费</p>
-<p>免费的证书安全认证级别一般比较低，不显示单位名称，不能证明网站的真实身份，仅起到加密传输信息的作用，适合个人网站或非电商网站。由于此类只验证域名所有权的低端 SSL 证书已经被国外各种欺诈网站滥用，因此强烈推荐部署验证单位信息并显示单位名称的 OV SSL 证书或申请最高信任级别的、显示绿色地址栏、直接在地址栏显示单位名称的 EV SSL 证书，就好像 StarCom 的地址栏一样：</p>
-<h3 id="使用-OpenSSL-生成-SSL-Key-和-CSR-文件"><a href="#使用-OpenSSL-生成-SSL-Key-和-CSR-文件" class="headerlink" title="使用 OpenSSL 生成 SSL Key 和 CSR 文件"></a>使用 OpenSSL 生成 SSL Key 和 CSR 文件</h3><p>配置 HTTPS 要用到私钥 example.key 文件和 example.crt 证书文件，申请证书文件的时候要用到 example.csr 文件，OpenSSL 命令可以生成 example.key 文件和 example.csr 证书文件。</p>
-<p>CSR：Cerificate Signing Request，证书签署请求文件，里面包含申请者的 DN（Distinguished Name，标识名）和公钥信息，在第三方证书颁发机构签署证书的时候需要提供。证书颁发机构拿到 CSR 后使用其根证书私钥对证书进行加密并生成 CRT 证书文件，里面包含证书加密信息以及申请者的 DN 及公钥信息</p>
-<p>Key：证书申请者私钥文件，和证书里面的公钥配对使用，在 HTTPS 『握手』通讯过程需要使用私钥去解密客戶端发來的经过证书公钥加密的随机数信息，是 HTTPS 加密通讯过程非常重要的文件，在配置 HTTPS 的時候要用到</p>
-<p>使用 OpenSSl命令可以在系统当前目录生成 example.key 和 example.csr 文件：</p>
-<p><code>openssl req -new -newkey rsa:2048 -sha256 -nodes -out example_com.csr -keyout example_com.key -subj “/C=CN/ST=ShenZhen/L=ShenZhen/O=Example Inc./OU=Web Security/CN=example.com”</code></p>
-<p>下面是上述命令相关字段含义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C：Country ，单位所在国家，为两位数的国家缩写，如： CN 就是中国</span><br><span class="line">ST 字段： State&#x2F;Province ，单位所在州或省</span><br><span class="line">L 字段： Locality ，单位所在城市 &#x2F; 或县区</span><br><span class="line">O 字段： Organization ，此网站的单位名称;</span><br><span class="line">OU 字段： Organization Unit，下属部门名称;也常常用于显示其他证书相关信息，如证书类型，证书产品名称或身份验证类型或验证内容等;</span><br><span class="line">CN 字段： Common Name ，网站的域名;</span><br><span class="line">生成 csr 文件后，提供给 CA 机构，签署成功后，就会得到一個 example.crt 证书文件，SSL 证书文件获得后，就可以在 Nginx 配置文件里配置 HTTPS 了。</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置-HTTPS"><a href="#配置-HTTPS" class="headerlink" title="配置 HTTPS"></a>配置 HTTPS</h2><h3 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h3><p>要开启 HTTPS 服务，在配置文件信息块(server block)，必须使用监听命令 listen 的 ssl 参数和定义服务器证书文件和私钥文件，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    #ssl参数</span><br><span class="line">    listen              443 ssl;</span><br><span class="line">    server_name         example.com;</span><br><span class="line">    #证书文件</span><br><span class="line">    ssl_certificate     example.com.crt;</span><br><span class="line">    #私钥文件</span><br><span class="line">    ssl_certificate_key example.com.key;</span><br><span class="line">    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_ciphers         HIGH:!aNULL:!MD5;</span><br><span class="line">    #...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>证书文件会作为公用实体發送到每台连接到服务器的客戶端，私钥文件作为安全实体，应该被存放在具有一定权限限制的目录文件，并保证 Nginx 主进程有存取权限。</p>
-<p>私钥文件也有可能会和证书文件同放在一個文件中，如下面情況：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssl_certificate     www.example.com.cert;</span><br><span class="line">ssl_certificate_key www.example.com.cert;</span><br></pre></td></tr></table></figure>
-
-<p>这种情況下，证书文件的的读取权限也应该加以限制，仅管证书和私钥存放在同一个文件里，但是只有证书会被发送到客戶端<br>命令 ssl_protocols 和 ssl_ciphers 可以用来限制连接只包含 SSL/TLS 的加強版本和算法，默认值如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">ssl_ciphers HIGH:!aNULL:!MD5;</span><br></pre></td></tr></table></figure>
-
-<p>由于这两个命令的默认值已经好几次发生了改变，因此不建议显性定义，除非有需要额外定义的值，如定义 D-H 算法：</p>
-<h3 id="使用DH文件"><a href="#使用DH文件" class="headerlink" title="使用DH文件"></a>使用DH文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssl_dhparam &#x2F;etc&#x2F;ssl&#x2F;certs&#x2F;dhparam.pem;</span><br><span class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br></pre></td></tr></table></figure>
-
-<h1 id="定义算法"><a href="#定义算法" class="headerlink" title="##定义算法"></a>##定义算法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssl_ciphers &quot;EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4&quot;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="HTTPS服务器优化"><a href="#HTTPS服务器优化" class="headerlink" title="HTTPS服务器优化"></a>HTTPS服务器优化</h2><h3 id="减少-CPU-运算量"><a href="#减少-CPU-运算量" class="headerlink" title="减少 CPU 运算量"></a>减少 CPU 运算量</h3><p>SSL 的运行计算需要消耗额外的 CPU 资源，一般多核处理器系统会运行多个工作进程(worker processes )，进程的数量不会少于可用的 CPU 核数。SSL 通讯过程中『握手』阶段的运算最占用 CPU 资源，有两个方法可以减少每台客户端的运算量：</p>
-<p>激活 keepalive 长连接，一个连接发送更多个请求</p>
-<p>复用 SSL 会话参数，在并行并发的连接数中避免进行多次 SSL『握手』</p>
-<p>这些会话会存储在一个 SSL 会话缓存里面，通过命令 ssl_session_cache 配置，可以使缓存在机器间共享，然后利用客戶端在『握手』阶段使用的 seesion id 去查询服务端的 session cathe(如果服务端设置有的话)，简化『握手』阶段。</p>
-<p>1M 的会话缓存大概包含 4000 個会话，默认的缓存超时时间为 5 分钟，可以通过使用 ssl_session_timeout 命令设置缓存超时时间。下面是一個拥有 10M 共享会话缓存的多核系统优化配置例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">worker_processes auto;</span><br><span class="line">http &#123;</span><br><span class="line">    #配置共享会话缓存大小</span><br><span class="line">    ssl_session_cache   shared:SSL:10m;</span><br><span class="line">    #配置会话超时时间</span><br><span class="line">    ssl_session_timeout 10m;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen              443 ssl;</span><br><span class="line">        server_name         www.example.com;</span><br><span class="line">        #设置长连接</span><br><span class="line">        keepalive_timeout   70;</span><br><span class="line">        ssl_certificate     www.example.com.crt;</span><br><span class="line">        ssl_certificate_key www.example.com.key;</span><br><span class="line">        ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">        ssl_ciphers         HIGH:!aNULL:!MD5;</span><br><span class="line">        #...</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用-HSTS-策略强制浏览器使用-HTTPS-连接"><a href="#使用-HSTS-策略强制浏览器使用-HTTPS-连接" class="headerlink" title="使用 HSTS 策略强制浏览器使用 HTTPS 连接"></a>使用 HSTS 策略强制浏览器使用 HTTPS 连接</h3><p>HSTS – HTTP Strict Transport Security，HTTP严格传输安全。它允许一个 HTTPS 网站要求浏览器总是通过 HTTPS 来访问，这使得攻击者在用戶与服务器通讯过程中拦截、篡改信息以及冒充身份变得更为困难。</p>
-<p>只要在 Nginx 配置文件加上以下头信息就可以了：</p>
-<p><code>add_header Strict-Transport-Security “max-age=31536000; includeSubDomains;preload” always;</code></p>
-<p>max-age：设置单位时间内強制使用 HTTPS 连接</p>
-<p>includeSubDomains：可选，所有子域同时生效</p>
-<p>preload：可选，非规范值，用于定义使用『HSTS 预加载列表』</p>
-<p>always：可选，保证所有响应都发送此响应头，包括各种內置错误响应</p>
-<p>当用户进行 HTTPS 连接的时候，服务器会发送一个 Strict-Transport-Security 响应头：</p>
-<p>浏览器在获取该响应头后，在 max-age 的时间内，如果遇到 HTTP 连接，就会通过 307 跳转強制使用 HTTPS 进行连接，并忽略其它的跳转设置（如 301 重定向跳转）：</p>
-<h3 id="307-跳转-Non-Authoritative-Reason-响应头"><a href="#307-跳转-Non-Authoritative-Reason-响应头" class="headerlink" title="307 跳转 Non-Authoritative-Reason 响应头"></a>307 跳转 Non-Authoritative-Reason 响应头</h3><p>Google HSTS 预加载列表（HSTS Preload List）</p>
-<p>由于 HSTS 需要用戶经过一次安全的 HTTPS 连接后才会在 max-age 的时间內生效，因此HSTS 策略并不能完美防止 HTTP 会话劫持（HTTP session hijacking），在下面这些情況下还是存在被劫持的可能：</p>
-<ul>
-<li>从未访问过的网站</li>
-<li>近期重裝过操作系統</li>
-<li>近期重裝过浏览器</li>
-<li>使用新的浏览器</li>
-<li>使用了新的设备（如手机）</li>
-<li>刪除了浏览器缓存</li>
-<li>近期沒有打开过网站且 max-age 过期</li>
-</ul>
-<p>针对这种情況，Google 维护了一份『HSTS 预加载列表』，列表里包含了使用了 HSTS 的站点主域名和子域名，可以通过以下页面申请加入：<br><a href="https://hstspreload.appspot.com/" target="_blank" rel="noopener">https://hstspreload.appspot.com/</a>.</p>
-<p>申请的时候会先验证站点是否符合资格，一般会检验待验证的站点主域和子域是否能通过 HTTPS 连接、HTTPS 和 HTTP 配置是否有 STS Header 等信息，通过验证后，会让你确认一些限制信息.</p>
-<p>当确认提交后，就会显示处理状态：</p>
-<p>申请通过后，列表内的站点名会被写进主流的浏览器，当浏览器更新版本后，只要打开列表内的站点，浏览器会拒绝所有 HTTP 连接而自动使用 HTTPS，即使关闭了 HSTS 设置。</p>
-<p>可以在下面两个连接分別查找 Chrome 和 Firfox 的『HSTS 预加载列表』内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The Chromium Projects - HTTP Strict Transport Security</span><br><span class="line">Firefox HSTS preload list - nsSTSPreloadList.inc</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是：</p>
-<p>一旦把自己的站点名加入『HSTS 预加载列表』，将很难彻底从列表中移除，因为不能保证其它浏览器可以及时移除，即使 Chrome 提供有便捷的移除方法，也是要通过出邮件联系，注明移除原因，并等到最新的浏览器版本更新发布才有机会（用戶不一定会及时更新）<br>所有不具备有效证书的子域或內嵌子域的访问将会被阻止</p>
-<p>因此，如果自己站点子域名变化比较多，又沒有泛域证书，又沒法确定全站是否能应用 HTTPS 的朋友，就要谨慎申请了。</p>
-<h2 id="更多关于-HSTS-配置可参考："><a href="#更多关于-HSTS-配置可参考：" class="headerlink" title="更多关于 HSTS 配置可参考："></a>更多关于 HSTS 配置可参考：</h2><p>《HTTP Strict Transport Security (HSTS) and NGINX》</p>
-<p>MDN的《HTTP Strict Transport Security》</p>
-<h2 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h2><h3 id="加强-HTTPS-安全性"><a href="#加强-HTTPS-安全性" class="headerlink" title="加强 HTTPS 安全性"></a>加强 HTTPS 安全性</h3><p>HTTPS 基础配置采取的默认加密算法是 SHA-1，这个算法非常脆弱，安全性在逐年降低，在 2014 年的时候， Google 官方博客就宣布在 Chrome 浏览器中逐渐降低 SHA-1 证书的安全指示，会从 2015 年起使用 SHA-2 签名的证书，可参阅 Rabbit_Run 在 2014 年发表的文章：《为什么Google急着杀死加密算法SHA-1》</p>
-<p>为此，主流的 HTTPS 配置方案应该避免 SHA-1，可以使用 迪菲-赫尔曼密钥交换（D-H，Diffie–Hellman key exchange）方案。<br>首先在目录 /etc/ssl/certs 运行以下代码生成 dhparam.pem 文件：</p>
-<p><code>openssl dhparam -out dhparam.pem 2048</code></p>
-<p>然后加入 Nginx 配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#优先采取服务器算法</span><br><span class="line">ssl_prefer_server_ciphers on;</span><br><span class="line">#使用DH文件</span><br><span class="line">ssl_dhparam &#x2F;etc&#x2F;ssl&#x2F;certs&#x2F;dhparam.pem;</span><br><span class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">#定义算法</span><br><span class="line">ssl_ciphers &quot;EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>如果服务器夠強大，可以使用更为复杂的 4096 位进行加密。<br>一般情況下还应该加上以下几个增强安全性的命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#减少点击劫持</span><br><span class="line">add_header X-Frame-Options DENY;</span><br><span class="line">#禁止服务器自动解析资源类型</span><br><span class="line">add_header X-Content-Type-Options nosniff;</span><br><span class="line">#防XSS攻击</span><br><span class="line">add_header X-Xss-Protection 1;</span><br></pre></td></tr></table></figure>
-
-<p>这几个安全命令在 Jerry Qu 大神的文章《一些安全相关的HTTP响应头》有详细的介紹。</p>
-<p>优化后的综合配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">worker_processes auto;</span><br><span class="line">http &#123;</span><br><span class="line">    #配置共享会话缓存大小，视站点访问情况设定</span><br><span class="line">    ssl_session_cache   shared:SSL:10m;</span><br><span class="line">    #配置会话超时时间</span><br><span class="line">    ssl_session_timeout 10m;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen              443 ssl;</span><br><span class="line">        server_name         www.example.com;</span><br><span class="line">        #设置长连接</span><br><span class="line">        keepalive_timeout   70;</span><br><span class="line">        #HSTS策略</span><br><span class="line">        add_header Strict-Transport-Security &quot;max-age&#x3D;31536000; includeSubDomains; preload&quot; always;</span><br><span class="line">        #证书文件</span><br><span class="line">        ssl_certificate     www.example.com.crt;</span><br><span class="line">        #私钥文件</span><br><span class="line">        ssl_certificate_key www.example.com.key; </span><br><span class="line">        #优先采取服务器算法</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">        #使用DH文件</span><br><span class="line">        ssl_dhparam &#x2F;etc&#x2F;ssl&#x2F;certs&#x2F;dhparam.pem;</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">        #定义算法</span><br><span class="line">        ssl_ciphers &quot;EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4&quot;;</span><br><span class="line">        #减少点击劫持</span><br><span class="line">        add_header X-Frame-Options DENY;</span><br><span class="line">        #禁止服务器自动解析资源类型</span><br><span class="line">        add_header X-Content-Type-Options nosniff;</span><br><span class="line">        #防XSS攻擊</span><br><span class="line">        add_header X-Xss-Protection 1;</span><br><span class="line">        #...</span><br></pre></td></tr></table></figure>
-
-<h3 id="HTTP-HTTPS混合服务器配置"><a href="#HTTP-HTTPS混合服务器配置" class="headerlink" title="HTTP/HTTPS混合服务器配置"></a>HTTP/HTTPS混合服务器配置</h3><p>可以同时配置 HTTP 和 HTTPS 服务器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen              80;</span><br><span class="line">    listen              443 ssl;</span><br><span class="line">    server_name         www.example.com;</span><br><span class="line">    ssl_certificate     www.example.com.crt;</span><br><span class="line">    ssl_certificate_key www.example.com.key;</span><br><span class="line">    #...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在 0.7.14 版本之前，在独立的 server 端口中是不能选择性开启 SSL 的。如上面的例子，SSL 只能通过使用 ssl 命令为单个 server </p>
-<h3 id="端口开启"><a href="#端口开启" class="headerlink" title="端口开启"></a>端口开启</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen              443;</span><br><span class="line">    server_name         www.example.com;</span><br><span class="line">    ssl_certificate     www.example.com.crt;</span><br><span class="line">    ssl_certificate_key www.example.com.key;</span><br><span class="line">    #ssl命令开启 https</span><br><span class="line">    ssl on;</span><br><span class="line">    #...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>因此没有辦法设置 HTTP/HTTPS 混合服务器。于是 Nginx 新增了监听命令 listen参数 ssl 來解决这个问题，Nginx 現代版本的ssl命令并不推荐使用</p>
-<h3 id="基于服务器名称（name-based）的-HTTPS-服务器"><a href="#基于服务器名称（name-based）的-HTTPS-服务器" class="headerlink" title="基于服务器名称（name-based）的 HTTPS 服务器"></a>基于服务器名称（name-based）的 HTTPS 服务器</h3><p>一个常见的问题就是当使用同一个 IP 地址去配置两个或更多的 HTTPS 服务器的时候，出现证书不匹配的情況：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen          443 ssl;</span><br><span class="line">    server_name     www.example.com;</span><br><span class="line">    ssl_certificate www.example.com.crt;</span><br><span class="line">    #...</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen          443 ssl;</span><br><span class="line">    server_name     www.example.org;</span><br><span class="line">    ssl_certificate www.example.org.crt;</span><br><span class="line">    #...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种情况下浏览器会获取默认的服务器证书（如上面例子的 <a href="http://www.example.com.crt）而忽视请求的服务器名，如输入网址：www.example.org，服务器会发送">www.example.com.crt）而忽视请求的服务器名，如输入网址：www.example.org，服务器会发送</a> <a href="http://www.example.com.crt" target="_blank" rel="noopener">www.example.com.crt</a> 的证书到客戶端，而不是 <a href="http://www.exaple.org.crt。" target="_blank" rel="noopener">www.exaple.org.crt。</a></p>
-<p>这是因为 SSL 协议行为所致，SSL 连接在浏览器发送 HTTP 请求之前就被建立，Nginx 并不知道被请求的服务器名字，因此 Nginx 只会提供默认的服务器证书。</p>
-<p>解決这个问题最原始最有效的方法就是为每个 HTTPS 服务器分配独立的 IP 地址：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen          192.168.1.1:443 ssl;</span><br><span class="line">    server_name     www.example.com;</span><br><span class="line">    ssl_certificate www.example.com.crt;</span><br><span class="line">    #...</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen          192.168.1.2:443 ssl;</span><br><span class="line">    server_name     www.example.org;</span><br><span class="line">    ssl_certificate www.example.org.crt;</span><br><span class="line">    #...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="更多解決方案"><a href="#更多解決方案" class="headerlink" title="更多解決方案"></a>更多解決方案</h3><p>除此之外，官方还介绍了两个方法：泛域证书和域名指示（SNI）<br>其实 OpenSSL 在 0.9.8f版本就支持 SNI 了，只要在安裝的时候加上 –enable-tlsext 选项就可以。到了 0.9.8j版本，这个选项在安裝的时候会默认启用。如果创建 Nginx 的时候支持 SNI，可以在 Nginx 版本信息查到以下的字段：</p>
-<h3 id="TLS-SNI-support-enabled"><a href="#TLS-SNI-support-enabled" class="headerlink" title="TLS SNI support enabled"></a>TLS SNI support enabled</h3><p>因此，如果较新版本的 Nginx 使用默认的 OpenSSL 库，是不存在使用 HTTPS 同时支持基于名字的虚拟主机的时候同 IP 不同域名证书不匹配的问题。</p>
-<p>注意：即使新版本的 Nginx 在创建时支持了 SNI，如果 Nginx 动态加载不支持 SNI 的 OpenSSL 库的话，SNI 扩展将不可用<br>有兴趣的朋友可以看下：</p>
-<p>An SSL certificate with several names &amp;&amp; Server Name Indication</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>OK，我们简单总结一下在 Nginx 下配置 HTTPS 的关键要点：</p>
-<ul>
-<li>获得 SSL 证书</li>
-<li>通过 OpenSSL 命令获得 example.key 和 example.csr 文件</li>
-<li>提供 example.csr 文件给第三方可靠证书颁发机构，选择适合的安全级别证书并签署，获得 example.crt 文件</li>
-<li>通过 listen 命令 SSL 参数以及引用 example.key 和 example.crt 文件完成 HTTPS 基础配置</li>
-<li>HTTPS优化</li>
-<li>减少 CPU 运算量</li>
-<li>使用 keepalive 长连接</li>
-<li>复用 SSL 会话参数</li>
-<li>使用 HSTS 策略强制浏览器使用 HTTPS 连接</li>
-<li>添加 Strict-Transport-Security 头部信息</li>
-<li>使用 HSTS 预加载列表（HSTS Preload List）</li>
-<li>加强 HTTPS 安全性</li>
-<li>使用迪菲-赫尔曼密钥交换（D-H，Diffie–Hellman key exchange）方案</li>
-<li>添加 X-Frame-Options 头部信息，减少点击劫持</li>
-<li>添加 X-Content-Type-Options 头部信息，禁止服务器自动解析资源类型</li>
-<li>添加 X-Xss-Protection 头部信息，防XSS攻击</li>
-<li>HTTP/HTTPS混合服务器配置</li>
-<li>基于服务器名称（name-based）的 HTTPS 服务器</li>
-<li>为每个 HTTPS 服务器分配独立的 IP 地址</li>
-<li>泛域证书</li>
-<li>域名标识（SNI）</li>
-</ul>
-<h2 id="全站ssl"><a href="#全站ssl" class="headerlink" title="全站ssl"></a>全站ssl</h2><p>全站做ssl是最常见的一个使用场景，默认端口443，而且一般是单向认证。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 443;</span><br><span class="line">        server_name example.com;</span><br><span class="line">        root &#x2F;apps&#x2F;www;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">        ssl on;</span><br><span class="line">        ssl_certificate ..&#x2F;SSL&#x2F;ittest.pem;</span><br><span class="line">        ssl_certificate_key ..&#x2F;SSL&#x2F;ittest.key;</span><br><span class="line">#        ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">#        ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;</span><br><span class="line">#        ssl_prefer_server_ciphers on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果想把http的请求强制转到https的话：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen      80;</span><br><span class="line">  server_name example.me;</span><br><span class="line">  rewrite     ^   https:&#x2F;&#x2F;$server_name$request_uri? permanent;</span><br><span class="line">### 使用return的效率会更高 </span><br><span class="line">#  return 301 https:&#x2F;&#x2F;$server_name$request_uri;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>ssl_certificate证书其实是个公钥，它会被发送到连接服务器的每个客户端，ssl_certificate_key私钥是用来解密的，所以它的权限要得到保护但nginx的主进程能够读取。当然私钥和证书可以放在一个证书文件中，这种方式也只有公钥证书才发送到client。</p>
-<p>ssl_protocols指令用于启动特定的加密协议，nginx在1.1.13和1.0.12版本后默认是ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2，TLSv1.1与TLSv1.2要确保OpenSSL &gt;= 1.0.1 ，SSLv3 现在还有很多地方在用但有不少被攻击的漏洞。</p>
-<p>ssl_ciphers选择加密套件，不同的浏览器所支持的套件（和顺序）可能会不同。这里指定的是OpenSSL库能够识别的写法，你可以通过 openssl -v cipher ‘RC4:HIGH:!aNULL:!MD5’（后面是你所指定的套件加密算法） 来看所支持算法。</p>
-<p>ssl_prefer_server_ciphers on设置协商加密算法时，优先使用我们服务端的加密套件，而不是客户端浏览器的加密套件。</p>
-<h2 id="https优化参数"><a href="#https优化参数" class="headerlink" title="https优化参数"></a>https优化参数</h2><p>ssl_session_cache shared:SSL:10m; : 设置ssl/tls会话缓存的类型和大小。如果设置了这个参数一般是shared，buildin可能会参数内存碎片，默认是none，和off差不多，停用缓存。如shared:SSL:10m表示我所有的nginx工作进程共享ssl会话缓存，官网介绍说1M可以存放约4000个sessions。</p>
-<p>ssl_session_cache。</p>
-<p>ssl_session_timeout ： 客户端可以重用会话缓存中ssl参数的过期时间，内网系统默认5分钟太短了，可以设成30m即30分钟甚至4h。<br>设置较长的keepalive_timeout也可以减少请求ssl会话协商的开销，但同时得考虑线程的并发数了。<br>提示：在生成证书请求csr文件时，如果输入了密码，nginx每次启动时都会提示输入这个密码，可以使用私钥来生成解密后的key来代替，效果是一样的，达到免密码重启的效果：</p>
-<p><code>openssl rsa -in ittest.key -out ittest_unsecure.key</code></p>
-<h2 id="部分页面ssl"><a href="#部分页面ssl" class="headerlink" title="部分页面ssl"></a>部分页面ssl</h2><p>一个站点并不是所有信息都是非常机密的，如网上商城，一般的商品浏览可以不通过https，而用户登录以及支付的时候就强制经过https传输，这样用户访问速度和安全性都得到兼顾。</p>
-<p>但是请注意不要理解错了，是对页面加密而不能针对某个请求加密，一个页面或地址栏的URL一般会发起许多请求的，包括css/png/js等静态文件和动态的java或php请求，所以要加密的内容包含页面内的其它资源文件，否则就会出现http与https内容混合的问题。在http页面混有https内容时，页面排版不会发生乱排现象；在https页面中包含以http方式引入的图片、js等资源时，浏览器为了安全起见会阻止加载。</p>
-<p>下面是只对example.com/account/login登录页面进行加密的栗子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">root &#x2F;apps&#x2F;www;</span><br><span class="line">index index.html index.htm;</span><br><span class="line">server &#123;</span><br><span class="line">    listen      80;</span><br><span class="line">    server_name example.com;</span><br><span class="line">    location ^~ &#x2F;account&#x2F;login &#123;</span><br><span class="line">        rewrite ^ https:&#x2F;&#x2F;$server_name:443$request_uri? permanent;</span><br><span class="line">    &#125;</span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">        proxy_pass  http:&#x2F;&#x2F;localhost:8080;</span><br><span class="line">        ### Set headers ####</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_redirect     off; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line">    server_name example.com;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate ..&#x2F;SSL&#x2F;ittest.pem;</span><br><span class="line">    ssl_certificate_key ..&#x2F;SSL&#x2F;ittest.key;</span><br><span class="line">    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_ciphers ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">    location ^~ &#x2F;account&#x2F;login &#123;</span><br><span class="line">        proxy_pass  http:&#x2F;&#x2F;localhost:8080;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_redirect     off; </span><br><span class="line">        ### Most PHP, Python, Rails, Java App can use this header -&gt; https ###</span><br><span class="line">        proxy_set_header X-Forwarded-Proto  $scheme;</span><br><span class="line">    &#125;</span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">        rewrite  ^  http:&#x2F;&#x2F;$server_name$request_uri? permanent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面配置中使用了proxy_set_header X-Forwarded-Proto $scheme，在jsp页面使用request.getScheme()得到的是https 。如果不把请求的$scheme协议设置在header里，后端jsp页面会一直认为是http，将导致响应异常。</p>
-<p>ssl配置块还有个与不加密的80端口类似的location /，它的作用是当用户直接通过https访问首页时，自动跳转到不加密端口，你可以去掉它允许用户这样做。</p>
-<h2 id="实现双向ssl认证"><a href="#实现双向ssl认证" class="headerlink" title="实现双向ssl认证"></a>实现双向ssl认证</h2><p>上面的两种配置都是去认证被访问的站点域名是否真实可信，并对传输过程加密，但服务器端并没有认证客户端是否可信。（实际上除非特别重要的场景，也没必要去认证访问者，除非像银行U盾这样的情况）</p>
-<p>要实现双向认证HTTPS，nginx服务器上必须导入CA证书（根证书/中间级证书），因为现在是由服务器端通过CA去验证客户端的信息。还有必须在申请服务器证书的同时，用同样的方法生成客户证书。取得客户证书后，还要将它转换成浏览器识别的格式（大部分浏览器都认识PKCS12格式）：</p>
-<p><code>openssl pkcs12 -export -clcerts -in client.crt -inkey client.key -out client.p12</code></p>
-<p>然后把这个client.p12发给你相信的人，让它导入到浏览器中，访问站点建立连接的时候nginx会要求客户端把这个证书发给自己验证，如果没有这个证书就拒绝访问。</p>
-<p>同时别忘了在 nginx.conf 里配置信任的CA：（如果是二级CA，请把根CA放在后面，形成CA证书链）</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1197,7 +1082,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">163</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

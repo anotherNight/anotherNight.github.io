@@ -163,6 +163,167 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/1524e441.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/1524e441.html" class="post-title-link" itemprop="url">基础算法：字符串转换整数 (atoi)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-08-31 18:45:19" itemprop="dateCreated datePublished" datetime="2020-08-31T18:45:19+08:00">2020-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="你来实现一个-atoi-函数，使其能将字符串转换成整数。"><a href="#你来实现一个-atoi-函数，使其能将字符串转换成整数。" class="headerlink" title="你来实现一个 atoi 函数，使其能将字符串转换成整数。"></a>你来实现一个 atoi 函数，使其能将字符串转换成整数。</h1><p>首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。</p>
+<p>当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数的正负号；假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。</p>
+<p>该字符串除了有效的整数部分之后也可能会存在多余的字符，这些字符可以被忽略，它们对于函数不应该造成影响。</p>
+<p>注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的函数不需要进行转换。</p>
+<p>在任何情况下，若函数不能进行有效的转换时，请返回 0。</p>
+<h2 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h2><p>假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231, 231 − 1]。如果数值超过这个范围，qing返回 INT_MAX (231 − 1) 或 INT_MIN (−231) 。</p>
+<p>示例 1:</p>
+<p>输入: “42”<br>输出: 42</p>
+<p>示例 2:</p>
+<p>输入: “   -42”<br>输出: -42<br>解释: 第一个非空白字符为 ‘-‘, 它是一个负号。<br>     我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。</p>
+<p>示例 3:</p>
+<p>输入: “4193 with words”<br>输出: 4193<br>解释: 转换截止于数字 ‘3’ ，因为它的下一个字符不为数字。</p>
+<p>示例 4:</p>
+<p>输入: “words and 987”<br>输出: 0<br>解释: 第一个非空字符是 ‘w’, 但它不是数字或正、负号。<br>     因此无法执行有效的转换。</p>
+<p>示例 5:</p>
+<p>输入: “-91283472332”<br>输出: -2147483648<br>解释: 数字 “-91283472332” 超过 32 位有符号整数范围。<br>     因此返回 INT_MIN (−231) </p>
+<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;limits.h&gt;</span><br><span class="line"></span><br><span class="line">int myAtoi(char* str) &#123;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;void?</span><br><span class="line">  if (*str &#x3D;&#x3D; &#39;\0&#39;) &#123;</span><br><span class="line">    return 0;</span><br><span class="line">  &#125;</span><br><span class="line">&#x2F;&#x2F;long long 32</span><br><span class="line">  long long llnum &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  int sign &#x3D; 1;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;&#39; &#39; and void handle</span><br><span class="line">  while (*str !&#x3D; &#39;\0&#39; &amp;&amp; (*str &#x3D;&#x3D; &#39; &#39;) ) &#123;</span><br><span class="line">    &#x2F;&#x2F;printf(&quot;%c\n&quot;, *str);</span><br><span class="line">    str++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; +&#x2F;-</span><br><span class="line">  if (*str &#x3D;&#x3D; &#39;-&#39;) &#123;</span><br><span class="line">    sign &#x3D; -1;</span><br><span class="line">    str++;</span><br><span class="line">  &#125;else if(*str &#x3D;&#x3D; &#39;+&#39;)&#123;</span><br><span class="line">    str++;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F;number</span><br><span class="line">  while (*str &gt;&#x3D; &#39;0&#39; &amp;&amp; *str &lt;&#x3D; &#39;9&#39;) &#123;</span><br><span class="line">    int i &#x3D; *str - &#39;0&#39;;</span><br><span class="line">    llnum &#x3D; llnum*10+i;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; max&#x2F;min</span><br><span class="line">    if (llnum*sign &gt; INT_MAX) &#123;</span><br><span class="line">      llnum &#x3D; INT_MAX;</span><br><span class="line">      break;</span><br><span class="line">    &#125;else if(llnum*sign &lt; INT_MIN)&#123;</span><br><span class="line">      llnum &#x3D; INT_MIN;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">    str++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (int)(sign*llnum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">  char* a &#x3D; &quot;asb   987&quot;;</span><br><span class="line">  int result &#x3D; myAtoi(a);</span><br><span class="line">  printf(&quot;%d\n&quot;, result);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/74787f34.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/74787f34.html" class="post-title-link" itemprop="url">像外行一样思考，像专家一样实践 科研成功之道</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-02-10 22:40:56" itemprop="dateCreated datePublished" datetime="2020-02-10T22:40:56+08:00">2020-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>看似枯燥的科研工作中，有许多思想和方法值得我们去关注的，比如，要勇于舍弃固有的思想、最大程度地发挥构思能力、积极主动地与同行交流等。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/74787f34.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/845ca7c4.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -956,172 +1117,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/6ca3cd46.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/6ca3cd46.html" class="post-title-link" itemprop="url">note:201911</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-11-14 16:55:10" itemprop="dateCreated datePublished" datetime="2019-11-14T16:55:10+08:00">2019-11-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="写作的自由和不自由"><a href="#写作的自由和不自由" class="headerlink" title="写作的自由和不自由"></a>写作的自由和不自由</h2><p>写作的限制带来自由,时间，话题，文体都是限制,但作家就是在限制中做到更好，作家的deadline，厨师的食材，赛车手的跑道，限制让我们更专注于能够做到的事情。</p>
-<h2 id="自由"><a href="#自由" class="headerlink" title="自由"></a>自由</h2><p>在存在主义中，一个人类，存在只是因为存在而已，不因为有特意的意义或目的而出现。不像是锤子，出现先于其本质/目的，因其是有需要所以再造出。也就是，人类被迫去拥有绝对自由。即萨特提出的绝对自由观点。人类既然没有被强加的意义，所以一切行为都需要自己承担后果。</p>
-<h2 id="金钱的最大好处"><a href="#金钱的最大好处" class="headerlink" title="金钱的最大好处"></a>金钱的最大好处</h2><p>贫穷剥夺人的自由，迫使人为金钱而工作，因为钱意味着生存。</p>
-<p>金钱的最大好处是使人摆脱贫穷的逼迫，在金钱面前获得自由。</p>
-<p>也就是说，不必为金钱而工作了，可以做自己真正喜欢做的事情了。</p>
-<p>可是，倘若一个人只喜欢钱，有了钱仍然只为金钱而工作，怎么样呢？他更不自由了，在<br>金钱面前他永无解放之日了。</p>
-<p>物质上的贫民，钱越少，越受金钱的奴役。</p>
-<p>精神上的贫民，钱越多，越受金钱的奴役。</p>
-<h2 id="What-is-the-cost-of-lies"><a href="#What-is-the-cost-of-lies" class="headerlink" title="What is the cost of lies?"></a>What is the cost of lies?</h2><p>It’s not that we will mistake them for the truth. The real danger is that if we hear enough lies, then we no longer recognize the truth at all.</p>
-<p>What can we do then?</p>
-<p>What else is left but to abandon even the hope of truth and content ourselves instead with stories? In those stories, it doesn’t matter who the heroes are. All we want to know is: who to blame?</p>
-<h2 id="西西弗斯"><a href="#西西弗斯" class="headerlink" title="西西弗斯"></a>西西弗斯</h2><p>西西弗斯无声的全部快乐就在于：他的命运是属于他的。他的岩石是他的事情。同样，当荒谬的人深思他的痛苦时，他就使一切偶像哑然失声。荒谬的人知道，他是自己生活的主人。我把西西弗斯留在山脚下！我们总是看到他身上的重负。而西西弗斯告诉我们，最高的虔诚是否认诸神并且搬掉石头。他也认为自己是幸福的。这个从此没有主宰的世界对他来讲既不是荒漠，也不是沃土。这块巨石上的每一颗粒，这黑黝黝的高山上的每一矿砂唯有对西西弗斯才形成一个世界。他爬上山顶所要进行的斗争本身就足以使一个人心里感到充实 ——加缪</p>
-<h2 id="性格"><a href="#性格" class="headerlink" title="性格"></a>性格</h2><p>性格的作用比智力大得多，头脑的作用不如心情，天资不如由判断力所节制着的自制、耐心和规律。开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。悔恨自己的错误，而且力求不再重蹈覆辙，这才是真正的悔悟。 —海明威</p>
-<h2 id="一件事”做得好”比较好，还是”做得快”比较好？"><a href="#一件事”做得好”比较好，还是”做得快”比较好？" class="headerlink" title="一件事”做得好”比较好，还是”做得快”比较好？"></a>一件事”做得好”比较好，还是”做得快”比较好？</h2><p>鱼和熊掌不能得兼，你怎么选择：做得好，付出的代价可能是耗时长、成本高；做得快，意味着完成度低、不是精品。</p>
-<p>我很赞同一篇文章的结论：做得快更好。</p>
-<p>做得快不仅可以让你在单位时间内完成更多的工作，而且 因为你工作得很快，所以你会觉得成本低，从而倾向于做更多。</p>
-<p>写一篇博客，你可能需要两天。这是很高的时间成本，你觉得太贵了，于是你很少写。但是，做好一件事的唯一方法，就是多做这件事。 做得越快，这件事的时间成本就越低，你会愿意做得更多。</p>
-<p>人们总是倾向于，多消费时间成本低的东西。网站很快，就会多访问；搜索很快，就会多搜索；文章很容易读懂，就会多读几篇。做得快的核心，就是要让时间成本降下来，从而多做。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/e8bb7171.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/e8bb7171.html" class="post-title-link" itemprop="url">[翻译][SwiftGG]宏定义与可选括号</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-11-14 15:40:35" itemprop="dateCreated datePublished" datetime="2019-11-14T15:40:35+08:00">2019-11-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://www.mikeash.com/pyblog/friday-qa-2015-03-20-preprocessor-abuse-and-optional-parentheses.html" target="_blank" rel="noopener">原文地址/作者：Mike Ash</a></p>
-<p><a href="https://swift.gg/2019/09/27/preprocessor-abuse-and-optional-parentheses/" target="_blank" rel="noopener">SwiftGG</a></p>
-<p>前几天我遇到了一个有趣的问题：如何编写一个 C 语言预处理器的宏，删除围绕在参数上的括号？</p>
-<p>今天的文章，将为大家分享我的解决方案。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/e8bb7171.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1191,7 +1186,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">163</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -163,6 +163,829 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/6c2e93eb.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/6c2e93eb.html" class="post-title-link" itemprop="url">Git 常用命令速查表</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-08-31 16:46:42" itemprop="dateCreated datePublished" datetime="2018-08-31T16:46:42+08:00">2018-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1、常用的Git命令"><a href="#1、常用的Git命令" class="headerlink" title="1、常用的Git命令"></a>1、常用的Git命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git add</td>
+<td>添加至暂存区</td>
+</tr>
+<tr>
+<td>git add–interactive</td>
+<td>交互式添加</td>
+</tr>
+<tr>
+<td>git apply</td>
+<td>应用补丁</td>
+</tr>
+<tr>
+<td>git am</td>
+<td>应用邮件格式补丁</td>
+</tr>
+<tr>
+<td>git annotate</td>
+<td>等同于 git blame</td>
+</tr>
+<tr>
+<td>git archive</td>
+<td>文件归档打包</td>
+</tr>
+<tr>
+<td>git bisect</td>
+<td>二分查找</td>
+</tr>
+<tr>
+<td>git blame</td>
+<td>文件逐行追溯</td>
+</tr>
+<tr>
+<td>git branch</td>
+<td>分支管理</td>
+</tr>
+<tr>
+<td>git cat-file</td>
+<td>版本库对象研究工具</td>
+</tr>
+<tr>
+<td>git checkout</td>
+<td>检出到工作区、切换或创建分支</td>
+</tr>
+<tr>
+<td>git cherry-pick</td>
+<td>提交拣选</td>
+</tr>
+<tr>
+<td>git citool</td>
+<td>图形化提交，相当于 git gui 命令</td>
+</tr>
+<tr>
+<td>git clean</td>
+<td>清除工作区未跟踪文件</td>
+</tr>
+<tr>
+<td>git clone</td>
+<td>克隆版本库</td>
+</tr>
+<tr>
+<td>git commit</td>
+<td>提交</td>
+</tr>
+<tr>
+<td>git config</td>
+<td>查询和修改配置</td>
+</tr>
+<tr>
+<td>git describe</td>
+<td>通过里程碑直观地显示提交ID</td>
+</tr>
+<tr>
+<td>git diff</td>
+<td>差异比较</td>
+</tr>
+<tr>
+<td>git difftool</td>
+<td>调用图形化差异比较工具</td>
+</tr>
+<tr>
+<td>git fetch</td>
+<td>获取远程版本库的提交</td>
+</tr>
+<tr>
+<td>git format-patch</td>
+<td>创建邮件格式的补丁文件。参见 git am 命令</td>
+</tr>
+<tr>
+<td>git grep</td>
+<td>文件内容搜索定位工具</td>
+</tr>
+<tr>
+<td>git gui</td>
+<td>基于Tcl/Tk的图形化工具，侧重提交等操作</td>
+</tr>
+<tr>
+<td>git help</td>
+<td>帮助</td>
+</tr>
+<tr>
+<td>git init</td>
+<td>版本库初始化</td>
+</tr>
+<tr>
+<td>git init-db*</td>
+<td>等同于 git init</td>
+</tr>
+<tr>
+<td>git log</td>
+<td>显示提交日志</td>
+</tr>
+<tr>
+<td>git merge</td>
+<td>分支合并</td>
+</tr>
+<tr>
+<td>git mergetool</td>
+<td>图形化冲突解决</td>
+</tr>
+<tr>
+<td>git mv</td>
+<td>重命名</td>
+</tr>
+<tr>
+<td>git pull</td>
+<td>拉回远程版本库的提交</td>
+</tr>
+<tr>
+<td>git push</td>
+<td>推送至远程版本库</td>
+</tr>
+<tr>
+<td>git rebase</td>
+<td>分支变基</td>
+</tr>
+<tr>
+<td>git rebase–interactive</td>
+<td>交互式分支变基</td>
+</tr>
+<tr>
+<td>git reflog</td>
+<td>分支等引用变更记录管理</td>
+</tr>
+<tr>
+<td>git remote</td>
+<td>远程版本库管理</td>
+</tr>
+<tr>
+<td>git repo-config*</td>
+<td>同于 git config</td>
+</tr>
+<tr>
+<td>git reset</td>
+<td>重置改变分支“游标”指向</td>
+</tr>
+<tr>
+<td>git rev-parse</td>
+<td>将各种引用表示法转换为哈希值等</td>
+</tr>
+<tr>
+<td>git revert</td>
+<td>反转提交</td>
+</tr>
+<tr>
+<td>git rm</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>git show</td>
+<td>显示各种类型的对象</td>
+</tr>
+<tr>
+<td>git stage*</td>
+<td>等同于 git add</td>
+</tr>
+<tr>
+<td>git stash</td>
+<td>保存和恢复进度</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>显示工作区文件状态</td>
+</tr>
+<tr>
+<td>git tag</td>
+<td>里程碑管理</td>
+</tr>
+</tbody></table>
+<h2 id="2、对象库操作相关命令"><a href="#2、对象库操作相关命令" class="headerlink" title="2、对象库操作相关命令"></a>2、对象库操作相关命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git commit-tree</td>
+<td>从树对象创建提交</td>
+</tr>
+<tr>
+<td>git hash-object</td>
+<td>从标准输入或文件计算哈希值或创建对象</td>
+</tr>
+<tr>
+<td>git ls-files</td>
+<td>显示工作区和暂存区文件</td>
+</tr>
+<tr>
+<td>git ls-tree</td>
+<td>显示树对象包含的文件</td>
+</tr>
+<tr>
+<td>git mktag</td>
+<td>读取标准输入创建一个里程碑对象</td>
+</tr>
+<tr>
+<td>git mktree</td>
+<td>读取标准输入创建一个树对象</td>
+</tr>
+<tr>
+<td>git read-tree</td>
+<td>读取树对象到暂存区</td>
+</tr>
+<tr>
+<td>git update-index</td>
+<td>工作区内容注册到暂存区及暂存区管理</td>
+</tr>
+<tr>
+<td>git unpack-file</td>
+<td>创建临时文件包含指定 blob 的内容</td>
+</tr>
+<tr>
+<td>git write-tree</td>
+<td>从暂存区创建一个树对象</td>
+</tr>
+</tbody></table>
+<h2 id="3、引用操作相关命令"><a href="#3、引用操作相关命令" class="headerlink" title="3、引用操作相关命令"></a>3、引用操作相关命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git check-ref-format</td>
+<td>检查引用名称是否符合规范</td>
+</tr>
+<tr>
+<td>git for-each-ref</td>
+<td>引用迭代器，用于shell编程</td>
+</tr>
+<tr>
+<td>git ls-remote</td>
+<td>显示远程版本库的引用</td>
+</tr>
+<tr>
+<td>git name-rev</td>
+<td>将提交ID显示为友好名称</td>
+</tr>
+<tr>
+<td>git rev-list</td>
+<td>显示版本范围</td>
+</tr>
+<tr>
+<td>git show-branch</td>
+<td>显示分支列表及拓扑关系</td>
+</tr>
+<tr>
+<td>git show-ref</td>
+<td>显示本地引用</td>
+</tr>
+<tr>
+<td>git symbolic-ref</td>
+<td>显示或者设置符号引用</td>
+</tr>
+<tr>
+<td>git update-ref</td>
+<td>更新引用的指向</td>
+</tr>
+<tr>
+<td>git verify-tag</td>
+<td>校验 GPG 签名的Tag</td>
+</tr>
+</tbody></table>
+<h2 id="4、版本库管理相关命令"><a href="#4、版本库管理相关命令" class="headerlink" title="4、版本库管理相关命令"></a>4、版本库管理相关命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git count-objects</td>
+<td>显示松散对象的数量和磁盘占用</td>
+</tr>
+<tr>
+<td>git filter-branch</td>
+<td>版本库重构</td>
+</tr>
+<tr>
+<td>git fsck</td>
+<td>对象库完整性检查</td>
+</tr>
+<tr>
+<td>git gc</td>
+<td>版本库存储优化</td>
+</tr>
+<tr>
+<td>git index-pack</td>
+<td>从打包文件创建对应的索引文件</td>
+</tr>
+<tr>
+<td>git pack-objects</td>
+<td>从标准输入读入对象ID，打包到文件</td>
+</tr>
+<tr>
+<td>git pack-redundant</td>
+<td>查找多余的 pack 文件</td>
+</tr>
+<tr>
+<td>git pack-refs</td>
+<td>将引用打包到 .git/packed-refs 文件中</td>
+</tr>
+<tr>
+<td>git prune</td>
+<td>从对象库删除过期对象</td>
+</tr>
+<tr>
+<td>git prune-packed</td>
+<td>将已经打包的松散对象删除</td>
+</tr>
+<tr>
+<td>git relink</td>
+<td>为本地版本库中相同的对象建立硬连接</td>
+</tr>
+<tr>
+<td>git repack</td>
+<td>将版本库未打包的松散对象打包</td>
+</tr>
+<tr>
+<td>git show-index</td>
+<td>读取包的索引文件，显示打包文件中的内容</td>
+</tr>
+<tr>
+<td>git unpack-objects</td>
+<td>从打包文件释放文件</td>
+</tr>
+<tr>
+<td>git verify-pack</td>
+<td>校验对象库打包文件</td>
+</tr>
+</tbody></table>
+<h2 id="5、数据传输相关命令"><a href="#5、数据传输相关命令" class="headerlink" title="5、数据传输相关命令"></a>5、数据传输相关命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git fetch-pack</td>
+<td>执行 git fetch 或 git pull 命令时在本地执行此命令，用于从其他版本库获取缺失的对象</td>
+</tr>
+<tr>
+<td>git receive-pack</td>
+<td>执行 git push 命令时在远程执行的命令，用于接受推送的数据</td>
+</tr>
+<tr>
+<td>git send-pack</td>
+<td>执行 git push 命令时在本地执行的命令，用于向其他版本库推送数据</td>
+</tr>
+<tr>
+<td>git upload-archive</td>
+<td>执行 git archive –remote 命令基于远程版本库创建归档时，远程版本库执行此命令传送归档</td>
+</tr>
+<tr>
+<td>git upload-pack</td>
+<td>执行 git fetch 或 git pull 命令时在远程执行此命令，将对象打包、上传</td>
+</tr>
+</tbody></table>
+<h2 id="6、邮件相关命令"><a href="#6、邮件相关命令" class="headerlink" title="6、邮件相关命令"></a>6、邮件相关命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git imap-send</td>
+<td>将补丁通过 IMAP 发送</td>
+</tr>
+<tr>
+<td>git mailinfo</td>
+<td>从邮件导出提交说明和补丁</td>
+</tr>
+<tr>
+<td>git mailsplit</td>
+<td>将 mbox 或 Maildir 格式邮箱中邮件逐一提取为文件</td>
+</tr>
+<tr>
+<td>git request-pull</td>
+<td>创建包含提交间差异和执行PULL操作地址的信息</td>
+</tr>
+<tr>
+<td>git send-email</td>
+<td>发送邮件</td>
+</tr>
+</tbody></table>
+<h2 id="7、协议相关命令"><a href="#7、协议相关命令" class="headerlink" title="7、协议相关命令"></a>7、协议相关命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git daemon</td>
+<td>实现Git协议</td>
+</tr>
+<tr>
+<td>git http-backend</td>
+<td>实现HTTP协议的CGI程序，支持智能HTTP协议</td>
+</tr>
+<tr>
+<td>git instaweb</td>
+<td>即时启动浏览器通过 gitweb 浏览当前版本库</td>
+</tr>
+<tr>
+<td>git shell</td>
+<td>受限制的shell，提供仅执行Git命令的SSH访问</td>
+</tr>
+<tr>
+<td>git update-server-info</td>
+<td>更新哑协议需要的辅助文件</td>
+</tr>
+<tr>
+<td>git http-fetch</td>
+<td>通过HTTP协议获取版本库</td>
+</tr>
+<tr>
+<td>git http-push</td>
+<td>通过HTTP/DAV协议推送</td>
+</tr>
+<tr>
+<td>git remote-ext</td>
+<td>由Git命令调用，通过外部命令提供扩展协议支持</td>
+</tr>
+<tr>
+<td>git remote-fd</td>
+<td>由Git命令调用，使用文件描述符作为协议接口</td>
+</tr>
+<tr>
+<td>git remote-ftp</td>
+<td>由Git命令调用，提供对FTP协议的支持</td>
+</tr>
+<tr>
+<td>git remote-ftps</td>
+<td>由Git命令调用，提供对FTPS协议的支持</td>
+</tr>
+<tr>
+<td>git remote-http</td>
+<td>由Git命令调用，提供对HTTP协议的支持</td>
+</tr>
+<tr>
+<td>git remote-https</td>
+<td>由Git命令调用，提供对HTTPS协议的支持</td>
+</tr>
+<tr>
+<td>git remote-testgit</td>
+<td>协议扩展示例脚本</td>
+</tr>
+</tbody></table>
+<h2 id="8、版本库转换和交互相关命令"><a href="#8、版本库转换和交互相关命令" class="headerlink" title="8、版本库转换和交互相关命令"></a>8、版本库转换和交互相关命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git archimport</td>
+<td>导入Arch版本库到Git</td>
+</tr>
+<tr>
+<td>git bundle</td>
+<td>提交打包和解包，以便在不同版本库间传递</td>
+</tr>
+<tr>
+<td>git cvsexportcommit</td>
+<td>将Git的一个提交作为一个CVS检出</td>
+</tr>
+<tr>
+<td>git cvsimport</td>
+<td>导入CVS版本库到Git。或者使用 cvs2git</td>
+</tr>
+<tr>
+<td>git cvsserver</td>
+<td>Git的CVS协议模拟器，可供CVS命令访问Git版本库</td>
+</tr>
+<tr>
+<td>git fast-export</td>
+<td>将提交导出为 git-fast-import 格式</td>
+</tr>
+<tr>
+<td>git fast-import</td>
+<td>其他版本库迁移至Git的通用工具</td>
+</tr>
+<tr>
+<td>git svn</td>
+<td>Git 作为前端操作 Subversion</td>
+</tr>
+</tbody></table>
+<h2 id="9、合并相关的辅助命令"><a href="#9、合并相关的辅助命令" class="headerlink" title="9、合并相关的辅助命令"></a>9、合并相关的辅助命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git merge-base</td>
+<td>供其他脚本调用，找到两个或多个提交最近的共同祖先</td>
+</tr>
+<tr>
+<td>git merge-file</td>
+<td>针对文件的两个不同版本执行三向文件合并</td>
+</tr>
+<tr>
+<td>git merge-index</td>
+<td>对index中的冲突文件调用指定的冲突解决工具</td>
+</tr>
+<tr>
+<td>git merge-octopus</td>
+<td>合并两个以上分支。参见 git merge 的octopus合并策略</td>
+</tr>
+<tr>
+<td>git merge-one-file</td>
+<td>由 git merge-index 调用的标准辅助程序</td>
+</tr>
+<tr>
+<td>git merge-ours</td>
+<td>合并使用本地版本，抛弃他人版本。参见 git merge 的ours合并策略</td>
+</tr>
+<tr>
+<td>git merge-recursive</td>
+<td>针对两个分支的三向合并。参见 git merge 的recursive合并策略</td>
+</tr>
+<tr>
+<td>git merge-resolve</td>
+<td>针对两个分支的三向合并。参见 git merge 的resolve合并策略</td>
+</tr>
+<tr>
+<td>git merge-subtree</td>
+<td>子树合并。参见 git merge 的 subtree 合并策略</td>
+</tr>
+<tr>
+<td>git merge-tree</td>
+<td>显式三向合并结果，不改变暂存区</td>
+</tr>
+<tr>
+<td>git fmt-merge-msg</td>
+<td>供执行合并操作的脚本调用，用于创建一个合并提交说明</td>
+</tr>
+<tr>
+<td>git rerere</td>
+<td>重用所记录的冲突解决方案</td>
+</tr>
+</tbody></table>
+<h2 id="10、-杂项"><a href="#10、-杂项" class="headerlink" title="10、 杂项"></a>10、 杂项</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git bisect–helper</td>
+<td>由 git bisect 命令调用，确认二分查找进度</td>
+</tr>
+<tr>
+<td>git check-attr</td>
+<td>显示某个文件是否设置了某个属性</td>
+</tr>
+<tr>
+<td>git checkout-index</td>
+<td>从暂存区拷贝文件至工作区</td>
+</tr>
+<tr>
+<td>git cherry</td>
+<td>查找没有合并到上游的提交</td>
+</tr>
+<tr>
+<td>git diff-files</td>
+<td>比较暂存区和工作区，相当于 git diff –raw</td>
+</tr>
+<tr>
+<td>git diff-index</td>
+<td>比较暂存区和版本库，相当于 git diff –cached –raw</td>
+</tr>
+<tr>
+<td>git diff-tree</td>
+<td>比较两个树对象，相当于 git diff –raw A B</td>
+</tr>
+<tr>
+<td>git difftool–helper</td>
+<td>由 git difftool 命令调用，默认要使用的差异比较工具</td>
+</tr>
+<tr>
+<td>git get-tar-commit-id</td>
+<td>从 git archive 创建的 tar 包中提取提交ID</td>
+</tr>
+<tr>
+<td>git gui–askpass</td>
+<td>命令 git gui 的获取用户口令输入界面</td>
+</tr>
+<tr>
+<td>git notes</td>
+<td>提交评论管理</td>
+</tr>
+<tr>
+<td>git patch-id</td>
+<td>补丁过滤行号和空白字符后生成补丁唯一ID</td>
+</tr>
+<tr>
+<td>git quiltimport</td>
+<td>将Quilt补丁列表应用到当前分支</td>
+</tr>
+<tr>
+<td>git replace</td>
+<td>提交替换</td>
+</tr>
+<tr>
+<td>git shortlog</td>
+<td>对 git log 的汇总输出，适合于产品发布说明</td>
+</tr>
+<tr>
+<td>git stripspace</td>
+<td>删除空行，供其他脚本调用</td>
+</tr>
+<tr>
+<td>git submodule</td>
+<td>子模组管理</td>
+</tr>
+<tr>
+<td>git var</td>
+<td>显示 Git 环境变量</td>
+</tr>
+<tr>
+<td>git web–browse</td>
+<td>启动浏览器以查看目录或文件</td>
+</tr>
+<tr>
+<td>git whatchanged</td>
+<td>显示提交历史及每次提交的改动</td>
+</tr>
+<tr>
+<td>git-mergetool–lib</td>
+<td>包含于其他脚本中，提供合并/差异比较工具的选择和执行</td>
+</tr>
+<tr>
+<td>git-parse-remote</td>
+<td>包含于其他脚本中，提供操作远程版本库的函数</td>
+</tr>
+<tr>
+<td>git-sh-setup</td>
+<td>包含于其他脚本中，提供 shell 编程的函数库</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/c6cc69a1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/c6cc69a1.html" class="post-title-link" itemprop="url">iOS WKWebView适配iOS8支持网页宽度自适应</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-08-22 12:21:39" itemprop="dateCreated datePublished" datetime="2018-08-22T12:21:39+08:00">2018-08-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>iOS在iOS8推出基于WebKit的WKWebView显示网页、富文本内容，相比UIWebView在速度、内容消耗上有了很大的提升，但WKWebView也埋下了不少坑，最近碰到一个iOS8独享bug，iOS8上，网页宽度自适应失效，内容强制显示屏幕宽度，而不是WKWebView的宽度，主要是标签的支持问题，在此记录下解决方案，希望iOS8不再是开发者的痛；（ps：iOS12都快出了，iOS8还想走多远 ==）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSString *jScript &#x3D; @&quot;var meta &#x3D; document.createElement(&#39;meta&#39;); meta.setAttribute(&#39;name&#39;, &#39;viewport&#39;); meta.setAttribute(&#39;content&#39;, &#39;width&#x3D;device-width&#39;); document.getElementsByTagName(&#39;head&#39;)[0].appendChild(meta);&quot;;</span><br><span class="line">            </span><br><span class="line">WKUserScript *wkUScript &#x3D; [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];</span><br><span class="line">WKUserContentController *wkUController &#x3D; [[WKUserContentController alloc] init];</span><br><span class="line">wkUController addUserScript:wkUScript];</span><br><span class="line">Configuration.userContentController &#x3D; wkUController;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/ae1b8e69.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -833,146 +1656,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/undefined.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/undefined.html" class="post-title-link" itemprop="url">UITableView滚动优化</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-07-01 15:31:04" itemprop="dateCreated datePublished" datetime="2018-07-01T15:31:04+08:00">2018-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/96bf0c06.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/96bf0c06.html" class="post-title-link" itemprop="url">算法基础：字符串</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-05-02 16:30:44" itemprop="dateCreated datePublished" datetime="2018-05-02T16:30:44+08:00">2018-05-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">数理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>题目：</p>
-<p>实现一个函数，把字符串中的每个空格替换成“###”</p>
-<p>code：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public static  void Replace(char string[])&#123;</span><br><span class="line">        if (string &#x3D;&#x3D; null) &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">    int originalLength &#x3D; 0;</span><br><span class="line">    int numberOfBlank &#x3D; 0;</span><br><span class="line">    int i &#x3D; 0;</span><br><span class="line">    while(i&lt;string.length)&#123;</span><br><span class="line">      originalLength++;</span><br><span class="line">      if (string[i] &#x3D;&#x3D; &#39; &#39;) &#123;</span><br><span class="line">        numberOfBlank++;</span><br><span class="line">      &#125;</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">    int newLength &#x3D; originalLength+numberOfBlank*2;</span><br><span class="line">    char[] newString &#x3D; new char[newLength];</span><br><span class="line">    System.out.println(&quot;string.length:&quot;+string.length+&quot;,newLength:&quot;+newLength);</span><br><span class="line"></span><br><span class="line">    int indexOfNew &#x3D; newLength-1;</span><br><span class="line">    int indexOfOriginal &#x3D; originalLength-1;</span><br><span class="line">    while(indexOfOriginal &gt;&#x3D;0 &amp;&amp; indexOfNew &gt;&#x3D; indexOfOriginal)&#123;</span><br><span class="line">      if (string[indexOfOriginal] &#x3D;&#x3D; &#39; &#39;) &#123;</span><br><span class="line">        newString[indexOfNew --] &#x3D; &#39;#&#39;;</span><br><span class="line">        newString[indexOfNew --] &#x3D; &#39;#&#39;;</span><br><span class="line">        newString[indexOfNew --] &#x3D; &#39;#&#39;;</span><br><span class="line">      &#125;else &#123;</span><br><span class="line">        newString[indexOfNew --] &#x3D; string[indexOfOriginal];</span><br><span class="line">      &#125;</span><br><span class="line">      indexOfOriginal--;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.print(&quot;newString:&quot;);</span><br><span class="line">    System.out.println(newString);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1042,7 +1725,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">163</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

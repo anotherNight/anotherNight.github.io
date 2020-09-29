@@ -163,6 +163,170 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/a7582be5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/a7582be5.html" class="post-title-link" itemprop="url">Xcode:存储空间清理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-01-30 11:03:44" itemprop="dateCreated datePublished" datetime="2019-01-30T11:03:44+08:00">2019-01-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>当前存储空间已不足，请清理您的电脑文件 – macOS</p>
+</blockquote>
+<h2 id="移除-Xcode-运行安装-APP-产生的缓存文件-DerivedData"><a href="#移除-Xcode-运行安装-APP-产生的缓存文件-DerivedData" class="headerlink" title="移除 Xcode 运行安装 APP 产生的缓存文件(DerivedData)"></a>移除 Xcode 运行安装 APP 产生的缓存文件(DerivedData)</h2><p>只要重新运行Xcode就一定会重新生成，而且会随着运行程序的增多，占用空间会越来越大。删除后在重新运行程序可能会稍微慢一点，建议定期清理。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/Xcode/DerivedData</code></p>
+<h2 id="移除-APP-打包的ipa历史版本-Archives"><a href="#移除-APP-打包的ipa历史版本-Archives" class="headerlink" title="移除 APP 打包的ipa历史版本(Archives)"></a>移除 APP 打包的ipa历史版本(Archives)</h2><p>删除后不可恢复，文件夹是按照日期排列的，所以如果你不想全部删除，就只保留最新的几个版本就好了，个人建议全部删除。<br>路径：</p>
+<p><code>~/Library/Developer/Xcode/Archives</code></p>
+<h2 id="移除-APP-打包的app-icon历史版本-Archives"><a href="#移除-APP-打包的app-icon历史版本-Archives" class="headerlink" title="移除 APP 打包的app icon历史版本(Archives)"></a>移除 APP 打包的app icon历史版本(Archives)</h2><p>删除后不可恢复，文件夹是Bundle Idenifier排列的，然后再按照archive的版本号排列的，如果你看每个版本内的内容，其实就是你的app icon，个人建议全部删除。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/Xcode/Products/</code></p>
+<h2 id="移除模拟器的缓存数据-Devices"><a href="#移除模拟器的缓存数据-Devices" class="headerlink" title="移除模拟器的缓存数据(Devices)"></a>移除模拟器的缓存数据(Devices)</h2><p>模拟器的相关数据。每个版本的模拟器占用的内存空间大约为10M左右。每个文件夹里包含的就是一个特定系统版本的设备的数据。每个文件夹对应哪个设备可以在其下device.plist中查看。删除之后，如果立即运行程序会报错，先关闭Xcode，再重新打开程序，运行即可。运行该路径下会立马生成模拟器对应版本的文件。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/CoreSimulator/Devices/</code></p>
+<h2 id="移除对旧设备的支持-iOS-DeviceSupport"><a href="#移除对旧设备的支持-iOS-DeviceSupport" class="headerlink" title="移除对旧设备的支持(iOS DeviceSupport)"></a>移除对旧设备的支持(iOS DeviceSupport)</h2><p>一般是占用内存空间最大的文件夹，即使全部删，再连接设备调试时，会重新自动生成。一般iOS只向下兼容两个版本就可以了，所以我移除了9.0以下的所有版本。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/Xcode/iOS DeviceSupport</code></p>
+<h2 id="移除-Xcode-中的无效的插件-Plug-ins"><a href="#移除-Xcode-中的无效的插件-Plug-ins" class="headerlink" title="移除 Xcode 中的无效的插件(Plug-ins)"></a>移除 Xcode 中的无效的插件(Plug-ins)</h2><p>因为之前你可能安装了一些 Xcode 的插件，比如HighlightSelectedString、VVDocumenter-Xcode等非常方便好用的第三方插件，在Xcode升级到version 8.0以后，就失效了，Xcode在内部已经集成了类似的方法，所以之前安装的也都没有用了，但是还在原来的位置占用着内存空间，建议删除。</p>
+<p>路径：</p>
+<p><code>~/Library/Application Support/Developer/Shared/Xcode/Plug-ins</code></p>
+<p>如果你曾经没有安装过插件，那么可能不存在此路径。</p>
+<h2 id="移除旧版本的模拟器支持"><a href="#移除旧版本的模拟器支持" class="headerlink" title="移除旧版本的模拟器支持"></a>移除旧版本的模拟器支持</h2><p>如果你不小心安装了很多个版本的模拟器，那么你可以删除一些旧版本的。但是当你需要旧版本的模拟器时，就需要重新下载了。建议留下1~2个版本就好了，其余的都删了吧。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/CoreSimulator/Profiles/Runtimes/</code></p>
+<h2 id="移除-playground-的项目缓存-XCPGDevices"><a href="#移除-playground-的项目缓存-XCPGDevices" class="headerlink" title="移除 playground 的项目缓存(XCPGDevices)"></a>移除 playground 的项目缓存(XCPGDevices)</h2><p>删除后可重新生成，可以全部删除。再次运行程序会缓存。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/XCPGDevices/</code></p>
+<h2 id="移除旧的文档-Docsets"><a href="#移除旧的文档-Docsets" class="headerlink" title="移除旧的文档(Docsets)"></a>移除旧的文档(Docsets)</h2><p>删除后不可恢复，该目录下存储的为开发文档，一般有三个文件<br>com.apple.adc.documentation.iOS.docset(1.68GB)、com.apple.adc.documentation.OSX.docset(2.62GB)和com.apple.adc.documentation.Xcode.docset(256.4M)，如果你只做iOS开发，其实你可以把OSX.docset删除掉的，因为它占用了2.62GB的内存。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/Shared/Documentation/DocSets</code></p>
+<h2 id="移除模拟器中的SDK版本-iPhoneSimulator-sdk"><a href="#移除模拟器中的SDK版本-iPhoneSimulator-sdk" class="headerlink" title="移除模拟器中的SDK版本(iPhoneSimulator.sdk)"></a>移除模拟器中的SDK版本(iPhoneSimulator.sdk)</h2><p>不可恢复，操作请慎重。我个人的此路径下的只有最新版本的sdk，除非当你有多个版本的sdk再酌情删除。</p>
+<p>路径:</p>
+<p><code>~/application/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/da07bd5e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/da07bd5e.html" class="post-title-link" itemprop="url">《Down By The Sally Gardens（爱尔兰画眉）》</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-01-28 12:36:07" itemprop="dateCreated datePublished" datetime="2019-01-28T12:36:07+08:00">2019-01-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Down By The Sally Gardens 是美籍爱尔兰哨笛音乐家Joanie Madden的作品，蕴含温婉的爱尔兰肘风笛凄美的低诉，地道的奏鸣让你感受最朴素的音域，畅游自由无界限的想象国度，宛如站在高原的草地上呼吸饱含泥土气息的清新景致，耳边熏荤着与你细语的微风，那一霎那扬起的草絮飘然从手心滑落。</p>
+<p>曲谱</p>
+<p><img src="/imags/music_blue_DownByTheSallyGardens.jpg" alt=""></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/6a2d226a.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -819,180 +983,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/c4b0129.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/c4b0129.html" class="post-title-link" itemprop="url">Swift symbol(s) not found for architecture xxx 解决办法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-01-14 12:22:36" itemprop="dateCreated datePublished" datetime="2019-01-14T12:22:36+08:00">2019-01-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>对与Objective-C环境下，如果出现‘Undefined symbols for architecture xxx:’问题可以按照一下步骤排查</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/c4b0129.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/75b8fc07.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/75b8fc07.html" class="post-title-link" itemprop="url">note:201901</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-01-12 17:31:16" itemprop="dateCreated datePublished" datetime="2019-01-12T17:31:16+08:00">2019-01-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="你不是别人"><a href="#你不是别人" class="headerlink" title="你不是别人"></a>你不是别人</h2><p>你怯懦地祈助的</p>
-<p>别人的著作救不了你</p>
-<p>你不是别人，此刻你正身处</p>
-<p>自己的脚步编织起的迷宫的中心之地</p>
-<p>耶稣或者苏格拉底</p>
-<p>所经历的磨难救不了你</p>
-<p>就连日暮时分在花园里圆寂的</p>
-<p>佛法无边的悉达多也于你无益</p>
-<p>你手写的文字，口出的言辞</p>
-<p>都像尘埃一般一文不值</p>
-<p>命运之神没有怜悯之心</p>
-<p>上帝的长夜没有尽期</p>
-<p>你的肉体只是时光，不停流逝的时光</p>
-<p>你不过是每一个孤独的瞬息</p>
-<h2 id="伟大"><a href="#伟大" class="headerlink" title="伟大"></a>伟大</h2><p>伟大的作品不只是靠力量完成，更是靠坚定不移的信念。</p>
-<h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><p>只要你能足够强大，跳出时间设置的陷阱，而且持续、长期地守住目标，你就能成为时间的朋友。这种行为模式，叫作“长期主义”。只有长期主义者，才能成为时间的朋友。普通人的努力，在长期主义的复利下，会积累成奇迹。时间帮助了他们，他们成为了时间的朋友。</p>
-<h2 id="改变"><a href="#改变" class="headerlink" title="改变"></a>改变</h2><p>这个世界的天理不是知恩图报，而是一旦有了什么，就再也回不去了。</p>
-<h2 id="痛苦"><a href="#痛苦" class="headerlink" title="痛苦"></a>痛苦</h2><p>当一个人背离他的本质时，许多痛苦都是因着这样的背叛而造成的</p>
-<h2 id="遗忘"><a href="#遗忘" class="headerlink" title="遗忘"></a>遗忘</h2><p>Time is not your enemy. Forever is.</p>
-<p>时间不是你的敌人，永恒才是。</p>
-<p>Chaos isn’t a pit. Chaos is a ladder.</p>
-<p>混乱不是深渊。混乱是阶梯。</p>
-<h2 id="差异"><a href="#差异" class="headerlink" title="差异"></a>差异</h2><p>生活中我们需要无害的人，生意上我们需要有益的人。</p>
-<h2 id="贫穷"><a href="#贫穷" class="headerlink" title="贫穷"></a>贫穷</h2><p>贫穷并非是没钱，而是欲望和钱的错位。</p>
-<h2 id="价值"><a href="#价值" class="headerlink" title="价值"></a>价值</h2><p>经不起变老、变旧的东西，价值都令人怀疑。</p>
-<h2 id="自由"><a href="#自由" class="headerlink" title="自由"></a>自由</h2><p>人们在绝境下毫无自由的选择，常会带给你前所未有的自由。</p>
-<h2 id="自我"><a href="#自我" class="headerlink" title="自我"></a>自我</h2><p>需要借助他人来实现的自尊，是理智与情感的双重自我蒙蔽。</p>
-<h2 id="智慧"><a href="#智慧" class="headerlink" title="智慧"></a>智慧</h2><p>假如某个方法能够让你快速获得某种智慧，那么这种方法所造成的全社会智慧贬值的危害，要远大于你所获得智慧的益处。</p>
-<h2 id="赚钱"><a href="#赚钱" class="headerlink" title="赚钱"></a>赚钱</h2><p>赚钱=你的理性✖️别人的非理性</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1062,7 +1052,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">161</span>
+          <span class="site-state-item-count">163</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
