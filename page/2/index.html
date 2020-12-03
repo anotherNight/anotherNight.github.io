@@ -163,6 +163,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/a78b76d2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/a78b76d2.html" class="post-title-link" itemprop="url">iOS-Checklist</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-09-03 21:06:58" itemprop="dateCreated datePublished" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p>title: ‘iOS:Checklist’<br>date: 2018-11-21 16:44:38<br>tags: iOS<br>categories: IT</p>
+<hr>
+<p>App在开发测试阶段可能有多种修改设置，但在上线前需要对某些设置进行隐藏、消除，否则上线版本可能出现意想不到的错误，本质上讲这个问题可以通过测试处理，作为开发者也得注意下测试工作，为了方便检查，记录下上线前的checklist</p>
+<h2 id="Debug-Release"><a href="#Debug-Release" class="headerlink" title="Debug/Release"></a>Debug/Release</h2><p>Xcode本身区分Debug/Release环境，在Debug环境下，对象释放、内存管理为了调试需要做了很多额外工作，发布一般使用Release，但开发者可能配置多个多个开发环境，在打包上架时要检查下包的环境</p>
+<h2 id="Version-Build"><a href="#Version-Build" class="headerlink" title="Version/Build"></a>Version/Build</h2><p>app的版本号与编译需要，版本号的规则一般是x.x.x，分别对应大版本.小版本.小更新，上线appStore的更新包build编号不能重复，并且需要大于上一个上传的build</p>
+<h2 id="AppStore审核"><a href="#AppStore审核" class="headerlink" title="AppStore审核"></a>AppStore审核</h2><p>iOS应用的审核应该是所有应用市场最严格的吧，上线检查是否触犯苹果审查规则，否则被打回来也是浪费时间，注意一些常见的规则</p>
+<ul>
+<li>奔溃和错误</li>
+<li>商品支付</li>
+<li>客户端适配</li>
+<li>ipv6适配</li>
+<li>提供测试账号</li>
+<li>出现demo、test等测试信息</li>
+<li>绑定对应硬件才能发挥功能，如智能家居相关app</li>
+<li>内购</li>
+<li>Plist文件中请求了某权限</li>
+<li>申请后台存活权限但没有说明</li>
+<li>出现或要求安装其它第三方应用，比如分享</li>
+<li>App Store 审核指南</li>
+<li>UIWebView</li>
+</ul>
+<h2 id="支付"><a href="#支付" class="headerlink" title="支付"></a>支付</h2><p>支付场景在国内比较复杂，有支付宝、微信、银联、N大银行，国外有Paypal、AppPay、N大国际银行<br>注意没有安装对应应用就不要显示入口了</p>
+<p>内购是苹果商店的大蛋糕，苹果对待内购非常严格，部分平台可能有某些方式绕过内购，一旦发现会被处罚，审核周期变长，严重者会被下架、封号</p>
+<h2 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h2><p>注意没有安装对应应用就不要显示入口了</p>
+<h2 id="iOS版本支持-2018"><a href="#iOS版本支持-2018" class="headerlink" title="iOS版本支持 2018"></a>iOS版本支持 2018</h2><p>iOS8～12，可以分成三个梯队，8/9～10/11～12</p>
+<p>iOS8在WebView、文本渲染、换行、动态计算列表高度上有坑</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/6a4d0908.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -870,90 +954,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/757d8569.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/757d8569.html" class="post-title-link" itemprop="url">小狗钱钱:得与失</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-11 18:48:21" itemprop="dateCreated datePublished" datetime="2019-12-11T18:48:21+08:00">2019-12-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>做自己喜欢的事情，同时能够带来金钱的收益，这不是很好的事情吗？</p>
-<p>阅读难度：★★★☆☆，话题深度：★★★☆☆</p>
-<p>积极得追求生活，并敢于为之付出，知行合一，计算得失，拿得起，放得下，不在贫穷中束缚，不在富裕中迷失；</p>
-<p>赚钱不是一件坏事，它可以为自己和他人带来好处。从小开始赚钱的人拥有对依赖思想的抵抗力，不会乐意让别人来养活自己。而且自己赚钱的人不会成为不断膨胀的消费欲望的奴隶</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/757d8569.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1023,7 +1023,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">168</span>
+          <span class="site-state-item-count">169</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

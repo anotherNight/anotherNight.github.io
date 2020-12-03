@@ -163,6 +163,122 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/274e32fc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/274e32fc.html" class="post-title-link" itemprop="url">IT 终端代理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-07-31 18:25:28" itemprop="dateCreated datePublished" datetime="2018-07-31T18:25:28+08:00">2018-07-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>有一种痛苦叫网络很慢。。。</p>
+<p>通过Github pull或push代码是程序员常有的操作，但在不可描述的因素下，有时糟糕的网络很考验程序员的心性，在此介绍下两种终端代理方式：</p>
+<h2 id="设置Git请求代理"><a href="#设置Git请求代理" class="headerlink" title="设置Git请求代理"></a>设置Git请求代理</h2><h3 id="1、通过设置git请求代码"><a href="#1、通过设置git请求代码" class="headerlink" title="1、通过设置git请求代码"></a>1、通过设置git请求代码</h3><p><code>git config --global http.https://github.com.proxy &#39;socks5://127.0.0.1:1080&#39;</code></p>
+<p>这种做法可以实现push和pull都走用户的代理通道，这里我指向的是我的SSR</p>
+<p>取消方式去下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、通过ProxyChains-NG实现终端下任意应用代理"><a href="#2、通过ProxyChains-NG实现终端下任意应用代理" class="headerlink" title="2、通过ProxyChains-NG实现终端下任意应用代理"></a>2、通过ProxyChains-NG实现终端下任意应用代理</h3><p>什么是 proxychains-ng</p>
+<p>主页：<a href="https://github.com/rofl0r/proxychains-ng" target="_blank" rel="noopener">https://github.com/rofl0r/proxychains-ng</a></p>
+<p><strong>proxychains-ng 介绍</strong></p>
+<p>proxychains ng (new generation) - a preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies. continuation of the unmaintained proxychains project.</p>
+<p>proxychains-ng是proxychains的加强版，主要有以下功能和不足：</p>
+<ul>
+<li>支持http/https/socks4/socks5</li>
+<li>支持认证</li>
+<li>远端dns查询</li>
+<li>多种代理模式</li>
+<li>不支持udp/icmp转发</li>
+<li>少部分程序和在后台运行的可能无法代理</li>
+</ul>
+<p><strong>proxychains-ng 原理</strong></p>
+<p>简单的说就是这个程序 Hook 了 sockets 相关的操作，让普通程序的 sockets 数据走 SOCKS/HTTP 代理。</p>
+<p>其核心就是利用了 LD_PRELOAD 这个环境变量（Mac 上是 DYLD_INSERT_LIBRARIES）。</p>
+<p>在 Unix 系统中，如果设置了 LD_PRELOAD 环境变量，那么在程序运行时，动态链接器会先加载该环境变量所指定的动态库。也就是说，这个动态库的加载优先于任何其它的库，包括 libc。</p>
+<p>ProxyChains 创建了一个叫 libproxychains4.so（Mac 上是 libproxychains4.dylib）的动态库。里面重写了 connect、close 以及 sendto 等与 socket 相关的函数，通过这些函数发出的数据将会走代理，详细代码可以参考 libproxychains.c。</p>
+<p>在主程序里，它会读取配置文件，查找 libproxychains4 所在位置，把这些信息存入环境变量后执行子程序。这样子程序里对 socket 相关的函数调用就会被 Hook 了，对子程序来说，跟代理相关的东西都是透明的。</p>
+<p>linux下代理一般是通过http_proxy和https_proxy这两个环境变量，但是很多软件并不使用这两个变量，导致流量无法走代理。在不使用vpn的前提下，linux并没有转发所有流量的真全局代理。但是可以用proxychains-ng为程序指定走代理，proxychains-ng是proxychains的加强版，主要有以下功能：</p>
+<ul>
+<li>支持http/https/socks4/socks5</li>
+<li>支持认证</li>
+<li>远端dns查询</li>
+<li>多种代理模式</li>
+</ul>
+<p>不足：</p>
+<p>不支持udp/icmp转发<br>少部分程序和在后台运行的可能无法代理</p>
+<h4 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h4><p>下载源码：</p>
+<p><code>git clone https://github.com/rofl0r/proxychains-ng</code></p>
+<p>编译和安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;configure --prefix&#x3D;&#x2F;usr --sysconfdir&#x3D;&#x2F;etc</span><br><span class="line">make </span><br><span class="line">make install</span><br><span class="line">make install-config</span><br></pre></td></tr></table></figure>
+
+<h4 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h4><p>proxychains-ng的配置非常简单，只需将代理加入[ProxyList]中即可，贴一份配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">dynamic_chain</span><br><span class="line">chain_len &#x3D; 1 #round_robin_chain和random_chain使用</span><br><span class="line">proxy_dns </span><br><span class="line">remote_dns_subnet 224</span><br><span class="line">tcp_read_time_out 15000</span><br><span class="line">tcp_connect_time_out 8000</span><br><span class="line">[ProxyList]</span><br><span class="line">socks5     socks5.52os.net 1080</span><br><span class="line">socks4     socks4.52os.net 1081</span><br><span class="line">http     http.52os.net   3128</span><br></pre></td></tr></table></figure>
+
+<p>proxychains-ng支持多种代理模式：</p>
+<ul>
+<li>dynamic_chain ：动态模式,按照代理列表顺序自动选取可用代理</li>
+<li>strict_chain ：严格模式,严格按照代理列表顺序使用代理，所有代理必须可用</li>
+<li>round_robin_chain ：轮询模式，自动跳过不可用代理</li>
+<li>random_chain ：随机模式,随机使用代理</li>
+</ul>
+<h3 id="三、测试"><a href="#三、测试" class="headerlink" title="三、测试"></a>三、测试</h3><p><code>proxychains4 curl ip.cn</code></p>
+<h2 id="3-Proxifier"><a href="#3-Proxifier" class="headerlink" title="3. Proxifier"></a>3. Proxifier</h2><p>谁用谁知道 =_=</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/a6096f68.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -844,82 +960,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/ac19d913.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/ac19d913.html" class="post-title-link" itemprop="url">算法：二维数组查找</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-04-02 16:58:07" itemprop="dateCreated datePublished" datetime="2018-04-02T16:58:07+08:00">2018-04-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">数理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组可以说是最简单的一种数据结构，它占据一块连续的内存并按照顺序存储数据。创建数组时，我们需要先指定数组的容量大小，然后根据大小分配内存。即使我们只在数组中存储一个数字，也需要为所有的数据预先分配内存。因此数组的空间效率不是很好，经常会有空闲的区域没有得到葱粉利用。</p>
-<p>题目：</p>
-<p>二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序，请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数；</p>
-<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">boolean Find(int[] matrix, int rows, int columns, int number)&#123;</span><br><span class="line">        boolean found &#x3D; false;</span><br><span class="line">        if (matrix !&#x3D; null &amp;&amp; rows &gt; 0 &amp;&amp; columns &gt; 0) &#123;</span><br><span class="line">            int row &#x3D; 0;</span><br><span class="line">            int column &#x3D; columns - 1;</span><br><span class="line">            while (row &lt; rows &amp;&amp; column &gt;&#x3D; 0)&#123;</span><br><span class="line">                if (matrix[row * columns + column] &#x3D;&#x3D; number) &#123;</span><br><span class="line">                    found &#x3D; true;</span><br><span class="line">                    System.out.println(&quot;location at row: &quot;+row +&quot;,column: &quot;+column);</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                else if (matrix[row * columns + column] &gt; number) &#123;</span><br><span class="line">                    column--;</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    row ++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return found;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -989,7 +1029,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">168</span>
+          <span class="site-state-item-count">169</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
