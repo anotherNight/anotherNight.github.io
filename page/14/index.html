@@ -163,6 +163,171 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/ae1b8e69.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/ae1b8e69.html" class="post-title-link" itemprop="url">iOS 对应window旋转事件的响应和传递</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-08-07 12:01:21" itemprop="dateCreated datePublished" datetime="2018-08-07T12:01:21+08:00">2018-08-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="iOS-8-横竖屏不响应"><a href="#iOS-8-横竖屏不响应" class="headerlink" title="iOS 8 横竖屏不响应"></a>iOS 8 横竖屏不响应</h2><p>自定义appDelegate的window与main.storyboard 对屏幕旋转事件的响应冲突</p>
+<p>在开启了横竖屏支持后，状态栏跟随变化但界面没触发旋转，在查找资料后发现，iOS设备的旋转事件会被window响应，通过window的rootViewController控制状态，window 上的view会发生旋转，而项目中ViewController是作为自定义window，需要在TabbarViewController、NavigationViewController、ViewController中传递控制。</p>
+<p>但是！！！</p>
+<p>在项目新建时，系统会自动创建main.storyboard，它也是携带window，如果没有删除main.storyboard，window响应会冲突，在iOS8上，自定义window的旋转事件不会响应！</p>
+<p>解决方案：删除main.storyboard，将自定义window设置为KeyAndVisible，clear 项目，重启Xcode</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/ae1b8e69.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/ad66c3e1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/ad66c3e1.html" class="post-title-link" itemprop="url">思考的深度：我为什么写作?</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-08-01 15:13:37" itemprop="dateCreated datePublished" datetime="2018-08-01T15:13:37+08:00">2018-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>写作就是思考。</p>
+<p>想法来得太快，而我的灵魂跟不上，</p>
+<p>2018年，有太多故事、太多新闻、太多大事件，在这些刺激中，有种种想法萌生，但大多数的想法总是突然出现由转瞬离去，让我没有时间去思考这些想法，回忆中，经历过不少事情，又好像没经历过什么的真实感，不禁觉得是在梦中。</p>
+<p>把想法提取出来，解刨它、观察它、分析它、刺激它、淬炼它</p>
+<p>写作，一方面是记录，记录当时自己的想法，人的记忆太不靠谱，不如让文字来记忆。<br>另一方面，在写作的过程中，想法具备了形态，就想人出生到时，每一个文字都是它的形象，正篇文章则是它的全貌，把想法提取出来，解刨它、观察它、分析它、刺激它、淬炼它，这就是思考</p>
+<p>看清自己、看清世界</p>
+<p>写作就是想慢下来，让自己能看清自己、看清世界。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/274e32fc.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -808,162 +973,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/b25c254a.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/b25c254a.html" class="post-title-link" itemprop="url">寻梦环游记 -- 最终死亡与生命的延续</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-04-27 11:52:46" itemprop="dateCreated datePublished" datetime="2018-04-27T11:52:46+08:00">2018-04-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>皮克斯作品里，总是一个有着些许缺陷，些许倔强，巨大梦想，和巨大孤单的孩子，这是皮克斯画布上永恒的底色，是渺小而无能的人们试图向着无垠世界发出的忧郁呐喊。这一次，来自墨西哥的普通男孩米格尔担起了这份忧郁的代言人，他用皮克斯主人公一贯的懵懂莽撞向着梦想天地发起了挑战，然后在一次次碰壁中告别了无忧无虑的童年，品尝到了成人世界的沉重苦涩。亡灵世界浪漫炫目得像个童话，可背景依然是一半梦幻一半哀伤的淡紫色。天人永隔的忧伤就算是载歌载舞的庆祝也无法完全抹去，更何况，被忘记意味着真正死亡，戳中了人类最深的恐惧。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/b25c254a.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/41b771d3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/41b771d3.html" class="post-title-link" itemprop="url">虐杀器官--语言映射认知</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-04-02 17:50:41" itemprop="dateCreated datePublished" datetime="2018-04-02T17:50:41+08:00">2018-04-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>tag:战争、高科技、近未来、杀戮、语言、价值观、生命意义</p>
-<p>《虐杀器官》，动漫改编于同名小说，是伊藤计划三部曲之一，另外两部是《和谐》《尸者的帝国》，一部探讨战争和人性的作品。</p>
-<p>作品定位在科技高度发达的近未来，此时部分落后国家爆发了一连串内战及民族冲突，在这血腥风暴之中，美国特殊情报部队「克拉维斯（クラヴィス）」发现了在阴影之下有一名叫「约翰·保罗（ジョン・ポール）」的美国人参与其中，约翰路过之处必定掀起腥风血雨，而主角追捕约翰的过程的过程。</p>
-<h2 id="科技生活"><a href="#科技生活" class="headerlink" title="科技生活"></a>科技生活</h2><p>在电影中，有很多高科技设想，如AR无缝结合现实，视频或交互界面不在局限于固定界面上；纳米机械推广，在眼药水中集成军方摄像和展示窗口；人工肌肉让机器能够做出更多工作，替代了重复劳动力；个人信息全面联网支付、出行都与网络联通等。</p>
-<h2 id="杀戮文法"><a href="#杀戮文法" class="headerlink" title="杀戮文法"></a>杀戮文法</h2><p>在电影中，保罗通过研究二战纳粹屠杀时的宣传资料，提炼出杀戮文法，能够针对某中语言进行调整，宣传扩散后该语种的人群会被抑制同情心，剥夺同理心、降低逻辑判断等里，激化社会矛盾，引诱杀戮行为。</p>
-<p>后半部分扩展讨论了人是否能够拥有自由的意识，人性价值何在，通过纳米机器、心理调节或语言，能够调整个人情感、价值观、五感，生产出绝对冷静、隔绝痛感、没有怜悯、没有恐惧、没有快感的战士；社会层次上，用语言宣传引导群体意识，让一个个和平的国度产生一次次的暴乱、战争。</p>
-<h2 id="语言和意志"><a href="#语言和意志" class="headerlink" title="语言和意志"></a>语言和意志</h2><p>极具想象力的作品，对于语言对意志自由探讨很多，我们通过感官了解世界，当我们以为把握自我的时候，外界的信息能够对自己产生多大的影响呢？一个人的本质是存在并且能够一直保持？如果被外界改变“我”是否还是“我”？</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1029,7 +1042,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">171</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1042,7 +1055,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -1069,7 +1082,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
