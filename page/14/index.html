@@ -163,6 +163,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/c6cc69a1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/c6cc69a1.html" class="post-title-link" itemprop="url">iOS WKWebView适配iOS8支持网页宽度自适应</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-08-22 12:21:39" itemprop="dateCreated datePublished" datetime="2018-08-22T12:21:39+08:00">2018-08-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>iOS在iOS8推出基于WebKit的WKWebView显示网页、富文本内容，相比UIWebView在速度、内容消耗上有了很大的提升，但WKWebView也埋下了不少坑，最近碰到一个iOS8独享bug，iOS8上，网页宽度自适应失效，内容强制显示屏幕宽度，而不是WKWebView的宽度，主要是标签的支持问题，在此记录下解决方案，希望iOS8不再是开发者的痛；（ps：iOS12都快出了，iOS8还想走多远 ==）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSString *jScript &#x3D; @&quot;var meta &#x3D; document.createElement(&#39;meta&#39;); meta.setAttribute(&#39;name&#39;, &#39;viewport&#39;); meta.setAttribute(&#39;content&#39;, &#39;width&#x3D;device-width&#39;); document.getElementsByTagName(&#39;head&#39;)[0].appendChild(meta);&quot;;</span><br><span class="line">            </span><br><span class="line">WKUserScript *wkUScript &#x3D; [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];</span><br><span class="line">WKUserContentController *wkUController &#x3D; [[WKUserContentController alloc] init];</span><br><span class="line">wkUController addUserScript:wkUScript];</span><br><span class="line">Configuration.userContentController &#x3D; wkUController;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/ae1b8e69.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -897,82 +971,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/96bf0c06.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/96bf0c06.html" class="post-title-link" itemprop="url">算法基础：字符串</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-05-02 16:30:44" itemprop="dateCreated datePublished" datetime="2018-05-02T16:30:44+08:00">2018-05-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">数理</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>题目：</p>
-<p>实现一个函数，把字符串中的每个空格替换成“###”</p>
-<p>code：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public static  void Replace(char string[])&#123;</span><br><span class="line">        if (string &#x3D;&#x3D; null) &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">    int originalLength &#x3D; 0;</span><br><span class="line">    int numberOfBlank &#x3D; 0;</span><br><span class="line">    int i &#x3D; 0;</span><br><span class="line">    while(i&lt;string.length)&#123;</span><br><span class="line">      originalLength++;</span><br><span class="line">      if (string[i] &#x3D;&#x3D; &#39; &#39;) &#123;</span><br><span class="line">        numberOfBlank++;</span><br><span class="line">      &#125;</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">    int newLength &#x3D; originalLength+numberOfBlank*2;</span><br><span class="line">    char[] newString &#x3D; new char[newLength];</span><br><span class="line">    System.out.println(&quot;string.length:&quot;+string.length+&quot;,newLength:&quot;+newLength);</span><br><span class="line"></span><br><span class="line">    int indexOfNew &#x3D; newLength-1;</span><br><span class="line">    int indexOfOriginal &#x3D; originalLength-1;</span><br><span class="line">    while(indexOfOriginal &gt;&#x3D;0 &amp;&amp; indexOfNew &gt;&#x3D; indexOfOriginal)&#123;</span><br><span class="line">      if (string[indexOfOriginal] &#x3D;&#x3D; &#39; &#39;) &#123;</span><br><span class="line">        newString[indexOfNew --] &#x3D; &#39;#&#39;;</span><br><span class="line">        newString[indexOfNew --] &#x3D; &#39;#&#39;;</span><br><span class="line">        newString[indexOfNew --] &#x3D; &#39;#&#39;;</span><br><span class="line">      &#125;else &#123;</span><br><span class="line">        newString[indexOfNew --] &#x3D; string[indexOfOriginal];</span><br><span class="line">      &#125;</span><br><span class="line">      indexOfOriginal--;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.print(&quot;newString:&quot;);</span><br><span class="line">    System.out.println(newString);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1042,7 +1040,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">171</span>
+          <span class="site-state-item-count">172</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1055,7 +1053,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
