@@ -163,6 +163,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/a7582be5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/a7582be5.html" class="post-title-link" itemprop="url">Xcode:存储空间清理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-01-30 11:03:44" itemprop="dateCreated datePublished" datetime="2019-01-30T11:03:44+08:00">2019-01-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>当前存储空间已不足，请清理您的电脑文件 – macOS</p>
+</blockquote>
+<h2 id="移除-Xcode-运行安装-APP-产生的缓存文件-DerivedData"><a href="#移除-Xcode-运行安装-APP-产生的缓存文件-DerivedData" class="headerlink" title="移除 Xcode 运行安装 APP 产生的缓存文件(DerivedData)"></a>移除 Xcode 运行安装 APP 产生的缓存文件(DerivedData)</h2><p>只要重新运行Xcode就一定会重新生成，而且会随着运行程序的增多，占用空间会越来越大。删除后在重新运行程序可能会稍微慢一点，建议定期清理。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/Xcode/DerivedData</code></p>
+<h2 id="移除-APP-打包的ipa历史版本-Archives"><a href="#移除-APP-打包的ipa历史版本-Archives" class="headerlink" title="移除 APP 打包的ipa历史版本(Archives)"></a>移除 APP 打包的ipa历史版本(Archives)</h2><p>删除后不可恢复，文件夹是按照日期排列的，所以如果你不想全部删除，就只保留最新的几个版本就好了，个人建议全部删除。<br>路径：</p>
+<p><code>~/Library/Developer/Xcode/Archives</code></p>
+<h2 id="移除-APP-打包的app-icon历史版本-Archives"><a href="#移除-APP-打包的app-icon历史版本-Archives" class="headerlink" title="移除 APP 打包的app icon历史版本(Archives)"></a>移除 APP 打包的app icon历史版本(Archives)</h2><p>删除后不可恢复，文件夹是Bundle Idenifier排列的，然后再按照archive的版本号排列的，如果你看每个版本内的内容，其实就是你的app icon，个人建议全部删除。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/Xcode/Products/</code></p>
+<h2 id="移除模拟器的缓存数据-Devices"><a href="#移除模拟器的缓存数据-Devices" class="headerlink" title="移除模拟器的缓存数据(Devices)"></a>移除模拟器的缓存数据(Devices)</h2><p>模拟器的相关数据。每个版本的模拟器占用的内存空间大约为10M左右。每个文件夹里包含的就是一个特定系统版本的设备的数据。每个文件夹对应哪个设备可以在其下device.plist中查看。删除之后，如果立即运行程序会报错，先关闭Xcode，再重新打开程序，运行即可。运行该路径下会立马生成模拟器对应版本的文件。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/CoreSimulator/Devices/</code></p>
+<h2 id="移除对旧设备的支持-iOS-DeviceSupport"><a href="#移除对旧设备的支持-iOS-DeviceSupport" class="headerlink" title="移除对旧设备的支持(iOS DeviceSupport)"></a>移除对旧设备的支持(iOS DeviceSupport)</h2><p>一般是占用内存空间最大的文件夹，即使全部删，再连接设备调试时，会重新自动生成。一般iOS只向下兼容两个版本就可以了，所以我移除了9.0以下的所有版本。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/Xcode/iOS DeviceSupport</code></p>
+<h2 id="移除-Xcode-中的无效的插件-Plug-ins"><a href="#移除-Xcode-中的无效的插件-Plug-ins" class="headerlink" title="移除 Xcode 中的无效的插件(Plug-ins)"></a>移除 Xcode 中的无效的插件(Plug-ins)</h2><p>因为之前你可能安装了一些 Xcode 的插件，比如HighlightSelectedString、VVDocumenter-Xcode等非常方便好用的第三方插件，在Xcode升级到version 8.0以后，就失效了，Xcode在内部已经集成了类似的方法，所以之前安装的也都没有用了，但是还在原来的位置占用着内存空间，建议删除。</p>
+<p>路径：</p>
+<p><code>~/Library/Application Support/Developer/Shared/Xcode/Plug-ins</code></p>
+<p>如果你曾经没有安装过插件，那么可能不存在此路径。</p>
+<h2 id="移除旧版本的模拟器支持"><a href="#移除旧版本的模拟器支持" class="headerlink" title="移除旧版本的模拟器支持"></a>移除旧版本的模拟器支持</h2><p>如果你不小心安装了很多个版本的模拟器，那么你可以删除一些旧版本的。但是当你需要旧版本的模拟器时，就需要重新下载了。建议留下1~2个版本就好了，其余的都删了吧。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/CoreSimulator/Profiles/Runtimes/</code></p>
+<h2 id="移除-playground-的项目缓存-XCPGDevices"><a href="#移除-playground-的项目缓存-XCPGDevices" class="headerlink" title="移除 playground 的项目缓存(XCPGDevices)"></a>移除 playground 的项目缓存(XCPGDevices)</h2><p>删除后可重新生成，可以全部删除。再次运行程序会缓存。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/XCPGDevices/</code></p>
+<h2 id="移除旧的文档-Docsets"><a href="#移除旧的文档-Docsets" class="headerlink" title="移除旧的文档(Docsets)"></a>移除旧的文档(Docsets)</h2><p>删除后不可恢复，该目录下存储的为开发文档，一般有三个文件<br>com.apple.adc.documentation.iOS.docset(1.68GB)、com.apple.adc.documentation.OSX.docset(2.62GB)和com.apple.adc.documentation.Xcode.docset(256.4M)，如果你只做iOS开发，其实你可以把OSX.docset删除掉的，因为它占用了2.62GB的内存。</p>
+<p>路径：</p>
+<p><code>~/Library/Developer/Shared/Documentation/DocSets</code></p>
+<h2 id="移除模拟器中的SDK版本-iPhoneSimulator-sdk"><a href="#移除模拟器中的SDK版本-iPhoneSimulator-sdk" class="headerlink" title="移除模拟器中的SDK版本(iPhoneSimulator.sdk)"></a>移除模拟器中的SDK版本(iPhoneSimulator.sdk)</h2><p>不可恢复，操作请慎重。我个人的此路径下的只有最新版本的sdk，除非当你有多个版本的sdk再酌情删除。</p>
+<p>路径:</p>
+<p><code>~/application/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/da07bd5e.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -886,78 +983,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/c4b0129.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/c4b0129.html" class="post-title-link" itemprop="url">Swift symbol(s) not found for architecture xxx 解决办法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-01-14 12:22:36" itemprop="dateCreated datePublished" datetime="2019-01-14T12:22:36+08:00">2019-01-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>对与Objective-C环境下，如果出现‘Undefined symbols for architecture xxx:’问题可以按照一下步骤排查</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/c4b0129.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1027,7 +1052,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">172</span>
+          <span class="site-state-item-count">173</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
