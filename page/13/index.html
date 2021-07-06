@@ -163,6 +163,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/c6374498.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/c6374498.html" class="post-title-link" itemprop="url">软件设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-19 12:11:22" itemprop="dateCreated datePublished" datetime="2018-12-19T12:11:22+08:00">2018-12-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在软件工程中，设计模式（design pattern）是對软件设计中普遍存在（反覆出現）的各种问题，所提出的解決方案。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/c6374498.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/ab68ed45.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1021,204 +1093,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/45fd89a7.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/45fd89a7.html" class="post-title-link" itemprop="url">Realm-Swift使用入门</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-10-29 17:55:36" itemprop="dateCreated datePublished" datetime="2018-10-29T17:55:36+08:00">2018-10-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Realm适用iOS和Android平台，本身相比sqlite、CoreData操作简单，在这里记录下使用方式；<br>（Swift4.2）</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>pod ‘RealmSwift’</code></p>
-<h2 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h2><p>打开 Realm 数据库</p>
-<p>要打开一个 Realm 数据库，首先需要初始化一个新的 Realm 对象:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let realm &#x3D; try! Realm()</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    realm.add(myDog)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这将会初始化出一个默认 Realm 数据库。</p>
-<h3 id="配置-Realm-数据库"><a href="#配置-Realm-数据库" class="headerlink" title="配置 Realm 数据库"></a>配置 Realm 数据库</h3><p>可配置本地 Realm 数据库在磁盘上的路径；</p>
-<p>对于可同步 Realm 数据库而言，可以配置管理用户，以及服务器上的远程路径；</p>
-<h3 id="配置版本迁移"><a href="#配置版本迁移" class="headerlink" title="配置版本迁移"></a>配置版本迁移</h3><p>压缩功能，高效地利用磁盘空间。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func setDefaultRealmForUser(username: String) &#123;</span><br><span class="line">    var config &#x3D; Realm.Configuration()</span><br><span class="line">    &#x2F;&#x2F; 使用默认的目录，但是请将文件名替换为用户名</span><br><span class="line">    config.fileURL &#x3D; config.fileURL!.deletingLastPathComponent().appendingPathComponent(&quot;\(username).realm&quot;)</span><br><span class="line">    &#x2F;&#x2F; 将该配置设置为默认 Realm 配置</span><br><span class="line">    Realm.Configuration.defaultConfiguration &#x3D; config</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="操作-Realm-对象"><a href="#操作-Realm-对象" class="headerlink" title="操作 Realm 对象"></a>操作 Realm 对象</h3><p>对象的自更新</p>
-<p>Object 实例是底层数据的动态体现，会自动进行更新；因此这意味着无需去刷新对象的当前状态。修改某个对象的属性，会立即影响到所有指向该对象的其他实例。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let myDog &#x3D; Dog()</span><br><span class="line">myDog.name &#x3D; &quot;Fido&quot;</span><br><span class="line">myDog.age &#x3D; 1</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    realm.add(myDog)</span><br><span class="line">&#125;</span><br><span class="line">let myPuppy &#x3D; realm.objects(Dog.self).filter(&quot;age &#x3D;&#x3D; 1&quot;).first</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    myPuppy!.age &#x3D; 2</span><br><span class="line">&#125;</span><br><span class="line">print(&quot;age of my dog: \(myDog.age)&quot;) &#x2F;&#x2F; &#x3D;&gt; 2</span><br></pre></td></tr></table></figure>
-
-<p>这不仅使得 Realm 保证高速和高效，同时还让代码更为简洁、更为灵活。如果您的 UI 代码基于某个特定的 Realm 对象来实现，那么在触发 UI 重绘以前，您根本无需进行数据刷新或者重新检索。</p>
-<h3 id="对象存储"><a href="#对象存储" class="headerlink" title="对象存储"></a>对象存储</h3><p>对象的所有更改（添加、修改和删除）都必须在写入事务内完成。</p>
-<p>Realm 对象可以被实例化，还可作为未管理对象使用（例如，还未添加到 Realm 数据库），并且使用方式与其它正常 Swift 对象无异。然而，如果要在线程之间共享对象，或者在应用启动后反复使用，那么您必须将这些对象添加到 Realm 数据库中。向 Realm 数据库中添加对象必须在写入事务内完成。由于写入事务将会产生无法忽略的性能消耗，因此您应当检视您的代码，以确保尽可能减少写入事务的数量。</p>
-<p>warning：Realm 的写入操作是同步以及阻塞进行的，它并不会异步执行。如果线程 A 开始进行写入操作，然后线程 B 在线程 A 结束之前，对相同的 Realm 数据库也执行了写入操作，那么线程 A 必须要在线程 B 的写入操作发生之前，结束并提交其事务。写入事务会在 beginWrite() 执行时自动刷新，因此重复写入并不会产生竞争条件。</p>
-<h3 id="更新对象"><a href="#更新对象" class="headerlink" title="更新对象"></a>更新对象</h3><p>Realm 提供了一系列更新对象的方法，根据使用场景的不同， 每个方法都有各自的优缺点。</p>
-<h4 id="直接更新"><a href="#直接更新" class="headerlink" title="直接更新"></a>直接更新</h4><p>您可以在写入事务中，通过设置对象的属性从而完成更新。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 在事务中更新对象</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    author.name &#x3D; &quot;Thomas Pynchon&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="键值编码"><a href="#键值编码" class="headerlink" title="键值编码"></a>键值编码</h4><p>Object、Result 和 List 均允许使用 键值编码(KVC)。 当您需要在运行时决定何种属性需要进行更新的时候， 这个方法就非常有用了。<br>批量更新对象时，为集合实现 KVC 是一个很好的做法， 这样就不用承受遍历集合时为每个项目创建访问器 所带来的性能损耗。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let persons &#x3D; realm.objects(Person.self)</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    persons.first?.setValue(true, forKeyPath: &quot;isFirst&quot;)</span><br><span class="line">    &#x2F;&#x2F; 将每个 person 对象的 planet 属性设置为 &quot;Earth&quot;</span><br><span class="line">    persons.setValue(&quot;Earth&quot;, forKeyPath: &quot;planet&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="通过主键更新"><a href="#通过主键更新" class="headerlink" title="通过主键更新"></a>通过主键更新</h4><p>如果数据模型类中包含了主键，那么 可以使用 Realm().add(_:update:)，从而让 Realm 基于主键来自动更新或者添加对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建一个 book 对象，其主键与之前存储的 book 对象相同</span><br><span class="line">let cheeseBook &#x3D; Book()</span><br><span class="line">cheeseBook.title &#x3D; &quot;Cheese recipes&quot;</span><br><span class="line">cheeseBook.price &#x3D; 9000</span><br><span class="line">cheeseBook.id &#x3D; 1</span><br><span class="line">&#x2F;&#x2F; 更新这个 id &#x3D; 1 的 book</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    realm.add(cheeseBook, update: true)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果这个主键值为 “1” 的 Book 对象已经存在于数据库当中 ，那么该对象只会进行更新。如果不存在的话， 那么一个全新的 Book 对象就会被创建出来，并被添加到数据库当中。</p>
-<p>您可以通过传递一个子集，其中只包含打算更新的值， 从而对带有主键的对象进行部分更新：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 假设主键为 &#96;1&#96; 的 &quot;Book&quot; 对象已经存在</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    realm.create(Book.self, value: [&quot;id&quot;: 1, &quot;price&quot;: 9000.0], update: true)</span><br><span class="line">    &#x2F;&#x2F; book 对象的 &#96;title&#96; 属性仍旧保持不变</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果没有定义主键，那么最好不要对这类对象传递 update: true 参数。</p>
-<p>请注意，对于可空属性 而言， 在更新对象的时候，nil 仍会被视为有效值。如果您提供了一个属性值存在 nil 的字典，那么这个设定会被应用到应用当中，并且这些属性值也会被清空。 为了确保不会出现意外的数据丢失， 在使用此方法之前请再三确认， 只提供了想要进行更新的属性值。</p>
-<h4 id="删除对象"><a href="#删除对象" class="headerlink" title="删除对象"></a>删除对象</h4><p>在写入事务中，将要删除的对象传递给 Realm().delete(_:) 方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; cheeseBook 存储在 Realm 数据库中</span><br><span class="line">&#x2F;&#x2F; 在事务中删除对象</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    realm.delete(cheeseBook)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>您同样也可以删除存储在 Realm 数据库当中的所有数据。请注意，Realm 文件会保留在磁盘上所占用的空间，从而为以后的对象预留足够的空间，从而实现快速存储。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 从 Realm 数据库中删除所有对象</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    realm.deleteAll()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><p>查询将会返回一个 Results 实例，其中包含了一组 Object 对象。Results 的接口与 Array 基本相同，并且可以使用索引下标来访问包含在 Results 当中的对象。与 Array 所不同的是，Results 只能持有一个 Object 子类类型。</p>
-<p>所有的查询操作（包括检索和属性访问）在 Realm 中都是延迟加载的。只有当属性被访问时，数据才会被读取。</p>
-<p>查询结果并不是数据的拷贝：（在写入事务中）修改查询结果会直接修改磁盘上的数据。与之类似，您可以从 Results 当中的 Object 来直接遍历关系图。</p>
-<p>除非对结果进行了访问，否则查询的执行将会被推迟（Lazy）。这意味着 将多个临时 Results 关联在一起，然后对数据进行排序和条件检索的操作， 并不会执行中间状态处理之类的额外工作。</p>
-<p>一旦执行了查询，或者添加了通知模块， 那么 Results 将时刻与 Realm 数据库当中的数据保持一致， 如有可能，会在后台线程中执行再一次查询操作。</p>
-<p>从 Realm 数据库中检索对象的最基本方法是 Realm().objects(_:)，这个方法将会返回 Object 子类类型在默认 Realm 数据库当中的查询到的所有数据，并以 Results 实例的形式返回。</p>
-<p><code>let dogs = realm.objects(Dog.self) // 从默认的 Realm 数据库中遍历所有 Dog 对象</code></p>
-<h2 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h2><p>如果您对 NSPredicate 有所了解的话，那么您就已经掌握了在 Realm 中进行查询的方法了。Objects、Realm、List 和 Results 均提供了相关的方法，从而只需传递 NSPredicate 实例、断言字符串、或者断言格式化字符串来查询特定的 Object 实例，这与对 NSArray 进行查询所类似。</p>
-<p>例如，下面这个例子通过调用 Results().filter(_:…) 方法，从默认 Realm 数据库中遍历出所有棕黄色、名字以 “B” 开头的狗狗：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 使用断言字符串来查询</span><br><span class="line">var tanDogs &#x3D; realm.objects(Dog.self).filter(&quot;color &#x3D; &#39;tan&#39; AND name BEGINSWITH &#39;B&#39;&quot;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 NSPredicate 来查询</span><br><span class="line">let predicate &#x3D; NSPredicate(format: &quot;color &#x3D; %@ AND name BEGINSWITH %@&quot;, &quot;tan&quot;, &quot;B&quot;)</span><br><span class="line">tanDogs &#x3D; realm.objects(Dog.self).filter(predicate)</span><br></pre></td></tr></table></figure>
-
-<p>参见 Apple 的断言编程指南来获取更多关于构建断言的信息，此外还可以使用我们的 NSPredicate Cheatsheet。Realm 支持大多数常见的断言：</p>
-<p>比较操作数可以是属性名，也可以是常量。但至少要有一个操作数是属性名；</p>
-<p>比较操作符 ==、&lt;=、&lt;、&gt;=、&gt;、!= 和 BETWEEN 支持 Int、Int8、Int16、Int32、Int64、Float、Double 以及 Date 这几种属性类型，例如 age == 45；</p>
-<p>比较是否相同：== 和 !=，例如，Results().filter(“company == %@”, company)；</p>
-<p>比较操作符 == 和 != 支持布尔属性；</p>
-<p>对于 String 和 Data 属性而言，支持使用 ==、!=、BEGINSWITH、CONTAINS 和 ENDSWITH 操作符，例如 name CONTAINS ‘Ja’；</p>
-<p>对于 String 属性而言，LIKE 操作符可以用来比较左端属性和右端表达式：? 和 可用作通配符，其中 ? 可以匹配任意一个字符， 匹配 0 个及其以上的字符。例如：value LIKE ‘?bc*’ 可以匹配到诸如 “abcde” 和 “cbc” 之类的字符串；</p>
-<p>字符串的比较忽略大小写，例如 name CONTAINS[c] ‘Ja’。请注意，只有 “A-Z” 和 “a-z” 之间的字符大小写会被忽略。[c] 修饰符可以与 [d] 修饰符结合使用；</p>
-<p>字符串的比较忽略变音符号，例如 name BEGINSWITH[d] ‘e’ 能够匹配到 étoile。这个修饰符可以与 [c] 修饰符结合使用。（这个修饰符只能够用于 Realm 所支持的字符串子集：参见当前的限制一节来了解详细信息。）</p>
-<p>Realm 支持以下组合操作符：“AND”、“OR” 和 “NOT”，例如 name BEGINSWITH ‘J’ AND age &gt;= 32；</p>
-<p>包含操作符：IN，例如 name IN {‘Lisa’, ‘Spike’, ‘Hachi’}；</p>
-<p>空值比较：==、!=，例如 Results().filter(“ceo == nil”)。请注意，Realm 将 nil 视为一种特殊值，而不是某种缺失值；这与 SQL 不同，nil 等同于自身；</p>
-<p>ANY 比较，例如 ANY student.age &lt; 21；</p>
-<p>List 和 Results 属性支持聚集表达式：@count、@min、@max、@sum 和 @avg，例如 realm.objects(Company.self).filter(“employees.@count &gt; 5”) 可用以检索所有拥有 5 名以上雇员的公司。</p>
-<p>支持子查询，不过存在以下限制：</p>
-<p>@count 是唯一一个能在 SUBQUERY 表达式当中使用的操作符；</p>
-<p>SUBQUERY(…).@count 表达式只能与常量相比较；</p>
-<p>目前仍不支持关联子查询。</p>
-<p>参见 Results().filter(_:…)。</p>
-<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>Results 允许您指定一个排序标准，然后基于关键路径、属性或者多个排序描述符来进行排序。例如，下列代码让上述示例中返回的 Dog 对象按名字进行升序排序：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 对颜色为棕黄色、名字以 &quot;B&quot; 开头的狗狗进行排序</span><br><span class="line">let sortedDogs &#x3D; realm.objects(Dog.self).filter(&quot;color &#x3D; &#39;tan&#39; AND name BEGINSWITH &#39;B&#39;&quot;).sorted(byKeyPath: &quot;name&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>关键路径同样也可以是某个多对一关系属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Person: Object &#123;</span><br><span class="line">    @objc dynamic var name &#x3D; &quot;&quot;</span><br><span class="line">    @objc dynamic var dog: Dog?</span><br><span class="line">&#125;</span><br><span class="line">class Dog: Object &#123;</span><br><span class="line">    @objc dynamic var name &#x3D; &quot;&quot;</span><br><span class="line">    @objc dynamic var age &#x3D; 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let dogOwners &#x3D; realm.objects(Person.self)</span><br><span class="line">let ownersByDogAge &#x3D; dogOwners.sorted(byKeyPath: &quot;dog.age&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>请注意，sorted(byKeyPath:) 和 sorted(byProperty:) 不支持 将多个属性用作排序基准，此外也无法链式排序（只有最后一个 sorted 调用会被使用）。 如果要对多个属性进行排序，请使用 sorted(by:)方法，然后向其中输入多个 SortDescriptor 对象。</p>
-<p>欲了解更多信息，参见：</p>
-<p>Results().sorted(_:)</p>
-<p>Results().sorted(byKeyPath:ascending:)</p>
-<p>注意，在对查询进行排序的时候，只能保证 Results 的次序不变。 出于性能考量，插入次序将无法保证。 如果您希望维护插入次序， 那么可以在这里查看解决方案。</p>
-<h3 id="链式查询"><a href="#链式查询" class="headerlink" title="链式查询"></a>链式查询</h3><p>与传统数据库相比，Realm 查询引擎的一个独特特性就是：它能够用很小的事务开销来实现链式查询，而不是每条查询都要接二连三地分别去单独访问数据库服务器。</p>
-<p>如果您需要获取一个棕黄色狗狗的结果集，然后在此基础上再获取名字以 ‘B’ 开头的棕黄色狗狗，那么您可以像这样将这两个查询连接起来：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let tanDogs &#x3D; realm.objects(Dog.self).filter(&quot;color &#x3D; &#39;tan&#39;&quot;)</span><br><span class="line">let tanDogsWithBNames &#x3D; tanDogs.filter(&quot;name BEGINSWITH &#39;B&#39;&quot;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="结果的自更新"><a href="#结果的自更新" class="headerlink" title="结果的自更新"></a>结果的自更新</h3><p>Object 实例是底层数据的动态体现，其会自动进行更新，这意味着您无需去重新检索结果。它们会直接映射出 Realm 数据库在当前线程中的状态，包括当前线程上的写入事务。唯一的例外是，在使用 for…in 枚举时，它会将刚开始遍历时满足匹配条件的所有对象给遍历完，即使在遍历过程中有对象被过滤器修改或者删除。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let puppies &#x3D; realm.objects(Dog.self).filter(&quot;age &lt; 2&quot;)</span><br><span class="line">puppies.count &#x2F;&#x2F; &#x3D;&gt; 0</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    realm.create(Dog.self, value: [&quot;name&quot;: &quot;Fido&quot;, &quot;age&quot;: 1])</span><br><span class="line">&#125;</span><br><span class="line">puppies.count &#x2F;&#x2F; &#x3D;&gt; 1</span><br></pre></td></tr></table></figure>
-
-<p>所有的 Results 对象均有此特性，无论是匹配查询出来的还是链式查询出来的。</p>
-<p>Results 属性不仅让 Realm 数据库保证高速和高效，同时还让代码更为简洁、更加灵活。例如，如果视图控制器基于查询结果来实现，那么您可以将 Results 存储在属性当中，这样每次访问就不需要刷新以确保数据最新了。</p>
-<p>您可以订阅 Realm 通知，以了解 Realm 数据何时发生了更新，比如说可以决定应用 UI 何时进行刷新，而无需重新检索 Results。<br>由于结果是自动更新的，因此不要迷信下标索引和总数会保持不变。Results 不变的唯一情况是在快速枚举的时候，这样就可以在枚举过程中，对匹配条件的对象进行修改。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try! realm.write &#123;</span><br><span class="line">    for person in realm.objects(Person.self).filter(&quot;age &#x3D;&#x3D; 10&quot;) &#123;</span><br><span class="line">        person.age +&#x3D; 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此外，还可以使用键值编码 来对 Results 执行相关操作。</p>
-<h3 id="限制查询结果"><a href="#限制查询结果" class="headerlink" title="限制查询结果"></a>限制查询结果</h3><p>大多数其他数据库技术都提供了从检索中对结果进行“分页”的能力（例如 SQLite 中的 “LIMIT” 关键字）。这通常是很有必要的，可以避免一次性从硬盘中读取太多的数据，或者将太多查询结果加载到内存当中。</p>
-<p>由于 Realm 中的检索是惰性的，因此这行这种分页行为是没有必要的。因为 Realm 只会在检索到的结果被明确访问时，才会从其中加载对象。</p>
-<p>如果由于 UI 相关或者其他代码实现相关的原因导致您需要从检索中获取一个特定的对象子集，这和获取 Results 对象一样简单，只需要读出您所需要的对象即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 循环读取出前 5 个 Dog 对象</span><br><span class="line">&#x2F;&#x2F; 从而限制从磁盘中读取的对象数量</span><br><span class="line">let dogs &#x3D; try! Realm().objects(Dog.self)</span><br><span class="line">for i in 0..&lt;5 &#123;&#x3D;&quot;&quot; let&#x3D;&quot;&quot; dog&#x3D;&quot;dogs[i]&quot; ...&#x3D;&quot;&quot; &#125;&#x3D;&quot;&quot; &lt;&#x3D;&quot;&quot; code&#x3D;&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h2><h3 id="本地迁移"><a href="#本地迁移" class="headerlink" title="本地迁移"></a>本地迁移</h3><p>通过设置 Realm.Configuration.schemaVersion 以及 Realm.Configuration.migrationBlock 可以定义本地迁移。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 此段代码位于 application(application:didFinishLaunchingWithOptions:)</span><br><span class="line"></span><br><span class="line">let config &#x3D; Realm.Configuration(</span><br><span class="line">    &#x2F;&#x2F; 设置新的架构版本。必须大于之前所使用的</span><br><span class="line">    &#x2F;&#x2F; （如果之前从未设置过架构版本，那么当前的架构版本为 0）</span><br><span class="line">    schemaVersion: 1,</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 设置模块，如果 Realm 的架构版本低于上面所定义的版本，</span><br><span class="line">    &#x2F;&#x2F; 那么这段代码就会自动调用</span><br><span class="line">    migrationBlock: &#123; migration, oldSchemaVersion in</span><br><span class="line">        &#x2F;&#x2F; 我们目前还未执行过迁移，因此 oldSchemaVersion &#x3D;&#x3D; 0</span><br><span class="line">        if (oldSchemaVersion &lt; 1) &#123;</span><br><span class="line">            &#x2F;&#x2F; 没有什么要做的！</span><br><span class="line">            &#x2F;&#x2F; Realm 会自行检测新增和被移除的属性</span><br><span class="line">            &#x2F;&#x2F; 然后会自动更新磁盘上的架构</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通知 Realm 为默认的 Realm 数据库使用这个新的配置对象</span><br><span class="line">Realm.Configuration.defaultConfiguration &#x3D; config</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 现在我们已经通知了 Realm 如何处理架构变化，</span><br><span class="line">&#x2F;&#x2F; 打开文件将会自动执行迁移</span><br><span class="line">let realm &#x3D; try! Realm()</span><br></pre></td></tr></table></figure>
-
-<h2 id="值的更新"><a href="#值的更新" class="headerlink" title="值的更新"></a>值的更新</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 此段代码位于 application(application:didFinishLaunchingWithOptions:)</span><br><span class="line"></span><br><span class="line">Realm.Configuration.defaultConfiguration &#x3D; Realm.Configuration(</span><br><span class="line">    schemaVersion: 1,</span><br><span class="line">    migrationBlock: &#123; migration, oldSchemaVersion in</span><br><span class="line">        if (oldSchemaVersion &lt; 1) &#123;</span><br><span class="line">            &#x2F;&#x2F; enumerateObjects(ofType:_:) 方法将会遍历</span><br><span class="line">            &#x2F;&#x2F; 所有存储在 Realm 文件当中的 &#96;Person&#96; 对象</span><br><span class="line">            migration.enumerateObjects(ofType: Person.className()) &#123; oldObject, newObject in</span><br><span class="line">                &#x2F;&#x2F; 将两个 name 合并到 fullName 当中</span><br><span class="line">                let firstName &#x3D; oldObject![&quot;firstName&quot;] as! String</span><br><span class="line">                let lastName &#x3D; oldObject![&quot;lastName&quot;] as! String</span><br><span class="line">                newObject![&quot;fullName&quot;] &#x3D; &quot;\(firstName) \(lastName)&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="属性重命名"><a href="#属性重命名" class="headerlink" title="属性重命名"></a>属性重命名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 此段代码位于 application(application:didFinishLaunchingWithOptions:)</span><br><span class="line"></span><br><span class="line">Realm.Configuration.defaultConfiguration &#x3D; Realm.Configuration(</span><br><span class="line">    schemaVersion: 1,</span><br><span class="line">    migrationBlock: &#123; migration, oldSchemaVersion in</span><br><span class="line">        &#x2F;&#x2F; 我们目前还未执行过迁移，因此 oldSchemaVersion &#x3D;&#x3D; 0</span><br><span class="line">        if (oldSchemaVersion &lt; 1) &#123;</span><br><span class="line">            &#x2F;&#x2F; 重命名操作必须要在 &#96;enumerateObjects(ofType: _:)&#96; 调用之外进行</span><br><span class="line">            migration.renameProperty(onType: Person.className(), from: &quot;yearsSinceBirth&quot;, to: &quot;age&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><p>当整个 Realm 数据库发生变化时，就会发送 Realm 通知；如果只有个别对象被修改、添加或者删除，那么就会发送集合通知。</p>
-<p>通知只会在最初所注册的注册的线程中传递，并且该线程必须拥有一个正在运行的 Run Loop</p>
-<p>Realm 通知</p>
-<p>通知处理模块可以对整个 Realm 数据库进行注册。每次涉及到 Realm 的写入事务提交之后，无论写入事务发生在哪个线程还是进程中，通知处理模块都会被激活：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 获取 Realm 通知</span><br><span class="line">let token &#x3D; realm.observe &#123; notification, realm in</span><br><span class="line">    viewController.updateUI()</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 随后</span><br><span class="line">token.invalidate()</span><br></pre></td></tr></table></figure>
-
-<h3 id="集合通知"><a href="#集合通知" class="headerlink" title="集合通知"></a>集合通知</h3><p>可以通过传递到通知模块当中的 RealmCollectionChange 参数来访问这些变更。该对象存放了受删除 (deletions)、插入 (insertions) 以及修改 (modifications) 所影响的索引信息。</p>
-<h3 id="对象通知"><a href="#对象通知" class="headerlink" title="对象通知"></a>对象通知</h3><p>Realm 支持对象级别的通知。可以在特定的 Realm 对象上进行通知的注册，对象被删除、修改时获取相应的通知。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class StepCounter: Object &#123;</span><br><span class="line">    @objc dynamic var steps &#x3D; 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let stepCounter &#x3D; StepCounter()</span><br><span class="line">let realm &#x3D; try! Realm()</span><br><span class="line">try! realm.write &#123;</span><br><span class="line">    realm.add(stepCounter)</span><br><span class="line">&#125;</span><br><span class="line">var token : NotificationToken?</span><br><span class="line">token &#x3D; stepCounter.observe &#123; change in</span><br><span class="line">    switch change &#123;</span><br><span class="line">    case .change(let properties):</span><br><span class="line">        for property in properties &#123;</span><br><span class="line">            if property.name &#x3D;&#x3D; &quot;steps&quot; &amp;&amp; property.newValue as! Int &gt; 1000 &#123;</span><br><span class="line">                print(&quot;Congratulations, you&#39;ve exceeded 1000 steps.&quot;)</span><br><span class="line">                token &#x3D; nil</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    case .error(let error):</span><br><span class="line">        print(&quot;An error occurred: \(error)&quot;)</span><br><span class="line">    case .deleted:</span><br><span class="line">        print(&quot;The object was deleted.&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="跨线程使用-Realm-数据库"><a href="#跨线程使用-Realm-数据库" class="headerlink" title="跨线程使用 Realm 数据库"></a>跨线程使用 Realm 数据库</h2><p>在不同的线程中使用同一个 Realm 文件，必须每一个线程初始化一个新的Realm 实例。</p>
-<p>不支持跨线程共享Realm 实例。Realm 实例要访问相同的 Realm 文件还必须使用相同的 Realm.Configuration。</p>
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>Realm 没有提供对 JSON 的直接支持，可以使用 NSJSONSerialization.JSONObjectWithData(_:options:) 的输出</p>
-<h2 id="常见限制"><a href="#常见限制" class="headerlink" title="常见限制"></a>常见限制</h2><p>Realm 致力于平衡数据库读取的灵活性和性能。为了实现这个目标，在 Realm 中所存储的信息的各个方面都有基本的限制。例如：</p>
-<p>类名称的长度最大只能存储 57 个 UTF8 字符。</p>
-<p>属性名称的长度最大只能支持 63 个 UTF8 字符。</p>
-<p>Data 和 String 属性不能保存超过 16 MB 大小的数据。如果要存储大量的数据，可通过将其分解为16MB 大小的块，或者直接存储在文件系统中，然后将文件路径存储在 Realm 中。如果您的应用试图存储一个大于 16MB 的单一属性，系统将在运行时抛出异常。</p>
-<p>每个单独的 Realm 文件大小无法超过应用在 iOS 系统中所被允许使用的内存量——这个量对于每个设备而言都是不同的，并且还取决于当时内存空间的碎片化情况(关于此问题有一个相关的 Radar：rdar://17119975)。如果您需要存储海量数据的话，那么可以选择使用多个 Realm 文件并进行映射。</p>
-<p>对字符串进行排序以及不区分大小写查询只支持“基础拉丁字符集”、“拉丁字符补充集”、“拉丁文扩展字符集 A” 以及”拉丁文扩展字符集 B“（UTF-8 的范围在 0~591 之间）。</p>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>尽管 Realm 文件可以被多个线程同时访问，但是您不能直接跨线程传递 Realms、Realm 对象、查询和查询结果。如果您需要跨线程传递 Realm 对象的话，您可以使用 ThreadSafeReference API。</p>
-<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>Setter 和 Getter：因为 Realm 在底层数据库中重写了 setters 和 getters 方法，所以您不可以在您的对象上再对其进行重写。一个简单的替代方法就是：创建一个新的 Realm 忽略属性，该属性的访问起可以被重写， 并且可以调用其他的 getter 和 setter 方法。</p>
-<p>自动增长属性：Realm 没有线程且进程安全的自动增长属性机制，而这在其他数据库中常常用来产生主键。然而，在绝大多数情况下，对于主键来说，我们需要的是一个唯一的、自动生成的值，因此没有必要使用顺序的、连续的、整数的 ID 作为主键，因此一个独一无二的字符串主键通常就能满足需求了。一个常见的模式是将默认的属性值设置为 NSUUID().UUIDString 以产生一个唯一的字符串 ID。</p>
-<p>自动增长属性另一种常见的动机是为了维持插入之后的顺序。在某些情况下，这可以通过向某个 List中添加对象，或者使用 NSDate() 默认值的 createdAt 属性。</p>
-<p>Objective-C 中的属性：如果您需要在 Objective‑C 中访问 Realm Swift 模型的话，那么注意所有 List以及 RealmOptional 属性都不可用（就像其他 Swift 独有的数据类型一样）——如果有必要的话，您可以添加封装的 getter 和 setter 方法，将其在 NSNumber 或者 NSArray 之间进行转化。此外，早于 Xcode 7 Beta 5 之前的版本有一个 已知的Swift bug，它会导致自动生成的 Objective‑C 头文件（-Swift.h）无法通过编译。您就必须将 List 类型的属性设置为 private 或者 internal。请前往 GitHub issue #1925了解更多信息。</p>
-<p>Object 子类的自定义构造器：当您创建 Object 子类模型的时候，您或许会想要添加自己的构造器方法，以便增加便利性。</p>
-<p>由于 Swift 内省机制中现有的一些限制，我们不能给这个类中添加指定构造器(designated initializer)。相反，它们需要被标记为便利构造器(convenience initializer)，使用相同名字的 Swift 关键词：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class MyModel: Object &#123;</span><br><span class="line">    @objc dynamic var myValue &#x3D; &quot;&quot;</span><br><span class="line">    convenience init(myValue: String) &#123;</span><br><span class="line">        self.init() &#x2F;&#x2F; 请注意这里使用的是 &#39;self&#39; 而不是 &#39;super&#39;</span><br><span class="line">        self.myValue &#x3D; myValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1288,7 +1162,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">174</span>
+          <span class="site-state-item-count">175</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
