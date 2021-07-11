@@ -163,6 +163,155 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/94346f0f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/94346f0f.html" class="post-title-link" itemprop="url">Error APICloud iOS null is not an object</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-25 18:58:04" itemprop="dateCreated datePublished" datetime="2018-12-25T18:58:04+08:00">2018-12-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>APICloud iOS modules 开发错误，打包上传后，编译出来的ipa包安装运行后调用modules的方法报错，错误信息“null is not an object”</p>
+<h2 id="错误分析："><a href="#错误分析：" class="headerlink" title="错误分析："></a>错误分析：</h2><h3 id="1-modules-json格式错误"><a href="#1-modules-json格式错误" class="headerlink" title="1.modules.json格式错误"></a>1.modules.json格式错误</h3><p>modules.json文件格式错误，请对照官方文档进行比较，{}[]是否正确，方法需要用””标记等。</p>
+<h3 id="2-APICloud平台没有更新modules-json文件"><a href="#2-APICloud平台没有更新modules-json文件" class="headerlink" title="2.APICloud平台没有更新modules.json文件"></a>2.APICloud平台没有更新modules.json文件</h3><p>APICloud 官方平台bug，上传了错误格式的modules.json的版本后，后续修改再上传，打包时modules.json还是错误的版本，具体可以下载编译的ipa包，修改后缀为zip，解压后查看modules.json的信息来确定。</p>
+<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><p>在APICloud的modules中心中，删除modules，重新上传即可。注意是删除模块，不是取消。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/6848d225.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/6848d225.html" class="post-title-link" itemprop="url">算法：移动零</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-25 12:08:55" itemprop="dateCreated datePublished" datetime="2018-12-25T12:08:55+08:00">2018-12-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">数理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/6848d225.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/350390c5.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -834,171 +983,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/cb922651.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/cb922651.html" class="post-title-link" itemprop="url">十七岁的悬崖 -- 《死人经》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-12-06 17:10:17" itemprop="dateCreated datePublished" datetime="2018-12-06T17:10:17+08:00">2018-12-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>[转载]十七岁的悬崖——关于《死人经》三主角的解构与重筑</p>
-<p>作者：浪的传人</p>
-<p><a href="https://tieba.baidu.com/p/3078330714" target="_blank" rel="noopener">https://tieba.baidu.com/p/3078330714</a></p>
-<p>对我来说，读过《死人经》，印象最深的画面莫过于第一卷结末处，顾慎为与霍允两人逃离金鹏堡的瞬间。列作人墙的金鹏杀手们整齐逼来，十七岁的少年扬头望望，然后自悬崖上纵身跃下，在红顶大鹏自天顶垂下的羽翼上面缓缓升起，就此离开改变他一生的地方。</p>
-<p>　　上官如还是霍允，其实是个蛮没有意义的话题。死人经不是一部从头到脚充斥象征与隐喻的小说——当然也可以说是，取决于你愿不愿意去穿凿附会——如你所知，对于一部小说而言，可供穿凿附会是最美好的品质。那么我可以说，上官如代表顾慎为的过去——遥远的记忆、美好的憧憬和消逝的梦想；霍允代表顾慎为的现在——压抑的神经、伤痕累累的躯体，以及些许莫名其妙的遗憾，这些遗憾是指向上官如的。连接过去与现在之间的则是顾慎为本人。有时是一点期许——这是通向上官如的一端；有时是一点指望——这是通向霍允的一端。无论期许还是指望，这个人物都看不到未来。事实上没有人看得到未来。</p>
-<p>　　上官如。这是汤姆叔叔式故事当中的人物。当然，这样说起来就像是某种刻板的套路与定式——显而易见，一种套路的生命力能够顽强持续两百年，就一定是有道理的。这种定式在老时代是桦木屋里的老黑奴，在新时代是办公室里的新白领，天平另一端则由白人少爷换成了霸道总裁——如你所见，这两者之间并无不同。所以你看，非洲的炎夏和腰缠草裙手执长矛的老酋长，桌凳摇摇晃晃的破烂酒吧和面目模糊的黑黢黢人群，皇宫上空高来高去的女飞贼和另一个因遥远而显得微微可爱的江湖……太阳底下并无新事，十一岁的上官如趴在十四岁的顾慎为肩膀上面听到的那些故事，和印第安先民们奔驰过的土地上、满脸褶子的老汤姆给小主人讲过的没有一个字不同，那些关于一个截然不同世界的日光和鲜血，有如同质一样流淌着，因其遥远而不再令人惊怖。然后这些故事撞在那座悬崖上面戛然而止，寂静的夜里，一个人背着另一个走在狭窄的石梁上，数着满天的星辰多如繁星，这样一幕本身定格成为日后会被不断提起的故事。</p>
-<p>　　某种意义上，上官如就是过去的顾慎为。十四岁，十一岁——需要抱歉地说，顾慎为在他十一岁的时候，不会有上官如这样的决断、凶狠与万众瞩目的魅力——十四岁的时候仍然没有。所以对于另一条世界线上的小少爷顾慎为而言，十公子是他难以企及的模板，素未谋面的邻家孩子，但毫无疑问，那时的他是小心翼翼走在这条路上的。韦小宝与康熙的游戏扭打纯属天然，顾慎为与上官如的接近则是刻意而为。他当然会这样做。书中提过吧，顾慎为直到见过十公子后才真正开了窍，“我不知道怎样做一个好奴才，但我知道主人喜欢怎样的奴才”，灵光一现，有什么东西从天灵盖上喷薄而出，因为他看见上官如的同时就看见了自己，如果不是家破人亡被掳走为奴，他本该努力成为那样的人。从这个意义上讲，上官如不仅是他的过去，还是他的理想——很多时候这两样事情难以分开。</p>
-<p>　　我小时候常喜欢回忆过去，长大后这种情绪才慢慢淡忘。中间的变化大概是从三五年前开始的，充分证明了走上社会这件事情是多么操蛋而又令人无从抗拒。起初，在横跨两栋楼房之间的消防梯上穿梭来去、为抄一点回家的近路而翻越两三座高墙是美好的，这就是说，曾经拥有自由、勇气、莽撞以及夜晚来临时啸叫回旋于整个城市楼群中间的风；那个时候我十一岁。后来，在隆冬雪后结冰的道路上纵车飞驰、在炎夏的操场上把皮球射入两辆自行车搭成的球门中间是美好的，这就是说，曾经拥有疯狂、精力、执着以及跑道边上为你加油呐喊的一群小姑娘；那个时候我十六岁。然后，在夕阳西下的操场上寻找某个身影、春天来临的时候在墙角的树荫下折断一根柳枝是美好的，这就是说，曾经拥有青涩、懵懂、未来以及晨起早读时穿越窗子和一叠成绩单的扑啦啦的风；那个时候我十九岁。再后来，在午夜的插线板、小台扇和啤酒瓶子中间看西班牙夺冠、平安夜莫名其妙收到冻得冷硬的苹果是美好的，这就是说，曾经拥有青春、理想、死党以及宿舍阳台上把巢筑在破纸箱里的一对白鸽；那个时候我二十三岁。最后，所有上述过程好像那种老式显像管电视突然断了电，化为一团模糊的白斑消失在一片雪花的正中央，这就是说，虽然如上所说，曾经几乎拥有过可供列举的一切，那些已经不够重要，或者不够可爱；这个时候我二十六岁，在读完一本题为《死人经》的小说后泛起一些不那么清晰的想法，迫切地要把它们诉诸笔端。我讲这些是为了证明，过去或曰回忆，往往同所谓理想是一码事，因你对它们的所有权和支配权而被任意创造和重铸，最后你就被这个天底下最庞大的骗局紧紧攫住，无力自拔。十几年前，十岁不到的我在两栋大楼之间的消防梯上面辗转腾挪时，决不会承认那一刻如上文描写般美好，事实上我的双手在颤抖，掌心在流汗，因为一旦失足落下，不管三楼或是五楼，都足够把我摔到屁滚尿流，说不定小命不保——这种感觉听起来熟悉，实际上很久没有过了。</p>
-<p>　　所以对于顾慎为来说，上官如是类似回忆与理想糅合在一起的事物，但这些回忆和理想都因为曾经存在、与无法再现，而显得格外惹人厌憎。这是有关少年心事的小秘密，他不会讲给你听，没有任何人会讲给你听。这就是为什么有人说上官如像活在另一条故事线上——她简直是活在另一个平行时空里，带着男主角本该和期待实现的二三四五种可能性，一点点掰开揉碎给你看。任性，倔狠，率直，信任，圣母心……顾慎为必须被她吸引，因为那些全都是曾经在他面前展开的羊肠曲径。顾慎为也必须同她分道扬镳，因为彼时的顾慎为，是斩断了所有那些可能性后的产物，他成功避开了上官如出没的所有平行时空，坚定不移地选择了最后一个，不是因为荷女就在里面，而是他们殊途同归。</p>
-<p>　　荷女，或者叫霍允，这样区分不见得有什么意义，因为她是顾慎为的现在，或者说她比顾慎为更加顾慎为，这两种说法之间也不见得有什么不同。就在那座命运的悬崖边上，红顶大鹏负着顾慎为飞向天空，荷女沿着曾经的敌人、今后的同伴们留下的钉痕落向大地，而上官如被他们轻易遗落在金鹏堡的回忆当中，从此不再和母亲说一句话——我以为这是不可思议的关于十七岁的喻示，赶在任何人发现这一点之前。往生崖前，升天入地，这是最重要的第一卷的结尾，是男主角对于少年时代的全部告别，是传说中他向读者最后一次露出微笑的地方，下一次出场将是三年之后，他将变为无笑无泪亦无惧的西域之主，雪山龙王，横扫所有胆敢横亘在他路上的敌人，然后失去全部向往爱的能力。三年后，十年后，十六年后——上一个以这样的笔法取得巨大成功的人是金庸，往往作者愿意这样宕开一笔的时候，就是他希望稍微偷一下懒的时候，唱一支温柔的摇篮曲，曲子一结束，读者一醒来，主角就变身，从眼角眉梢尽是稚气戾气的青涩剑客蜕变成名满天下的神雕侠，比巴拉巴拉仙小魔女更夸张。侠而不是大侠，这一切还要留待他第二次在千军万民的欢呼声中进入那座襄阳城，就此打通朝往五绝登基路上的最后一道障碍。对于顾慎为，金鹏堡就是他的襄阳城，他需要以第二次的进入彻底结束成人礼，进入而不是摧毁，所以他不需要亲手杀死仇人独步王，不需要毁弃承载他前半生最不堪记忆的石堡，因为成就不是否认，新生无需弑旧——然而在那之前，在归来之前，他首先需要离开。</p>
-<p>　　顾慎为无法离开，因为红顶大鹏不会在那一瞬间出现在他的身下。或者他早已在上官雨时第一次暗算他的时候死去，因为不会这样巧，落崖人直直摔进大鹏鸟的巢穴。甚而至于他面朝青空，遥远地方有鹰唳滑过，耳畔风声劲急，他期待的奇迹并不见踪影，因为根本没有大鹏这样的神物存在于世，这东西存在这件事情的本身，就和外挂一样不对头。</p>
-<p>　　那一年上官如十四岁，顾慎为十七岁，站在十七岁的悬崖边上，他决心要抛离成长为真正男人之前的一切过往——所以他将上官如抛在身后，那是他的过去。同时被丢弃的还有许许多多不切实际的指望与可能——那也是上官如，从此他再不会在梦中成为顾家大少，应酬唱和，承欢膝下，考进清华或者北大——最后一件是我十七岁时的指望，和顾慎为一样，我自悬崖跳下的时候，把它们随手扔得不见影踪，直到现在看来，那不见得有什么帮助。</p>
-<p>　　往生崖畔，离别之前，顾慎为遭遇了有生以来最严厉的一场背叛，来自霍允——或者说，来自他自己，在我们的文章里，对于顾慎为和霍允这两个人并不作区分。实迷途其未远，觉今是而昨非，人们最熟悉的背叛者恰恰是自己，这本是理所当然的事情，年轻人经常在一早醒来后变成另外一个人，虽然这一般来说难以察觉。来自十七岁的背叛像一把锋快的剑，干净利落地将另一个顾慎为由他身体里斩了出去。这个顾慎为来自现在，他的身体里面同样没有了上官如的存在；他漂浮在虚空当中，眼看就要坠下去，难以生存，那么他的身体里面一定多出了什么沉浊的东西，令他重逾巨石——我猜那东西叫做信仰，信念，理想，或者其他任何乱七八糟的名字，十七岁，怀揣沉重信仰的少年，愚蠢，冲动，像喝下整瓶闷倒驴一样容易上头，于是他如同炸弹一样落下去，在遥远的山脚砸出轰鸣和巨大的火光——在一个没有红顶大鹏的正常世界里面，这就是顾慎为最后的结局。老实说，我不喜欢这样的结局，尽管相同的事情每时每刻都在发生——但或许正是因为每时每刻都在发生，我们才需要一点小说来提供不一样的场景，不然的话，这个世界未免太面目可憎。</p>
-<p>　　所以，在那个命运的三岔路口，最终也只有一个人能够逃脱。这个人抛掉了光怪陆离的过去与不切实际的理想，背叛了写在印花纸笺上的诺言，挥刀斩飞了残留的一点点信仰，在十七岁的悬崖上，以最低的姿态匍匐而下，双手紧紧锁死粗不盈指的细小岩洞，每一次呼吸都伴随魂飞魄散的深重危机，那意味着从两栋楼房中间的消防梯上翻滚着坠下，然后靠轮椅与导尿管度过余生。他是顾慎为，是霍允，是荷女，是千万人——都一样的，那根本无关紧要。他抬起眼，望见那头红顶大鹏翼若垂天之云，抟扶摇而上九万里，背上有人单腿支拄，影在北溟，身至万里，朝发而夕返，然后望向他说：夏虫不可语冰，蟪蛄岂知春秋。</p>
-<p>　　这样说的时候，那个人衣不沾尘。</p>
-<p>　　嗯，这么看起来感觉就正常一点了。大鹏鸟出现在悬崖前的那一刻顾慎为完成了他的蜕变，从此长出一张标准的主角脸，我身带光环哟，走三关，举手投足间都是八奇领域，我知道你知道我知道你知道我知道你不知道——小说嘛，大家都是这么写的。而唯一逃脱的霍允，此时正匍匐尘埃，真正的顾慎为一退再退，最后退缩在她蜷起的身上，眼望向高远天空上那个光芒万丈的主角顾慎为，那原本是他的指望，想成为主角的指望。每个人都曾有过，可不是每个人都曾实现。</p>
-<p>　　返回来说霍允。</p>
-<p>　　双女主很难写，不仅是因为其中一个会不打招呼地变成女二，根本的问题出在大部分人写出来的故事根本没有女主——不要说女主了，有人连男主都不会写呢，不要苛求他们。我要夹带私货了，将夜里叶红鱼简直一万个好顶赞，没有抱上床真是太可惜了。顺便，我觉得一个角色能让读者产生“谁他妈要看主角啊快把XX叫出来”的念头，是对作者最美好的褒扬，以上。用这个标准比划一下的话，上官如某几个瞬间达到了，霍允始终像差着一口气，不大清楚差在哪里了。当然这也不重要。一个人物能达到怎样的高度是由情节推动的，从作者开始谋篇布局的时候就能看出很多人物最终能走到哪里，这种地方往往最考较功力。</p>
-<p>　　所以，就不难理解为什么上官如和霍允拥有数量同样庞大且互相看不大对眼的粉丝——都写在人设里呢。上官如代表顾慎为的过去，象征某个因其消逝而被无限美化的世界，那个世界里的顾慎为十七岁，每天晚上洗凉水澡，冬天不穿秋裤，一顿饭吃两个半馒头，一口气跑五千米，百米十二秒五，立定摸高两米七，在床上像一部上足了发条的打桩机，在球场上不知疲倦地奔跑，晃过三个人射门，而球场边上……有一个纤细的身影开心地替他保管衣服和矿泉水，微笑着看他睥睨万物。</p>
-<p>　　而另一个世界里，天色暗下来，操场上方的灯光渐次熄灭，顾慎为一个人坐在空荡荡的人工草皮上面，脱下球鞋，费力地控着灌进鞋帮的黑色胶粒。白花花的汗碱浮起在他消瘦的后背上，手指甲刮过去，刺拉拉地响。</p>
-<p>　　我不是很清楚更喜欢上官如的都是什么人，因此只能尽自己的能力去揣想和描摹——但是说实话，如果上述第一个世界曾经存在，我也不会太喜欢第二个，除非我自己现在正是一部打桩机——可惜又不是。那即是说，虽然前一个世界里有高来高去、专盗皇宫物件的女飞贼和午夜时分升起在石梁上方的星辉，我还是可以将它们全部舍弃，并不是因为后一个世界里我不用在地铁里挤出一身臭汗，也不是因为后一个世界里我可以坐在三百平米的阳台上端着茶碗看夕阳慢慢掉下远处的小山，只是因为我就生活在后一个世界里，仅此而已。当我不发神经的时候，会觉得这比什么都重要。</p>
-<p>　　霍允代表顾慎为的现在，大致就是这么个意思。相似的人生，相似的经历，相似的武功，战斗中互相倚为后背——我以为最后一条是个不尴不尬的暗示，关于人如何对待一个不那么完美的自己。顾慎为给出的答案是：你要发疯，我陪你；你跑丢了，我追你；你要砍我，给你砍——前提是不能当真砍死了。我要有这么一个女朋友，早二百年给她踹飞，省得三辈子内再见到——顾慎为就不能。但我既不佩服也不同情他，因为你总不可能早二百年把自己踹飞，早一刻钟都做不到。在草屋里面对坐编席，时刻提防着对面的女人突然一刀砍过来的时候，顾慎为大概就是这样的心情。这一点上我对他完全理解，很少人能够给自己打出十全十美的分数，但出于种种原因，首先还是得学会接受。比如我也想做一部那种两层楼高、长着一百万个齿轮的隧道掘进机，但是生活还是要继续，不可能某一天发癫去做手术——其实真的去做也不是不可以的事，不过这样一来就扯远了。</p>
-<p>　　所以，就我个人而言，不发神经的时候，会更喜欢霍允一点；但是也有发神经的时候，这个时候就更喜欢上官如。大部分曾经历过前后两个世界的人想必也是这样的——我指的不是发神经。两个世界中间是一条名为不忿的细而敏感的线，有时这个世界用的力气大一些，这个时候顾慎为就会和上官如拉拉手，亲亲嘴，把灯关上做一些不害臊的事情；有时那个世界用的力气大一些，这个时候顾慎为就会在失忆的霍允身边一待六年，喂喂鸡，养养狗，然后看着它们慢慢老死，在花园的墓碑上面一笔一划镌刻下它们的名字。全部的不同不过是那段时光里的执着。如你所知，回忆过去这件事情并不总像字面上那么美好，我会为迟到忐忑，为作业烦恼，被从座位上轰起来回家拿习题册子，在路上被小腿那么高的京巴撵得满世界跑，之后连打了二十天的狂犬疫苗——可是看着顾慎为背着熟睡的上官如缓缓走在浸过脚趾的夜雾中，我就把它们全部忘掉啦。</p>
-<p>　　故事的最后，上官如一个人笑着离开，去追寻儿时浪迹江湖的愿望，因为“没有我你也能过得很好”。霍允呢，和顾慎为一起，继续走在他们未知的路上，一辈子这样相爱相杀下去，可是“所有人都知道，他们不会结婚”。在这一个瞬间，作者脱出了所有可见不可见的束缚与隔膜，将一切交给早已写定的命运，对过去、现在与未来作了一次精准的切割。就在那座十七岁的悬崖上，猎猎风啸，苍鹰啼鸣，江天似海，白云如野，我们的主人公第一次学会了与一个不完美的自己永远生活下去，那是每个人穷极一生要去完成的任务，允生允死，谁都无法放弃。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/22942e95.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/22942e95.html" class="post-title-link" itemprop="url">The data couldn’t be read because it isn’t in the correct format错误</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-12-05 19:09:36" itemprop="dateCreated datePublished" datetime="2018-12-05T19:09:36+08:00">2018-12-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="打包导出（Export）失败"><a href="#打包导出（Export）失败" class="headerlink" title="打包导出（Export）失败"></a>打包导出（Export）失败</h1><h2 id="可能1-Xcode配置错误"><a href="#可能1-Xcode配置错误" class="headerlink" title="可能1:Xcode配置错误"></a>可能1:Xcode配置错误</h2><p>点击Xcode的导出（Export）时提示The data couldn’t be read because it isn’t in the correct format.或者使用Jenkins等</p>
-<p>用脚本打包提示如下错误：</p>
-<p>原因是Xcode9帮你添加了一个Code Signing Style的配置字段，该字段需要和Automatically manage signing对应，使用Automatically manage signing时该字段的值需要为Automatic，不使用Automatically manage signing时该字段的值需要为Manual，上述错误就是因为配置不对应导致的，修改对应即可。</p>
-<h2 id="可能2-Ruby环境错误"><a href="#可能2-Ruby环境错误" class="headerlink" title="可能2:Ruby环境错误"></a>可能2:Ruby环境错误</h2><p>另一中可能是电脑的Ruby环境错误，如没有指定Ruby版本等，可以通过nvm –help命令检查下</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1068,7 +1052,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">178</span>
+          <span class="site-state-item-count">180</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1081,7 +1065,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
