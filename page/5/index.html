@@ -1,47 +1,127 @@
 <!DOCTYPE html>
-<html lang="cn">
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="cn">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
 
-  <meta name="description" content="记录思考的地方">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="记录思考的地方">
 <meta property="og:type" content="website">
 <meta property="og:title" content="俊东的Blog">
 <meta property="og:url" content="https://jundongwu.com/page/5/index.html">
 <meta property="og:site_name" content="俊东的Blog">
 <meta property="og:description" content="记录思考的地方">
 <meta property="og:locale" content="cn">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="俊东">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://jundongwu.com/page/5/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'cn'
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
   };
 </script>
+
+
+
+  <link rel="canonical" href="https://jundongwu.com/page/5/"/>
+
+
+
+
 
   <title>俊东的Blog</title>
   
@@ -51,165 +131,217 @@
 
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
-</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="cn">
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">俊东的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">少则得，多则惑</p>
+      
+  </div>
+
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">俊东的Blog</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">少则得，多则惑</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
   </div>
 </div>
 
-
-
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
         <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
-
-  </li>
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+      
+    </ul>
+  
 
-  </li>
-  </ul>
+  
 </nav>
 
 
 
-
-</div>
+ </div>
     </header>
 
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
+    <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
+          <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
       
+
+  
+
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/108ae8e3.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="俊东的Blog">
     </span>
+
+    
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/108ae8e3.html" class="post-title-link" itemprop="url">实验：人性是什么？</a>
-        </h2>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/108ae8e3.html" itemprop="url">实验：人性是什么？</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-08T18:29:09+08:00">
+                2019-10-08
+              </time>
+            
 
-              <time title="Created: 2019-10-08 18:29:09" itemprop="dateCreated datePublished" datetime="2019-10-08T18:29:09+08:00">2019-10-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
+                <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -217,7 +349,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="/images/blog_shiyan_cover.png" alt=""></p>
+      
+
+      
+        
+          
+            <p><img src="/images/blog_shiyan_cover.png" alt=""></p>
 <p>人性是什么？</p>
 <p>是对美好的倾慕？</p>
 <p>是爱人离去的悲伤？</p>
@@ -226,71 +363,134 @@
 <p>是社会的定义？</p>
 <p><img src="/images/blog_shiyan_001.png" alt=""></p>
 
+          
+        
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+
+    <footer class="post-footer">
+      
 
       
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/99ab8148.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="俊东的Blog">
     </span>
+
+    
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/99ab8148.html" class="post-title-link" itemprop="url">我为什么写读后感</a>
-        </h2>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/99ab8148.html" itemprop="url">我为什么写读后感</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-30T18:30:59+08:00">
+                2019-09-30
+              </time>
+            
 
-              <time title="Created: 2019-09-30 18:30:59" itemprop="dateCreated datePublished" datetime="2019-09-30T18:30:59+08:00">2019-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
+                <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -298,7 +498,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
+      
+
+      
+        
+          
+            <blockquote>
 <p>学而不思则惘，思而不学则怠</p>
 </blockquote>
 <p>读书破万卷,然后呢？成为百科全书吗？</p>
@@ -306,71 +511,134 @@
 <p>在积累一定数量后，是否对知识有一定的体系认证，能否构建自己的认知体系，在对事物的观察能否更有深度地理解，在评价时有能不能从更多的角度进行解析？</p>
 <p>通过文字，让大脑中纷飞的想法有落地生根的可能，让记忆化作记录，让记录激发思考，去验证、猜想、扩展。。。。。。</p>
 
+          
+        
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+
+    <footer class="post-footer">
+      
 
       
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/fa6e93a7.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="俊东的Blog">
     </span>
+
+    
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/fa6e93a7.html" class="post-title-link" itemprop="url">罗小黑战记：无家可归的人</a>
-        </h2>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/fa6e93a7.html" itemprop="url">罗小黑战记：无家可归的人</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T14:36:31+08:00">
+                2019-09-22
+              </time>
+            
 
-              <time title="Created: 2019-09-22 14:36:31" itemprop="dateCreated datePublished" datetime="2019-09-22T14:36:31+08:00">2019-09-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
+                <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%BA%BA%E6%96%87/" itemprop="url" rel="index"><span itemprop="name">人文</span></a>
+                  <a href="/categories/%E4%BA%BA%E6%96%87/" itemprop="url" rel="index">
+                    <span itemprop="name">人文</span>
+                  </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -378,83 +646,148 @@
     <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
           <h1 id="寻找家的旅程"><a href="#寻找家的旅程" class="headerlink" title="寻找家的旅程"></a>寻找家的旅程</h1><p>小黑一开始的家是森林，在人类的开发推进下，它流浪到了城市，在风吹雨打、饮食不定中，一个安定的家是它最大的渴望；</p>
 <p>风息离开居住几百年的故乡，在人类的推进中，不断妥协和退让，夺回家园赶走人类是他的渴望；</p>
 <p>无限，作为修行多年的人类，无与伦比的强大同时带来深邃的孤独，人与妖都无法接受他，他人是他冷漠背后的渴望；</p>
 <p>渴望落地种子，无法确定能不能再次落地生根，只能随风飘浮，祈祷有那么一天；</p>
           <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/fa6e93a7.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
+          <div class="post-button text-center">
+            <a class="btn" href="/p/fa6e93a7.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+
+    <footer class="post-footer">
+      
 
       
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/d1d96956.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="俊东的Blog">
     </span>
+
+    
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/d1d96956.html" class="post-title-link" itemprop="url">沧浪之水：权利与话语权</a>
-        </h2>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/d1d96956.html" itemprop="url">沧浪之水：权利与话语权</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T14:19:07+08:00">
+                2019-09-21
+              </time>
+            
 
-              <time title="Created: 2019-09-21 14:19:07" itemprop="dateCreated datePublished" datetime="2019-09-21T14:19:07+08:00">2019-09-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
+                <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -462,71 +795,123 @@
     <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
           <p>沉默的大多数</p>
           <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/d1d96956.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
+          <div class="post-button text-center">
+            <a class="btn" href="/p/d1d96956.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+
+    <footer class="post-footer">
+      
 
       
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/51639e84.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="俊东的Blog">
     </span>
+
+    
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/51639e84.html" class="post-title-link" itemprop="url">CKOU 晋级考试内容</a>
-        </h2>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/51639e84.html" itemprop="url">CKOU 晋级考试内容</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-13T19:00:21+08:00">
+                2019-09-13
+              </time>
+            
 
-              <time title="Created: 2019-09-13 19:00:21" itemprop="dateCreated datePublished" datetime="2019-09-13T19:00:21+08:00">2019-09-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -534,72 +919,124 @@
     <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
           <h1 id="CKOU-剑道晋级考级内容"><a href="#CKOU-剑道晋级考级内容" class="headerlink" title="CKOU 剑道晋级考级内容"></a>CKOU 剑道晋级考级内容</h1><p>整理一下剑道考级内容，剑道考级包括三项：</p>
 <p>剑道型(kata)、切返(kiri-kaeshi)和对战(ji-geiko)。1级以下的考级没有剑道型的审查，而且有冲击练习（kakari-geiko）替代对战。</p>
           <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/51639e84.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
+          <div class="post-button text-center">
+            <a class="btn" href="/p/51639e84.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+
+    <footer class="post-footer">
+      
 
       
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/5e41df9d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="俊东的Blog">
     </span>
+
+    
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/5e41df9d.html" class="post-title-link" itemprop="url">Doki Doki Literature Club:Your Reality</a>
-        </h2>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/5e41df9d.html" itemprop="url">Doki Doki Literature Club:Your Reality</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-31T16:34:29+08:00">
+                2019-08-31
+              </time>
+            
 
-              <time title="Created: 2019-08-31 16:34:29" itemprop="dateCreated datePublished" datetime="2019-08-31T16:34:29+08:00">2019-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -607,72 +1044,124 @@
     <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
+        
           <p><img src="images/blog_DDLC.jpg" alt=""></p>
 <p>优秀的世界设定，神奇的剧情交互，良好的人物角色，本作品发挥了视觉小说最大的优势，除了文字，更利用图片、动画、交互、电子系统特性让读者体验更多的交流，让人物具备“意识到自身和世界”，打破第四面墙！</p>
           <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/5e41df9d.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
+          <div class="post-button text-center">
+            <a class="btn" href="/p/5e41df9d.html#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+
+    <footer class="post-footer">
+      
 
       
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/e01b7789.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="俊东的Blog">
     </span>
+
+    
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/e01b7789.html" class="post-title-link" itemprop="url">螺旋卷钩生：突出的个性</a>
-        </h2>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/e01b7789.html" itemprop="url">螺旋卷钩生：突出的个性</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-27T11:00:41+08:00">
+                2019-08-27
+              </time>
+            
 
-              <time title="Created: 2019-08-27 11:00:41" itemprop="dateCreated datePublished" datetime="2019-08-27T11:00:41+08:00">2019-08-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -680,7 +1169,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="/imags/blog_lxjgs_cover.jpg" alt=""></p>
+      
+
+      
+        
+          
+            <p><img src="/imags/blog_lxjgs_cover.jpg" alt=""></p>
 <p>我看的漫画、小说和电影都挺多的，作为故事的载体，在不提升到艺术的范畴，我不禁思考漫画相比小说、真人电影等有什么不同？</p>
 <p>真人电影需要以演员演绎故事，小说用文字来描述故事，漫画以线条来演绎故事，其中电影无法脱离真人的演绎空间，真实的表现现实的局限，小说的文字可以产生无限的联想和感知，而漫画则在双方中取平衡，用现实的某部分画面来描绘故事同时又可以摆脱现实的约束，在线条和阴影间给读者创造出巨大差异、想象和冲击。</p>
 <p>画面的扭曲和方法</p>
@@ -689,71 +1183,134 @@
 <p>个性，不同</p>
 <p>独特的画风更是放大这种特质</p>
 
+          
+        
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+
+    <footer class="post-footer">
+      
 
       
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/3bd7a3e9.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="俊东的Blog">
     </span>
+
+    
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/3bd7a3e9.html" class="post-title-link" itemprop="url">千与千寻：个人与世界</a>
-        </h2>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/3bd7a3e9.html" itemprop="url">千与千寻：个人与世界</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-12T16:10:06+08:00">
+                2019-08-12
+              </time>
+            
 
-              <time title="Created: 2019-08-12 16:10:06" itemprop="dateCreated datePublished" datetime="2019-08-12T16:10:06+08:00">2019-08-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
+                <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index"><span itemprop="name">Note</span></a>
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -761,7 +1318,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="/images/blog_qyqx_cover.jpg" alt=""></p>
+      
+
+      
+        
+          
+            <p><img src="/images/blog_qyqx_cover.jpg" alt=""></p>
 <p>千与千寻，一个饱满的世界，一个奇妙的童话，一段神奇的冒险，一群迷失的承认，一个纯真的小孩。</p>
 <p>2007 年，我最先关注到的动漫电影作者是新海诚，《秒速五厘米》把距离、思念、离别的哀思刻画得无比细致，电影那种刹那的的美，细致的风景，擦身而过的爱恋，难以相聚的思念；关注着爱情的细致和美好，同时笼罩着离别的无奈和悲伤。</p>
 <p>而宫崎骏的电影，是画师们的笔下的众生，主角作为一个视窗，展示着世界的奇妙和复杂，现实而充满想象，美好又布满艰辛；</p>
@@ -774,62 +1336,112 @@
 <p>“去吧，记住，一定不要回头！”</p>
 </blockquote>
 
+          
+        
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+
+    <footer class="post-footer">
+      
 
       
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/78abc40c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="俊东的Blog">
     </span>
+
+    
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/78abc40c.html" class="post-title-link" itemprop="url">美丽新世界:群体的天堂，个人的地狱</a>
-        </h2>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/78abc40c.html" itemprop="url">美丽新世界:群体的天堂，个人的地狱</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T18:14:14+08:00">
+                2019-07-15
+              </time>
+            
 
-              <time title="Created: 2019-07-15 18:14:14" itemprop="dateCreated datePublished" datetime="2019-07-15T18:14:14+08:00">2019-07-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -837,7 +1449,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>前往美好的天堂需要付出什么代价？</p>
+      
+
+      
+        
+          
+            <p>前往美好的天堂需要付出什么代价？</p>
 <p>阅读难度：★★★★☆，话题深度：★★★★★</p>
 <p>key: 乌托邦、美丽新世界、和谐、娱乐、集体</p>
 <p>看完美丽新世界真是感觉背后一凉，作者在这个技术引导的时代，在众人享受技术的带来的美好时，对技术的另一面进行警告。</p>
@@ -852,62 +1469,112 @@
 <p>动物农场:平等</p>
 <p>和谐:机械化情感</p>
 
+          
+        
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+
+    <footer class="post-footer">
+      
 
       
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/9aebf26c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="记录思考的地方">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="俊东的Blog">
     </span>
+
+    
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/9aebf26c.html" class="post-title-link" itemprop="url">所谓技术文档（一）</a>
-        </h2>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/p/9aebf26c.html" itemprop="url">所谓技术文档（一）</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
+                <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T17:01:13+08:00">
+                2019-07-01
+              </time>
+            
 
-              <time title="Created: 2019-07-01 17:01:13" itemprop="dateCreated datePublished" datetime="2019-07-01T17:01:13+08:00">2019-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -915,28 +1582,54 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>弄清读者是谁：给最终用户（小白）的、给系统维护人员、给后来的技术人员交接的的文档肯定不一样，给小白的重截屏，给维护的重操作，交接的重原理。</p>
+      
+
+      
+        
+          
+            <p>弄清读者是谁：给最终用户（小白）的、给系统维护人员、给后来的技术人员交接的的文档肯定不一样，给小白的重截屏，给维护的重操作，交接的重原理。</p>
 <p>切换“无知者”模式：很多东西是在做项目的过程中试错积累出来的。做着做着：这么干原来不行啊，应该这样这样，改设计！做着做着：哎呀，原来有这个问题没有考虑到，现在加进去，改设计！做着做着：哦？什么？客户要改需求？好吧，我改设计！这样下来大型的IT项目做到最后，和最开始的设计已经大相径庭了，按照原来设计的思路来写文档肯定是不行的，按照时间顺序把修改加上会更加混乱。写文档的时候需要切换到“无知者”模式，把自己想象成一个刚刚接受项目要开始设计的人，面对已知的这些“新要求”和对技术全新的理解，重新写一份文档，这样才能脉络清晰，可读性高。</p>
 <p>遵循标准构架：大型项目牵扯的东西多，有实际的设备有虚的概念，有用户界面也有关键性配置，杂七杂八什么都有，如果不按照一个标准构架来写文档，很容易就眉毛胡子一把抓。这时候就一定要找一个标准构架，比如OSI七层构架，TCP-IP四层构架等等，从上到下或者从下到上，写着也方便，看着也舒服。</p>
 
+          
+        
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
         <div class="post-eof"></div>
-      </footer>
+      
+    </footer>
+  </div>
+  
+  
+  
   </article>
-  
-  
-  
 
+
+    
+  </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/6/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -944,112 +1637,141 @@
           </div>
           
 
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
+
+          
 
         </div>
+        
           
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
   </div>
 
-  <aside class="sidebar">
+  <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
+      
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
+      
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
-  <div class="site-description" itemprop="description">记录思考的地方</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">180</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">俊东</p>
+              <p class="site-description motion-element" itemprop="description">记录思考的地方</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20fa%20fa-archive">
+              
+                  <span class="site-state-item-count">180</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
+
           
-        <span class="site-state-item-count">30</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/anotherNight" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:another.night.1024@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-google"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
 
+          
+          
 
+          
+          
 
-      </div>
+          
+
+        </div>
+      </section>
+
+      
+
+      
 
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
 
 
+        
       </div>
     </main>
 
-    <footer class="footer">
+    <footer id="footer" class="footer">
       <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">俊东</span>
+
+  
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
-  </div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
 
         
 
@@ -1059,25 +1781,33 @@
 
 
 
-
+        
       </div>
     </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
 
-<script src="/js/next-boot.js"></script>
+
+
+
 
 
 
@@ -1095,8 +1825,107 @@
 
 
 
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
 
 
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
 
   
 
