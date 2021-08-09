@@ -163,6 +163,83 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/ff60840f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/ff60840f.html" class="post-title-link" itemprop="url">RxSwift:UIButton</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-01-10 14:34:32" itemprop="dateCreated datePublished" datetime="2019-01-10T14:34:32+08:00">2019-01-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="RxSwift在UIButton上应用的"><a href="#RxSwift在UIButton上应用的" class="headerlink" title="RxSwift在UIButton上应用的"></a>RxSwift在UIButton上应用的</h1><ul>
+<li>observe tap</li>
+<li>bind btn.title</li>
+<li>bind btn.image</li>
+<li>bind isEnable</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/p/ff60840f.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/d914857b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1049,102 +1126,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/25133bb2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="俊东">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/25133bb2.html" class="post-title-link" itemprop="url">Swift:闭包Closures简析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-12-28 19:07:24" itemprop="dateCreated datePublished" datetime="2018-12-28T19:07:24+08:00">2018-12-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>相对于OC的block有很多差异</p>
-</blockquote>
-<h2 id="Nonescaping-逃逸闭包"><a href="#Nonescaping-逃逸闭包" class="headerlink" title="Nonescaping 逃逸闭包"></a>Nonescaping 逃逸闭包</h2><p>Swift闭包Closure的概念类似于OC中的Block，但使用上有很多差异，首先，Swift3.x中，传递闭包到函数中的时候，系统会默认为非逃逸闭包类型 (Nonescaping Closures)，有非逃逸闭包类型必然就有逃逸闭包(Escaping Closures)，两种类型主要差别在于生命周期。</p>
-<h2 id="lifeCycle-生命周期"><a href="#lifeCycle-生命周期" class="headerlink" title="lifeCycle 生命周期"></a>lifeCycle 生命周期</h2><p>非逃逸闭包指把闭包作为参数传递给函数–&gt;函数中运行该闭包–&gt;退出函数–&gt;release</p>
-<p>逃逸闭包其生命周期可能长于相关函数，当函数退出的时候，逃逸闭包的引用仍然被其他对象持有，不会在相关函数结束后释放，可用于异步回调等场景。</p>
-<p>从中我们可以看到Swift在对内存管理上与OC的差异，更严格的内存管理也是Swift比OC高效的原因。</p>
-<h2 id="写法"><a href="#写法" class="headerlink" title="写法"></a>写法</h2><p>逃逸闭包需要用@escaping标记：</p>
-<p><code>func doSomething(callback: @escaping (_ responseObject: String)-&gt;()){}</code></p>
-<h3 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h3><p>了解一下Closures的便捷写法，举个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let list &#x3D; [“a&quot;, “b&quot;, &quot;c&quot;, &quot;d”]</span><br><span class="line">let sortedList &#x3D; list.sort &#123; (one: String, two: String) -&gt; Bool inreturnone &lt; two &#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以这么简化：</p>
-<p><code>let sortedList = list.sort { (one, two) -&gt; Bool in return one &lt; two }</code></p>
-<p>返回类型也可以推算出来，所以可以去掉闭包的返回类型：</p>
-<p><code>let sortedList = list.sort { (one, two) in return one &lt; two }</code></p>
-<p>可以用<code>$i</code>符号替换掉参数的名字，代码然后就变成这样：</p>
-<p><code>let sortedList = list.sort { return $0 &lt; $1 }</code></p>
-<p>在单语句的闭包中，关键字return也可以省略。最后一条语句的返回值就变成闭包的返回值：</p>
-<p><code>let sortedList = list.sort { $0 &lt; $1 }</code></p>
-<p>到目前已经变得非常简单了，但还可以继续优化。</p>
-<p>对字符串来说，有一个字符串比较函数，定义如下：</p>
-<p><code>func &lt;(lhs: String, rhs: String) -&gt; Bool</code></p>
-<p>使用这个函数可以让你的Code更加简洁, 如下：</p>
-<p><code>let sortedList = list.sort(&lt;)</code></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Swift学习了一段时间后，通过了解其对内存的管理明显感觉到一种与OC不同的编程思想，这才是Swift的魅力所在。</p>
-<p>##参考</p>
-<p><a href="docs.swift.org">docs.swift.org</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1210,7 +1195,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">180</span>
+          <span class="site-state-item-count">181</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

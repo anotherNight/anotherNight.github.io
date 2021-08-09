@@ -163,6 +163,77 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/c19912ca.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/c19912ca.html" class="post-title-link" itemprop="url">基于CocoaPod的Swift组件化开发</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-12-06 18:40:59" itemprop="dateCreated datePublished" datetime="2018-12-06T18:40:59+08:00">2018-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-前提"><a href="#1-前提" class="headerlink" title="1. 前提"></a>1. 前提</h2><p>私人Repo的构建和组件发布，相关资料可以看Cocoapods创建私有podspec,基本流程类似，但由于Swift在CocoaPod中是动态库形式存在，有些问题需要处理</p>
+<h2 id="2-组件化，Swift4-2"><a href="#2-组件化，Swift4-2" class="headerlink" title="2. 组件化，Swift4.2"></a>2. 组件化，Swift4.2</h2><p>目标是基于CocoaPod封装基础的组件，暂不讨论项目架构</p>
+<h3 id="2-1-Module-‘xxx’-has-no-member-named-‘yyy’"><a href="#2-1-Module-‘xxx’-has-no-member-named-‘yyy’" class="headerlink" title="2.1 Module ‘xxx’ has no member named ‘yyy’"></a>2.1 Module ‘xxx’ has no member named ‘yyy’</h3><p>1.文件没有对应方法，实际是引用出现错误，点击对应.swift文件，展开Xcode右边工作栏，在’file inspector’（文件图标）分类下的Target Membership，选上对应的项目包即可。</p>
+<p>2.类的权限错误，检查是否要用public修饰，因为在 target 外只能调用到 public 的代码</p>
+<h3 id="2-2-dyld-lazy-symbol-binding-failed-Symbol-not-found"><a href="#2-2-dyld-lazy-symbol-binding-failed-Symbol-not-found" class="headerlink" title="2.2 dyld: lazy symbol binding failed: Symbol not found:"></a>2.2 dyld: lazy symbol binding failed: Symbol not found:</h3><p>开发的组件依赖了其它第三方库，在’file inspector’（文件图标）的Target Membership取消第三方文件的引用</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://swifter.tips/property-access/" target="_blank" rel="noopener">https://swifter.tips/property-access/</a></p>
+<p><a href="https://www.jianshu.com/p/18db54655246" target="_blank" rel="noopener">https://www.jianshu.com/p/18db54655246</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/cb922651.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1787,95 +1858,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/ae1b8e69.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="俊东">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/ae1b8e69.html" class="post-title-link" itemprop="url">iOS 对应window旋转事件的响应和传递</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-08-07 12:01:21" itemprop="dateCreated datePublished" datetime="2018-08-07T12:01:21+08:00">2018-08-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="iOS-8-横竖屏不响应"><a href="#iOS-8-横竖屏不响应" class="headerlink" title="iOS 8 横竖屏不响应"></a>iOS 8 横竖屏不响应</h2><p>自定义appDelegate的window与main.storyboard 对屏幕旋转事件的响应冲突</p>
-<p>在开启了横竖屏支持后，状态栏跟随变化但界面没触发旋转，在查找资料后发现，iOS设备的旋转事件会被window响应，通过window的rootViewController控制状态，window 上的view会发生旋转，而项目中ViewController是作为自定义window，需要在TabbarViewController、NavigationViewController、ViewController中传递控制。</p>
-<p>但是！！！</p>
-<p>在项目新建时，系统会自动创建main.storyboard，它也是携带window，如果没有删除main.storyboard，window响应会冲突，在iOS8上，自定义window的旋转事件不会响应！</p>
-<p>解决方案：删除main.storyboard，将自定义window设置为KeyAndVisible，clear 项目，重启Xcode</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/ae1b8e69.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1941,7 +1927,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">180</span>
+          <span class="site-state-item-count">181</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

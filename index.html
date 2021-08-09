@@ -163,6 +163,81 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/70bfd4ac.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/70bfd4ac.html" class="post-title-link" itemprop="url">iOS:震动效果失效适配</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-08-09 23:20:35 / Modified: 23:22:15" itemprop="dateCreated datePublished" datetime="2021-08-09T23:20:35+08:00">2021-08-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><figcaption><span>```是 iOS 10 之后官方推荐的震动控件，基于 Taptic Engine 振动模块可以触发短震动，为 Apple Watch 以及 iPhone 6s 以后的机型 提供了 Force Touch 以及 3D Touch，不同的屏幕操作，可以感受到不同的振动触觉效果，带来更好的用户体验。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">但是，该 API 在访问 &#96;&#96;&#96;AVFoundation&#96;&#96;&#96; 的部分组件功能时可能出现失效的情况，不起作用的原因是音视频控件对硬件资源的管理占用，了解过 AVFoundation 的同学一定对 **Session** 这一概念很熟悉了，iOS 通过 **Session** 对硬件资源进行访问管理，这里记录下解决方案，代码如下：</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+<pre><code>if (@available(iOS 10.0, *)) {
+    if (@available(iOS 13.0, *)) {
+        if (![[AVAudioSession sharedInstance] allowHapticsAndSystemSoundsDuringRecording]) {
+            NSError *error = nil;
+            [[AVAudioSession sharedInstance] setAllowHapticsAndSystemSoundsDuringRecording:YES error:&amp;error];
+            if (error) {
+                FALogD(FALogTypeOther, @&quot;[Party-Room]--%@&quot;,error.description);
+            }                
+        }
+    }
+    UIImpactFeedbackGenerator *impactFeedBack = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
+    [impactFeedBack prepare];
+    [impactFeedBack impactOccurred];
+}</code></pre><p>```</p>
+<p>注意：<code>allowHapticsAndSystemSoundsDuringRecording</code> 和 <code>setAllowHapticsAndSystemSoundsDuringRecording:</code> 都是 iOS 13 后才支持的</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/37ad1e4c.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -810,85 +885,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/81ba41bf.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="俊东">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/81ba41bf.html" class="post-title-link" itemprop="url">自信表达：如何在沟通中从容做自己</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-01-05 12:16:17" itemprop="dateCreated datePublished" datetime="2021-01-05T12:16:17+08:00">2021-01-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-06 20:32:57" itemprop="dateModified" datetime="2021-05-06T20:32:57+08:00">2021-05-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>自信表达不是教你如何更好地伪装，而是教你鼓起勇气摘掉面具</p>
-</blockquote>
-<p>在和别人的讨论中，我总是不擅长处理冲突，有时候总是自己主动退让，但回头又觉得不能接受；本书并不是针对人或某个技巧，而是引导自己如何正面、积极地表达、坚持和传递自己的观念，其中心理说明和引导能比较充分考虑个人的差异，值得参考；</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/81ba41bf.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -954,7 +954,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">180</span>
+          <span class="site-state-item-count">181</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

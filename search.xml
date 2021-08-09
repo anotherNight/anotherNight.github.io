@@ -9548,4 +9548,30 @@ NOT NULL 不允许为空 PRIMARY KEY 主键 AUTOINCREMENT 自增长,
         <tag>book</tag>
       </tags>
   </entry>
+  <entry>
+    <title>iOS:震动效果失效适配</title>
+    <url>/p/70bfd4ac.html</url>
+    <content><![CDATA[<figure class="highlight plain"><figcaption><span>```是 iOS 10 之后官方推荐的震动控件，基于 Taptic Engine 振动模块可以触发短震动，为 Apple Watch 以及 iPhone 6s 以后的机型 提供了 Force Touch 以及 3D Touch，不同的屏幕操作，可以感受到不同的振动触觉效果，带来更好的用户体验。</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">但是，该 API 在访问 &#96;&#96;&#96;AVFoundation&#96;&#96;&#96; 的部分组件功能时可能出现失效的情况，不起作用的原因是音视频控件对硬件资源的管理占用，了解过 AVFoundation 的同学一定对 **Session** 这一概念很熟悉了，iOS 通过 **Session** 对硬件资源进行访问管理，这里记录下解决方案，代码如下：</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+<pre><code>if (@available(iOS 10.0, *)) {
+    if (@available(iOS 13.0, *)) {
+        if (![[AVAudioSession sharedInstance] allowHapticsAndSystemSoundsDuringRecording]) {
+            NSError *error = nil;
+            [[AVAudioSession sharedInstance] setAllowHapticsAndSystemSoundsDuringRecording:YES error:&amp;error];
+            if (error) {
+                FALogD(FALogTypeOther, @&quot;[Party-Room]--%@&quot;,error.description);
+            }                
+        }
+    }
+    UIImpactFeedbackGenerator *impactFeedBack = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
+    [impactFeedBack prepare];
+    [impactFeedBack impactOccurred];
+}</code></pre><p>```</p>
+<p>注意：<code>allowHapticsAndSystemSoundsDuringRecording</code> 和 <code>setAllowHapticsAndSystemSoundsDuringRecording:</code> 都是 iOS 13 后才支持的</p>
+]]></content>
+      <tags>
+        <tag>iOS</tag>
+        <tag>IT</tag>
+      </tags>
+  </entry>
 </search>
