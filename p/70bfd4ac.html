@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"jundongwu.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="&#96;&#96;&#96;是 iOS 10 之后官方推荐的震动控件，基于 Taptic Engine 振动模块可以触发短震动，为 Apple Watch 以及 iPhone 6s 以后的机型 提供了 Force Touch 以及 3D Touch，不同的屏幕操作，可以感受到不同的振动触觉效果，带来更好的用户体验。1234但是，该 API 在访问 &#96;&#96;&#96;AVFoundation&#96;&amp;#96">
+  <meta name="description" content="UIImpactFeedbackGenerator 是 iOS 10 之后官方推荐的震动控件，基于 Taptic Engine 振动模块可以触发短震动，为 Apple Watch 以及 iPhone 6s 以后的机型 提供了 Force Touch 以及 3D Touch，不同的屏幕操作，可以感受到不同的振动触觉效果，带来更好的用户体验。 但是，该 API 在访问 AVFoundation 的部分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS:震动效果失效适配">
 <meta property="og:url" content="https://jundongwu.com/p/70bfd4ac.html">
 <meta property="og:site_name" content="俊东的Blog">
-<meta property="og:description" content="&#96;&#96;&#96;是 iOS 10 之后官方推荐的震动控件，基于 Taptic Engine 振动模块可以触发短震动，为 Apple Watch 以及 iPhone 6s 以后的机型 提供了 Force Touch 以及 3D Touch，不同的屏幕操作，可以感受到不同的振动触觉效果，带来更好的用户体验。1234但是，该 API 在访问 &#96;&#96;&#96;AVFoundation&#96;&amp;#96">
+<meta property="og:description" content="UIImpactFeedbackGenerator 是 iOS 10 之后官方推荐的震动控件，基于 Taptic Engine 振动模块可以触发短震动，为 Apple Watch 以及 iPhone 6s 以后的机型 提供了 Force Touch 以及 3D Touch，不同的屏幕操作，可以感受到不同的振动触觉效果，带来更好的用户体验。 但是，该 API 在访问 AVFoundation 的部分">
 <meta property="og:locale" content="cn">
 <meta property="article:published_time" content="2021-08-09T15:20:35.000Z">
-<meta property="article:modified_time" content="2021-08-09T15:22:15.382Z">
+<meta property="article:modified_time" content="2021-08-09T15:26:06.296Z">
 <meta property="article:author" content="俊东">
 <meta property="article:tag" content="iOS">
 <meta property="article:tag" content="IT">
@@ -192,7 +192,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-08-09 23:20:35 / Modified: 23:22:15" itemprop="dateCreated datePublished" datetime="2021-08-09T23:20:35+08:00">2021-08-09</time>
+              <time title="Created: 2021-08-09 23:20:35 / Modified: 23:26:06" itemprop="dateCreated datePublished" datetime="2021-08-09T23:20:35+08:00">2021-08-09</time>
             </span>
 
           
@@ -206,22 +206,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <figure class="highlight plain"><figcaption><span>```是 iOS 10 之后官方推荐的震动控件，基于 Taptic Engine 振动模块可以触发短震动，为 Apple Watch 以及 iPhone 6s 以后的机型 提供了 Force Touch 以及 3D Touch，不同的屏幕操作，可以感受到不同的振动触觉效果，带来更好的用户体验。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">但是，该 API 在访问 &#96;&#96;&#96;AVFoundation&#96;&#96;&#96; 的部分组件功能时可能出现失效的情况，不起作用的原因是音视频控件对硬件资源的管理占用，了解过 AVFoundation 的同学一定对 **Session** 这一概念很熟悉了，iOS 通过 **Session** 对硬件资源进行访问管理，这里记录下解决方案，代码如下：</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+        <p><code>UIImpactFeedbackGenerator</code> 是 iOS 10 之后官方推荐的震动控件，基于 Taptic Engine 振动模块可以触发短震动，为 Apple Watch 以及 iPhone 6s 以后的机型 提供了 Force Touch 以及 3D Touch，不同的屏幕操作，可以感受到不同的振动触觉效果，带来更好的用户体验。</p>
+<p>但是，该 API 在访问 <code>AVFoundation</code> 的部分组件功能时可能出现失效的情况，不起作用的原因是音视频控件对硬件资源的管理占用，了解过 AVFoundation 的同学一定对 <strong>Session</strong> 这一概念很熟悉了，iOS 通过 <strong>Session</strong> 对硬件资源进行访问管理，这里记录下解决方案，代码如下：</p>
+<a id="more"></a>
 
-<pre><code>if (@available(iOS 10.0, *)) {
-    if (@available(iOS 13.0, *)) {
-        if (![[AVAudioSession sharedInstance] allowHapticsAndSystemSoundsDuringRecording]) {
-            NSError *error = nil;
-            [[AVAudioSession sharedInstance] setAllowHapticsAndSystemSoundsDuringRecording:YES error:&amp;error];
-            if (error) {
-                FALogD(FALogTypeOther, @&quot;[Party-Room]--%@&quot;,error.description);
-            }                
-        }
-    }
-    UIImpactFeedbackGenerator *impactFeedBack = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];
-    [impactFeedBack prepare];
-    [impactFeedBack impactOccurred];
-}</code></pre><p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if (@available(iOS 10.0, *)) &#123;</span><br><span class="line">    if (@available(iOS 13.0, *)) &#123;</span><br><span class="line">        if (![[AVAudioSession sharedInstance] allowHapticsAndSystemSoundsDuringRecording]) &#123;</span><br><span class="line">            NSError *error &#x3D; nil;</span><br><span class="line">            [[AVAudioSession sharedInstance] setAllowHapticsAndSystemSoundsDuringRecording:YES error:&amp;error];</span><br><span class="line">            if (error) &#123;</span><br><span class="line">                &#x2F;&#x2F;&#x2F; error</span><br><span class="line">            &#125;                </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    UIImpactFeedbackGenerator *impactFeedBack &#x3D; [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleLight];</span><br><span class="line">    [impactFeedBack prepare];</span><br><span class="line">    [impactFeedBack impactOccurred];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>注意：<code>allowHapticsAndSystemSoundsDuringRecording</code> 和 <code>setAllowHapticsAndSystemSoundsDuringRecording:</code> 都是 iOS 13 后才支持的</p>
 
     </div>
