@@ -163,6 +163,146 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/undefined.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/undefined.html" class="post-title-link" itemprop="url">UITableView滚动优化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-07-01 15:31:04" itemprop="dateCreated datePublished" datetime="2018-07-01T15:31:04+08:00">2018-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/96bf0c06.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/96bf0c06.html" class="post-title-link" itemprop="url">算法基础：字符串</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-05-02 16:30:44" itemprop="dateCreated datePublished" datetime="2018-05-02T16:30:44+08:00">2018-05-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">数理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>题目：</p>
+<p>实现一个函数，把字符串中的每个空格替换成“###”</p>
+<p>code：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public static  void Replace(char string[])&#123;</span><br><span class="line">        if (string &#x3D;&#x3D; null) &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">    int originalLength &#x3D; 0;</span><br><span class="line">    int numberOfBlank &#x3D; 0;</span><br><span class="line">    int i &#x3D; 0;</span><br><span class="line">    while(i&lt;string.length)&#123;</span><br><span class="line">      originalLength++;</span><br><span class="line">      if (string[i] &#x3D;&#x3D; &#39; &#39;) &#123;</span><br><span class="line">        numberOfBlank++;</span><br><span class="line">      &#125;</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">    int newLength &#x3D; originalLength+numberOfBlank*2;</span><br><span class="line">    char[] newString &#x3D; new char[newLength];</span><br><span class="line">    System.out.println(&quot;string.length:&quot;+string.length+&quot;,newLength:&quot;+newLength);</span><br><span class="line"></span><br><span class="line">    int indexOfNew &#x3D; newLength-1;</span><br><span class="line">    int indexOfOriginal &#x3D; originalLength-1;</span><br><span class="line">    while(indexOfOriginal &gt;&#x3D;0 &amp;&amp; indexOfNew &gt;&#x3D; indexOfOriginal)&#123;</span><br><span class="line">      if (string[indexOfOriginal] &#x3D;&#x3D; &#39; &#39;) &#123;</span><br><span class="line">        newString[indexOfNew --] &#x3D; &#39;#&#39;;</span><br><span class="line">        newString[indexOfNew --] &#x3D; &#39;#&#39;;</span><br><span class="line">        newString[indexOfNew --] &#x3D; &#39;#&#39;;</span><br><span class="line">      &#125;else &#123;</span><br><span class="line">        newString[indexOfNew --] &#x3D; string[indexOfOriginal];</span><br><span class="line">      &#125;</span><br><span class="line">      indexOfOriginal--;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.print(&quot;newString:&quot;);</span><br><span class="line">    System.out.println(newString);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/b25c254a.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -776,186 +916,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/bfca531b.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="俊东">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/bfca531b.html" class="post-title-link" itemprop="url">AVFoundation 音视频混合</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-25 11:17:41" itemprop="dateCreated datePublished" datetime="2018-03-25T11:17:41+08:00">2018-03-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>如何将一段音频插入到视频中？可以使用AVFoundation的AVMutableComposition来实现：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/bfca531b.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/23982a59.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="俊东">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/23982a59.html" class="post-title-link" itemprop="url">iOS:TCP-UDP-基于CocoaAsyncSocket的运用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-15 16:01:12" itemprop="dateCreated datePublished" datetime="2018-03-15T16:01:12+08:00">2018-03-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在iOS开发中使用socket，一般都是用第三方库GCDAsyncSocket（虽然也有原生CFSocket）。</p>
-<p>GCDAsyncSocket 下载地址: GCDAsyncSocket</p>
-<p>使用之前需要先在项目引入ASyncSocket库：</p>
-<p>把ASyncSocket库源码加入项目：只需要增加RunLoop目录中的AsyncSocket.h、AsyncSocket.m、AsyncUdpSocket.h和AsyncUdpSocket.m四个文件。<br>在项目增加CFNetwork框架：<br>在Framework目录右健,选择Add–&gt;Existing Files…<br>选择 CFNetwork.framework<br>下面开始介绍一下如何使用ASyncSocket：</p>
-<p>一般来说，一个用户只需要建立一个socket长连接，所以可以用单例类方便使用。</p>
-<p>单例方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建单例</span><br><span class="line">+ (Singleton *) sharedInstance</span><br><span class="line">&#123;</span><br><span class="line">    static Singleton *sharedInstace &#x3D; nil;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        sharedInstace &#x3D; [[self alloc] initPrivate];</span><br><span class="line">    &#125;);</span><br><span class="line">    return sharedInstace;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 私有创建方法，不公开</span><br><span class="line">- (instancetype)initPrivate &#123;</span><br><span class="line">    if (self &#x3D; [super init]) &#123;</span><br><span class="line">        _lockStr &#x3D; @&quot;1234&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 废除init创建方法</span><br><span class="line">- (instancetype)init &#123;</span><br><span class="line">    @throw [NSException exceptionWithName:@&quot;初始化异常&quot; reason:@&quot;不允许通过init方法创建对象&quot; userInfo:nil];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>建立socket长连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#define TIME_OUT 20</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 建立socket连接</span><br><span class="line">-(void)socketConnectHost&#123;</span><br><span class="line">    _socket &#x3D; [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];</span><br><span class="line">    NSLog(@&quot;连接服务器&quot;);</span><br><span class="line">    NSError *error &#x3D; nil;</span><br><span class="line">    [_socket connectToHost:_socketHost onPort:_socketPort withTimeout:TIME_OUT error:&amp;error];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; socket成功连接回调</span><br><span class="line">-(void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port &#123;</span><br><span class="line">    NSLog(@&quot;成功连接到%@:%d&quot;,host,port);</span><br><span class="line">    _bufferData &#x3D; [[NSMutableData alloc] init]; &#x2F;&#x2F; 存储接收数据的缓存区</span><br><span class="line">    [_socket readDataWithTimeout:-1 tag:99];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>心跳</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, retain) NSTimer *heartTimer;   &#x2F;&#x2F; 心跳计时器</span><br><span class="line">在连接成功的回调方法里，启动定时器，每隔2秒向服务器发送固定的消息来检测长连接。</span><br><span class="line">&#x2F;&#x2F; 心跳连接</span><br><span class="line">-(void)longConnectToSocket&#123;</span><br><span class="line">    根据服务器要求发送固定格式的数据，假设为指令@&quot;longConnect&quot;，但是一般不会是这么简单的指令</span><br><span class="line">    NSString *longConnect &#x3D; @&quot;longConnect&quot;;</span><br><span class="line">    NSData   *dataStream  &#x3D; [longConnect dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    [_socket writeData:dataStream withTimeout:1 tag:1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>断开连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">* 主动断开</span><br><span class="line">- (void)cutOffSocket &#123;</span><br><span class="line">    [_socket disconnect];</span><br><span class="line">    _socket.userData &#x3D;  @(SocketOfflineByUser);</span><br><span class="line">    NSLog(@&quot;断开连接&quot;);</span><br><span class="line">&#125;</span><br><span class="line">* 被动断开</span><br><span class="line">-(void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err &#123;</span><br><span class="line">    if (err.code &#x3D;&#x3D; 57) &#123;</span><br><span class="line">        _socket.userData &#x3D; @(SocketOfflineByWifiCut); &#x2F;&#x2F; wifi断开</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        _socket.userData &#x3D;  @(SocketOfflineByServer);  &#x2F;&#x2F; 服务器掉线</span><br><span class="line">    &#125;</span><br><span class="line">    NSLog(@&quot;断开连接，错误：%@&quot;,err);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>发送消息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 发消息</span><br><span class="line">- (void)sendMessage:(NSData *)data &#123;</span><br><span class="line">    [_socket writeData:data withTimeout:TIME_OUT tag:10];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; wirte成功</span><br><span class="line">-(void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 持续接收数据</span><br><span class="line">    &#x2F;&#x2F; 超时设置为附属，表示不会使用超时</span><br><span class="line">    [_socket readDataWithTimeout:-1 tag:tag];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接收消息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-(void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag &#123;</span><br><span class="line">    &#x2F;&#x2F; 在这里处理消息</span><br><span class="line">    [self disposeBufferData:data];</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;持续接收服务端的数据</span><br><span class="line">    [sock readDataWithTimeout:-1 tag:tag];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1025,7 +985,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">181</span>
+          <span class="site-state-item-count">183</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
