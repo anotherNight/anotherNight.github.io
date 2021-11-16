@@ -9596,4 +9596,24 @@ NOT NULL 不允许为空 PRIMARY KEY 主键 AUTOINCREMENT 自增长,
         <tag>mov</tag>
       </tags>
   </entry>
+  <entry>
+    <title>BOOK:语言的魔力</title>
+    <url>/p/2d40db6f.html</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>manage</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>随笔:202111</title>
+    <url>/p/346599c5.html</url>
+    <content><![CDATA[<p>一种声音</p>
+<a id="more"></a>
+
+<p>“如果尖锐的批评完全消失，温和的批评将会变得刺耳。如果温和的批评也不被允许，沉默将被认为居心叵测。如果沉默也不再允许，赞扬不够卖力将是一种罪行。如果只允许一种声音存在，那么，唯一存在的那个声音就是谎言。”</p>
+]]></content>
+      <tags>
+        <tag>note</tag>
+      </tags>
+  </entry>
 </search>
