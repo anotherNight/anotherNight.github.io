@@ -163,6 +163,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/9aa2c853.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="俊东">
+      <meta itemprop="description" content="记录思考的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="俊东的Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/p/9aa2c853.html" class="post-title-link" itemprop="url">iOS UITextField 中文输入监听</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-07-09 17:00:30" itemprop="dateCreated datePublished" datetime="2018-07-09T17:00:30+08:00">2018-07-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index"><span itemprop="name">IT</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在UITextField开发中，如果对输入长度有限制的话，可以通过leng<br>属性来判断，但如果要区分中英文呢？不如最大长度20个字，英文一个字，中文算两个字，那么该怎么实现呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;中文输入监听</span><br><span class="line">- (void)textFieldDidChange:(UITextField *)textField &#123;</span><br><span class="line">    int kMaxLength &#x3D; 6;</span><br><span class="line">    NSString *toBeString &#x3D; textField.text;</span><br><span class="line">    NSString *lang &#x3D; [[textField textInputMode] primaryLanguage]; &#x2F;&#x2F; 键盘输入模式</span><br><span class="line">    if ([lang isEqualToString:@&quot;zh-Hans&quot;]) &#123; &#x2F;&#x2F; 简体中文输入，包括简体拼音，健体五笔，简体手写</span><br><span class="line">        UITextRange *selectedRange &#x3D; [textField markedTextRange];</span><br><span class="line">        &#x2F;&#x2F;获取高亮部分</span><br><span class="line">        UITextPosition *position &#x3D; [textField positionFromPosition:selectedRange.start offset:0];</span><br><span class="line">        &#x2F;&#x2F; 没有高亮选择的字，则对已输入的文字进行字数统计和限制</span><br><span class="line">        if (!position) &#123;</span><br><span class="line">            if (toBeString.length &gt; kMaxLength) &#123;</span><br><span class="line">                textField.text &#x3D; [toBeString substringToIndex:kMaxLength];</span><br><span class="line">                [HZProgressHUD showHUDTitle:Localized(@&quot;标签最多6个字&quot;)];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况</span><br><span class="line">    else&#123;</span><br><span class="line">        if (toBeString.length &gt; kMaxLength) &#123;</span><br><span class="line">            textField.text &#x3D; [toBeString substringToIndex:kMaxLength];</span><br><span class="line">            [HZProgressHUD showHUDTitle:Localized(@&quot;标签最多6个字&quot;)];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/38285210.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -846,87 +920,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="https://jundongwu.com/p/aa896fbc.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="俊东">
-      <meta itemprop="description" content="记录思考的地方">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="俊东的Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/p/aa896fbc.html" class="post-title-link" itemprop="url">2018计划：个人成长规划</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2018-03-27 10:59:40" itemprop="dateCreated datePublished" datetime="2018-03-27T10:59:40+08:00">2018-03-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-09-03 21:06:58" itemprop="dateModified" datetime="2020-09-03T21:06:58+08:00">2020-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Plan/" itemprop="url" rel="index"><span itemprop="name">Plan</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在2017年，自身在技术上的成长，主要是iOS的应用开发，在界面构建、功能实现上有了更成熟的发展，但同时也感受到应用开发的瓶颈，在新的一年中，我准备调整成长方向，主要有4个方面。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/p/aa896fbc.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -996,7 +989,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">185</span>
+          <span class="site-state-item-count">186</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
